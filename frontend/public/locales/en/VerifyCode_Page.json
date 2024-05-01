@@ -1,0 +1,9 @@
+{
+  "tab": {
+    "title": "Verify Account | Sacramento",
+    "description": "Verify Account | Sacramento"
+  },
+  "heading": "Verify Account",
+  "welcome_msg": "Please wait while your account is being activated.",
+  "active_success_msg": "Your account has been activated successfully."
+}

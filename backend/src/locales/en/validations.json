@@ -1,0 +1,15 @@
+{
+ 
+  "provide_all_fields": "Please provide all fields",
+  "user_already_exists": "User already exists try to login!",
+  "passwords_do_not_match": "Passwords do not match",
+  "activate_user_mail_subject": "Activate your account",
+  "activate_user_mail_message": "Hello {{name}}, please click on the link to activate your account:",
+  "activate_user_check_mail": "please check your email to activate your account!",
+  "activate_user_send_mail_failed": "failed to send the activation link!",
+  "token_invalid_or_expired": "token is Invalid or has expired!",
+  "account_activated_success_msg": "Your account has been activated successfully.!",
+  "login_provide_email_pass": "Please provide email and password",
+  "incorrect_email_pass": "Incorrect email or password",
+  "login_success": "Logged in Successfully"
+}

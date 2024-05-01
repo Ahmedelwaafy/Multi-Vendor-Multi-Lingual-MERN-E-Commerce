@@ -1,0 +1,19 @@
+{
+  "tab": {
+    "title": " | Orders",
+    "description": " | My Orders Page"
+  },
+  "heading": "My Orders",
+  "table": {
+    "search_placeholder": "Filter status...",
+    "headers": {
+      "date": "Date",
+      "order_id": "Order ID",
+      "status": "Status",
+      "total": "Total",
+      "quantity": "Quantity",
+      "action": "Action"
+    },
+    "actions": { "label": "Actions", "copy": "Copy payment ID" }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "tab": {
+    "title": " | Payment Methods",
+    "description": " | My Payment Methods Page"
+  },
+  "heading": "My Payment  Methods",
+  "add_new": "Add New",
+  "default": "Default",
+  "DeletePaymentMethodPopUp": {
+    "title": "Are you sure you want to delete this method ?",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  }
+}

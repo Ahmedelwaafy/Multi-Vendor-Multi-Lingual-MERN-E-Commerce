@@ -1,0 +1,32 @@
+{
+  "Login": "تسجيل الدخول",
+  "LoginForm": {
+    "email": {
+      "label": "البريد إلكتروني",
+      "placeholder": "البريد إلكتروني"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "placeholder": "كلمة المرور"
+    },
+    "remember_me": {
+      "label": "تذكرنى"
+    },
+    "Forgot_password": "هل نسيت كلمة السر ؟",
+    "SubmitBtnComponent": {
+      "value": "تسجيل الدخول"
+    },
+    "have_no_account": "ليس لديك حساب؟",
+    "register": "انشيء واحدا"
+  },
+  "validations": {
+    "email": {
+      "required": "البريد الالكتروني مطلوب.",
+      "pattern": "عنوان البريد الإلكتروني غير صحيح."
+    },
+    "password": {
+      "required": "كلمة المرور مطلوبة.",
+      "minLength": "الحد الأدنى لكلمة المرور هو  ٨ أحرف."
+    }
+  }
+}

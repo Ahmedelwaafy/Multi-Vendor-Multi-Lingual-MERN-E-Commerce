@@ -1,0 +1,26 @@
+{
+  "settings": "الاعدادات",
+  "menu": {
+    "profile": "حسابي",
+    "points": "نقاطي",
+    "affiliate": "الأصدقاء التابعين",
+    "notifications": "الإشعارات",
+    "favorite_brands": "العلامات التجارية المفضلة",
+    "favorite_coupons": "الكوبونات المفضلة",
+    "log_out": "تسجيل خروج",
+    "count_formatted": "({{count,number}})"
+  },
+
+  "LoginPopUp": {
+    "heading": "لانا",
+    "sub_heading": "يجب عليك تسجيل الدخول أولا!",
+    "Login": "تسجيل الدخول",
+    "Register": "إنشاء حساب"
+  },
+  "LogOutPopUp": {
+    "LogOutPopUpTitle": "هل أنت متأكد أنك تريد تسجيل الخروج ؟",
+    "SubmitBtnText": "تأكيد",
+    "CancelBtnText": "إلغاء",
+    "toast_error": "برجاء تسجيل الدخول أولا!"
+  }
+}

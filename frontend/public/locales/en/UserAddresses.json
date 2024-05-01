@@ -1,0 +1,14 @@
+{
+  "tab": {
+    "title": " | Addresses",
+    "description": " | My Addresses Page"
+  },
+  "heading": "My Addresses",
+  "add_new": "Add New",
+  "default": "Default",
+  "DeleteAddressPopUp": {
+    "title": "Are you sure you want to delete this address ?",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  }
+}

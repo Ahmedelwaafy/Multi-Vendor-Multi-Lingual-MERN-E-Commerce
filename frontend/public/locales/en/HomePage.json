@@ -1,0 +1,28 @@
+{
+  "tab": {
+    "title": "Sacramento",
+    "description": "Sacramento"
+  },
+  "hero_cta": "Show Product",
+  "best_deals": "Best Deals",
+  "new_arrivals": "New Arrivals",
+  "featured_products": "Featured Products",
+  "popular_events": "Popular Events",
+  "show_product": "Show Product",
+  "product_card": {
+    "tooltips": {
+      "add_to_wishlist": "Add to Wishlist",
+      "add_to_cart": "Add to Cart",
+      "view_details": "View Details",
+      "count_formatted": "{{count,number}}",
+      "count_formatted_sold": "{{count,number}} Sold"
+    },
+    "added_to_cart_toast": "Item Added to Cart ",
+    "add_to_cart_btn": "Add to Cart",
+    "send_msg_to_shop_btn": "Send Message"
+  },
+  "event_card": {
+    "count_formatted": "{{count,number}}",
+    "count_formatted_sold": "{{count,number}} Sold"
+  }
+}

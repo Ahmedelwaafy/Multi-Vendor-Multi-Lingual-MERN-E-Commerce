@@ -1,0 +1,14 @@
+{
+  "provide_all_fields": "برجاء ادخال جميع البيانات",
+  "user_already_exists": "المستخدم موجود بالفعل حاول تسجيل الدخول!",
+  "passwords_do_not_match": "كلمات المرور غير متطابقة",
+  "activate_user_mail_subject": "فعل حسابك",
+  "activate_user_mail_message": "مرحبًا {{name}}، الرجاء الضغط على الرابط لتفعيل حسابك:",
+  "activate_user_check_mail": "برجاء التحقق من بريدك الإلكتروني لتفعيل حسابك!",
+  "activate_user_send_mail_failed": "فشل في إرسال رابط التفعيل!",
+  "token_invalid_or_expired": "الرمز غير صالح أو انتهت صلاحيته!",
+  "account_activated_success_msg": "تم تفعيل حسابك بنجاح.!",
+  "login_provide_email_pass": "برجاء ادخال البريد الإلكتروني وكلمة المرور",
+  "incorrect_email_pass": "خطأ في البريد الإلكتروني أو كلمة مرور",
+  "login_success": "تم تسجيل الدخول بنجاح"
+}

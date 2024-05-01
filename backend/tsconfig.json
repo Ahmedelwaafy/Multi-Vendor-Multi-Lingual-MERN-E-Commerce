@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "CommonJS", // Use CommonJS module format for Node.js
+    "lib": ["ESNext"], // Include only necessary library files (ESNext for latest features)
+    "esModuleInterop": true, // Allow importing CommonJS modules using ES module syntax
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing of filenames
+    "strict": false, // Disable strict mode
+    "noImplicitAny": false, // Allow inferred 'any' types
+    "strictNullChecks": false, // Allow null and undefined values to be assigned to any type
+    "strictFunctionTypes": false, // Disable strict checking of function types
+    "strictPropertyInitialization": false, // Allow properties to be initialized later or left uninitialized
+    "noUnusedLocals": false, // Allow unused variables
+    "noUnusedParameters": false, // Allow unused function parameters
+    "noImplicitReturns": false, // Allow functions to have implicit return type 'any'
+    "jsx": "preserve" // If you're not using JSX, set it to "preserve" or remove this line
+  }
+}

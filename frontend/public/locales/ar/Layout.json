@@ -1,0 +1,82 @@
+{
+  "Navbar": {
+    "items": {
+      "home": "الرئيسية",
+      "categories": "التصنيفات",
+      "coupons": " الكوبونات",
+      "brands": "العلامات التجارية",
+      "best_selling": "الأكثر مبيعا",
+      "contact_us": "اتصل بنا"
+    },
+
+    "banner_text": "أوقف الحرب علي فلسطين",
+    "actions": { "become_seller": "انضم كبائع" },
+    "NavSearch": { "placeholder": "ابحث عن منتجك المفضل...    " },
+    "NavDropDownMenu": {
+      "my_profile": "الحساب الشخصي",
+      "Log_out": "تسجيل الخروج",
+      "Login": "تسجيل الدخول",
+      "Register": "إنشاء حساب"
+    }
+  },
+
+  "Footer": {
+    "first_column": {
+      "Location": "الموقع",
+      "Email": "البريد إلكتروني",
+      "Website": "الموقع إلكتروني"
+    },
+    "second_column": {
+      "title": "روابط سريعة",
+      "menu_items": {
+        "Home": {
+          "title": "الرئيسية",
+          "link": ""
+        },
+        "News": {
+          "title": "الأخبار",
+          "link": "/news"
+        },
+        "FAQs": {
+          "title": "الأسئلة الشائعة",
+          "link": "/faqs"
+        },
+        "Contact": { "title": "اتصل بنا", "link": "/contact-us" },
+        "Login": { "title": "تسجيل الدخول", "link": "/login" },
+        "About": { "title": "معلومات عنا", "link": "/about-us" },
+        "Terms_Conditions": {
+          "title": "الأحكام والشروط",
+          "link": "/terms-conditions"
+        }
+      }
+    },
+    "third_column": {
+      "title": "اتصل بنا"
+    },
+    "fourth_column": {
+      "title": "أحدث العقارات",
+      "email": {
+        "placeholder": "أدخل بريدك الإلكتروني",
+        "required_msg": "البريد الالكتروني مطلوب.",
+        "pattern_msg": "عنوان البريد الإلكتروني غير صحيح."
+      }
+    },
+    "top_banner": { "Subscribe": "اشترك" }
+  },
+  "LoginPopUp": {
+    "heading": "ترافيك تيتانز",
+    "sub_heading": "يجب عليك تسجيل الدخول أولا!",
+    "Login": "تسجيل الدخول",
+    "Register": "إنشاء حساب"
+  },
+  "LogOutPopUp": {
+    "LogOutPopUpTitle": "هل أنت متأكد أنك تريد تسجيل الخروج ؟",
+    "SubmitBtnText": "تأكيد",
+    "CancelBtnText": "رجوع",
+    "toast_error": "الرجاء تسجيل الدخول أولا!"
+  },
+  "Country": {
+    "placeholder": "الدولة",
+    "NotFoundMessage": "لم يتم العثور على بلدان"
+  }
+}
