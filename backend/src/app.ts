@@ -41,13 +41,13 @@ let limiter = rateLimit({
 });
 app.use("/api", limiter);
 
-app.use(helmet());
-/* 
+//app.use(helmet());
+/* Captcha-DxmSSthU.js:8 Refused to load the script 'https://www.google.com/recaptcha/api.js?onload=onloadcallback&render=explicit' because it violates the following Content Security Policy directive: "script-src 'self'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. */
 app.use(express.json({ limit: "10kb" }));
 app.use(sanitize());
 app.use(xss());
 app.use(hpp({ whitelist: ["duration"] }));
- */
+ 
 /* if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 } */
