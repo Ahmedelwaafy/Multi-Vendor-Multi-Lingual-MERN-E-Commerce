@@ -72,7 +72,7 @@ function App() {
                 import("./Pages/Public/ProductDetails/ProductDetails.tsx"),
             },
             {
-              path: "best-selling",
+              path: "best-enlling",
               lazy: () => import("./Pages/Public/BestSelling/BestSelling.tsx"),
             },
             /* {

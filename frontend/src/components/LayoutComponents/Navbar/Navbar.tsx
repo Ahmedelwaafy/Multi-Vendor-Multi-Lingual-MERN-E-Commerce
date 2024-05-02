@@ -1,4 +1,10 @@
-import { Cart, Container, LangLink, Logo, Wishlist } from "@/components/MainComponents";
+import {
+  Cart,
+  Container,
+  LangLink,
+  Logo,
+  Wishlist,
+} from "@/components/MainComponents";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
@@ -10,12 +16,16 @@ import MenuItems from "./NavMenuItems";
 import NavSearch from "./NavSearch";
 
 function Navbar() {
+  
   const { t, i18n } = useTranslation("Layout");
   const lng = i18n.language;
   function changeLanguage(lang: string) {
     if (lng !== lang) {
       i18n.changeLanguage(lang);
-      window.location.replace(window.location.href.replace(lng, lang));
+      const temp = window.location.href.split("/");
+      temp[3] = lang;
+      console.log(temp);
+      window.location.replace(temp.join("/"));
     }
   }
   return (
