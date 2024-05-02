@@ -78,7 +78,7 @@ export function Component() {
     try {
       console.log(data);
 
-      //await captchaRef?.current?.executeAsync();
+      await captchaRef?.current?.executeAsync();
       postLoginData({
         api: import.meta.env.VITE_LOGIN_USER,
         data,

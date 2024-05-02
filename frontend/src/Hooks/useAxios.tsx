@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import UseAuth from "./UseAuth";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_ENDPOINTS_BASE_URL,
+  baseURL: import.meta.env.VITE_ENDPOINTS_BASE_URL || "/api/v1/",
 });
 interface fetcherFunctionProps {
   api: string;
