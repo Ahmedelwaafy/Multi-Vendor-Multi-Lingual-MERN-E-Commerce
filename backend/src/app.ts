@@ -27,12 +27,13 @@ app.use(
 );
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-/* app.use(
+app.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
+/* 
 let limiter = rateLimit({
   max: 200,
   windowMs: 60 * 60 * 1000,
