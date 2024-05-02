@@ -13,6 +13,13 @@ import { AuthLayout, Layout } from "./components/LayoutComponents";
 import ProtectedRoutes from "./components/ProtectionComponents/ProtectedRoutes.tsx";
 import UserDashboardLayout from "./Pages/User/UserDashboardLayout.tsx";
 import VendorDashboardLayout from "./Pages/Vendor/VendorDashboardLayout.tsx";
+import {
+  PublicRoutes,
+  UserAuthRoutes,
+  UserDashboardRoutes,
+  VendorAuthRoutes,
+  VendorDashboardRoutes,
+} from "./Utilities/Constants/Routes.ts";
 function App() {
   const Theme = useAppSelector(theme);
   const { i18n } = useTranslation("");
@@ -53,37 +60,10 @@ function App() {
     {
       path: `/${i18n.language?.startsWith("ar") ? "ar" : "en"}`,
       children: [
-        //!-------- Pages Layout--------
+        //!-------- Public Pages Layout--------
         {
           element: <Layout />,
-          children: [
-            {
-              index: true,
-              lazy: () => import("./Pages/Public/HomePage/HomePage.tsx"),
-            },
-
-            {
-              path: "products",
-              lazy: () => import("./Pages/Public/Products/Products.tsx"),
-            },
-            {
-              path: "products/:productID/*",
-              lazy: () =>
-                import("./Pages/Public/ProductDetails/ProductDetails.tsx"),
-            },
-            {
-              path: "best-enlling",
-              lazy: () => import("./Pages/Public/BestSelling/BestSelling.tsx"),
-            },
-            /* {
-              path: "terms-conditions",
-              lazy: () => import("./Pages/Products/Products.tsx"),
-            }, */
-            {
-              path: "not-found",
-              lazy: () => import("./components/SubComponents/NotFound.tsx"),
-            },
-          ],
+          children: PublicRoutes,
         },
         //!--------User Dashboard Layout--------
         {
@@ -93,37 +73,7 @@ function App() {
             </ProtectedRoutes>
           ),
 
-          children: [
-            {
-              path: "profile",
-              lazy: () => import("./Pages/User/Profile/Profile.tsx"),
-            },
-            {
-              path: "orders",
-              lazy: () => import("./Pages/User/Orders/Orders.tsx"),
-            },
-            {
-              path: "refunds",
-              lazy: () => import("./Pages/User/Refunds/Refunds.tsx"),
-            },
-            {
-              path: "inbox",
-              lazy: () => import("./Pages/User/Inbox/Inbox.tsx"),
-            },
-            {
-              path: "track",
-              lazy: () => import("./Pages/User/TrackOrders/TrackOrders.tsx"),
-            },
-            {
-              path: "payment-methods",
-              lazy: () =>
-                import("./Pages/User/PaymentMethods/PaymentMethods.tsx"),
-            },
-            {
-              path: "address",
-              lazy: () => import("./Pages/User/Address/UserAddress.tsx"),
-            },
-          ],
+          children: UserDashboardRoutes,
         },
         //!--------Vendor Dashboard Layout--------
         {
@@ -136,37 +86,7 @@ function App() {
             </ProtectedRoutes>
           ),
           path: "shop",
-          children: [
-            {
-              path: "dashboard",
-              lazy: () => import("./Pages/Vendor/Dashboard/Dashboard.tsx"),
-            },
-            /* {
-              path: "orders",
-              lazy: () => import("./Pages/Vendor/Orders/Orders.tsx"),
-            },
-            {
-              path: "refunds",
-              lazy: () => import("./Pages/Vendor/Refunds/Refunds.tsx"),
-            },
-            {
-              path: "inbox",
-              lazy: () => import("./Pages/Vendor/Inbox/Inbox.tsx"),
-            },
-            {
-              path: "track",
-              lazy: () => import("./Pages/Vendor/TrackOrders/TrackOrders.tsx"),
-            },
-            {
-              path: "payment-methods",
-              lazy: () =>
-                import("./Pages/Vendor/PaymentMethods/PaymentMethods.tsx"),
-            },
-            {
-              path: "address",
-              lazy: () => import("./Pages/Vendor/Address/VendorAddress.tsx"),
-            }, */
-          ],
+          children: VendorDashboardRoutes,
         },
 
         //! -------User Auth routes--------
@@ -179,21 +99,7 @@ function App() {
               <AuthLayout />
             </ProtectedRoutes>
           ),
-          children: [
-            {
-              path: "register",
-              lazy: () => import("./Pages/Authentication/User/Register.tsx"),
-            },
-            {
-              path: "login",
-              lazy: () => import("./Pages/Authentication/User/Login.tsx"),
-            },
-            {
-              path: "activate/:activation_token",
-              lazy: () =>
-                import("./Pages/Authentication/User/ActivateUser.tsx"),
-            },
-          ],
+          children: UserAuthRoutes,
         },
         //! -------Vendor Auth routes--------
         {
@@ -205,21 +111,7 @@ function App() {
               <AuthLayout />
             </ProtectedRoutes>
           ),
-          children: [
-            {
-              path: "seller/register",
-              lazy: () => import("./Pages/Authentication/Vendor/Register.tsx"),
-            },
-            {
-              path: "seller/login",
-              lazy: () => import("./Pages/Authentication/Vendor/Login.tsx"),
-            },
-            {
-              path: "seller/activate/:activation_token",
-              lazy: () =>
-                import("./Pages/Authentication/Vendor/ActivateVendor.tsx"),
-            },
-          ],
+          children: VendorAuthRoutes,
         },
         //! ------- User Layout
       ],

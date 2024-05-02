@@ -119,7 +119,7 @@ function MobileMenuItems({
                 <li onClick={() => setOpen(false)}>
                   <LangNavLink
                     className={`mobile__nav--item trns hover:scale-105 rounded-full px-4 py-2 h-10 border-2 border-secondary   w-48  flex-center focus:outline-none font-medium`}
-                    to={`/best-enlling`}
+                    to={`/best-selling`}
                   >
                     {t("Navbar.items.best_selling")}
                   </LangNavLink>

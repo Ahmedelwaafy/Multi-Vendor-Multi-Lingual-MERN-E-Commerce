@@ -80,7 +80,7 @@ export default function MenuItems({
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <LangNavLink className={`desktop__nav--item `} to={`/best-enlling`}>
+          <LangNavLink className={`desktop__nav--item `} to={`/best-selling`}>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               {t("Navbar.items.best_selling")}
             </NavigationMenuLink>
