@@ -41,12 +41,15 @@ export interface VendorType {
   active?: boolean;
   role?: string;
   platform?: "mobile" | "website";
-  avatar?: {
+  avatar: {
     public_id: string;
     url: string;
   };
   zipCode: number;
   views: number;
+  totalReviews: number;
+  rating: number;
+  totalProducts: number;
   withdrawMethod?: object;
   availableBalance?: number;
   transactions?: Transaction[];

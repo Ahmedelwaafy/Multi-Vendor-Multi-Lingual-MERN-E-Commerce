@@ -233,6 +233,8 @@ export const signupVendor = asyncErrorHandler(
       address,
       zipCode,
     } = req.body;
+    console.log("phone", phone);
+
     const fileName = req.file.filename;
     const filePath = `uploads/${fileName}`;
     const fileUrl = path.join(fileName);

@@ -49,15 +49,23 @@ export type IUserData = {
   updated_at: string;
   phone_number?: string | null;
 };
-export type IVendorData = {
-  id: number;
+export interface IVendorType {
+  _id: string;
   name: string;
   email: string;
-  email_verified_at: string | null;
-  created_at: string;
-  updated_at: string;
-  phone_number?: string | null;
-};
+  description?: string;
+  address: string;
+  phone: number;
+  avatar: {
+    public_id: string;
+    url: string;
+  };
+  views: number;
+  totalReviews: number;
+  rating: number;
+  totalProducts: number;
+  createdAt: Date;
+}
 export interface IHeadingsProps {
   children: React.ReactNode | string;
   className?: string;

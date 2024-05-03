@@ -86,7 +86,7 @@ function UserSidebarMenu({
   ];
   return (
     <aside className={cn("sticky top-[140px] min-h-full", className)}>
-      <ul className="flex flex-col gap-1 min-h-[calc(100vh-140px)] justify-center  ">
+      <ul className="flex flex-col gap-1 min-h-page-height justify-center  ">
         {MenuItems?.map((item) => (
           <li
             onClick={() => dispatchRedux(setCurrentTab(item?.link))}

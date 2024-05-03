@@ -61,6 +61,18 @@ const vendorSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  totalReviews: {
+    type: Number,
+    default: 0,
+  },
+  rating: {
+    type: Number,
+    default: 0,
+  },
+  totalProducts: {
+    type: Number,
+    default: 0,
+  },
   platform: {
     type: String,
     enum: ["mobile", "website"],

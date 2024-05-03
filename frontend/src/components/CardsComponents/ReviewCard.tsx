@@ -1,11 +1,22 @@
 import { IReviewType } from "@/types/CardsTypes";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { AvatarFallbackName } from "@/lib/utils";
+import { AvatarFallbackName, cn } from "@/lib/utils";
 import { RatingComponent } from "../SubComponents";
 
-function ReviewCard({ review }: { review: IReviewType }) {
+function ReviewCard({
+  review,
+  className,
+}: {
+  review: IReviewType;
+  className?: string;
+}) {
   return (
-    <div className="single__review flex justify-start gap-7  max-w-[70%] md:max-w-full text-secondary">
+    <div
+      className={cn(
+        "single__review flex justify-start gap-7  max-w-[70%] md:max-w-full text-secondary",
+        className
+      )}
+    >
       <Avatar className="  ">
         <AvatarImage
           className="object-cover rounded-full"

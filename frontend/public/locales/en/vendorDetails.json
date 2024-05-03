@@ -3,6 +3,13 @@
     "title": " | Sacramento"
   },
   "views_count": "{{count, number}} Views",
+  "views": "Views",
+  "address": "Address",
+  "phone": "Phone number",
+  "total_products": "Total Products",
+  "ratings": "Ratings",
+  "joined_on": "Joined On",
+  "total_reviews": "Total Reviews",
   "product_card": {
     "tooltips": {
       "add_to_wishlist": "Add to Wishlist",
@@ -15,16 +22,18 @@
     "add_to_cart_btn": "Add to Cart",
     "send_msg_to_shop_btn": "Send Message"
   },
+  "event_card": {
+    "count_formatted": "{{count,number}}",
+    "count_formatted_sold": "{{count,number}} Sold"
+  },
   "tabs": {
-    "product_details": "Product Details",
-    "product_reviews": "Product Reviews",
-    "seller_information": "Seller Information"
+    "products": "Products",
+    "events": "Events",
+    "reviews": "Reviews"
   },
   "no_reviews": "There are no Reviews!",
-  "ratings": "Ratings",
-  "joined_on": "Joined On",
-  "total_products": "Total Products",
-  "total_reviews": "Total Reviews",
-  "visit_shop": "Visit Shop",
-  "related_products": "Related Products"
+  "no_events": "There are no Events!",
+  "no_products": "There are no Products!",
+  "ErrorMessage": "Something wrong has happened, please try again later!",
+  "NoItemsMessage": "There are no Products now!"
 }

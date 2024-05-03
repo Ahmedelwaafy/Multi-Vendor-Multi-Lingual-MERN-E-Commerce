@@ -106,7 +106,7 @@ function App() {
           element: (
             <ProtectedRoutes
               redirectPath={`/${lng}`}
-              isAllowed={UserSession ? false : true}
+              isAllowed={VendorSession ? false : true}
             >
               <AuthLayout />
             </ProtectedRoutes>

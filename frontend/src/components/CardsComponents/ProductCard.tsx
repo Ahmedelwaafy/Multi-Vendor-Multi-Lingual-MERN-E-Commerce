@@ -35,7 +35,7 @@ function ProductCard({
   return (
     <div
       className={cn(
-        "w-full h-  border- muted border -2 rounded-xl  pt-5 shadow-md hover:-translate-y-2 transition-transform duration-500 ease-in-out max-w-[300px] mx-auto ",
+        "w-full h-  border- muted  -2 rounded-xl  pt-5 border shadow-md hover:-translate-y-2 transition-transform duration-500 ease-in-out max-w-[300px] mx-auto ",
         slider && "mt-2 mb-3",
         className
       )}

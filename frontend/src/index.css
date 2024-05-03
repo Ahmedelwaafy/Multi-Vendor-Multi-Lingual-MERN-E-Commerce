@@ -107,6 +107,7 @@ html:lang(ar) body {
   .site_container {
     @apply md:w-11/12 lg:w-[700px] xl:w-[940px] 5xl:w-[1115px] 6xl:w-[1300px] mx-auto w-5/6;
   }
+
   /* .site_container {
     @apply xl:w-full xl:px-24 md:px-16 sm:px-6 mx-auto w-[87.5%];
   } */

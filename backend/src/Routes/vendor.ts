@@ -1,12 +1,22 @@
 import express from "express";
 
-import { getVendorData, logOutVendor } from "../Controllers/vendor";
+import {
+  getVendorData,
+  logOutVendor,
+  getVendorPublicData,
+  increaseVendorViews,
+} from "../Controllers/vendor";
 import { protectVendor } from "../middleware";
 
-const router = express.Router();
+const PublicRouter = express.Router();
 
-router.route("/get-vendor").get(protectVendor, getVendorData);
+PublicRouter.route("/get-vendor-public/:vendor_id").get(getVendorPublicData);
+PublicRouter.route("/increase-views").patch(increaseVendorViews);
 
-router.route("/log-out").post(protectVendor, logOutVendor);
+const privateRouter = PublicRouter.use(protectVendor);
 
-export default router;
+privateRouter.route("/get-vendor").get(getVendorData);
+
+privateRouter.route("/log-out").post(logOutVendor);
+
+export default PublicRouter;

@@ -10,7 +10,7 @@ export const USER = {
 };
 export const VENDOR = {
   VENDOR_PUBLIC_DATA: "vendorPublicData",
-  VENDOR_INCREASE_VIEWS: "vendorIncreaseViews",
+  INCREASE_VENDOR_VIEWS: "increaseVendorViews",
   VENDOR_DATA: "vendorData",
   ORDERS: "VendorOrders",
   REFUNDS: "VendorRefunds",

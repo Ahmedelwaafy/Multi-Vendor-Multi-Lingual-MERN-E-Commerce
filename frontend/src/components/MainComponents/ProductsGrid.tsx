@@ -8,14 +8,13 @@ type props = {
   title: string;
   data: IProductType[];
   t: TFunction;
+  className?: string;
 };
-function ProductsGrid({ title, data, t }: props) {
+function ProductsGrid({ title, data, t, className }: props) {
   return (
     <section>
-      <Container>
-        <HeadingTwo className=" text-secondary  mb-7">
-          {title ?? ""}
-        </HeadingTwo>
+      <Container className={className}>
+        <HeadingTwo className=" text-secondary  mb-7">{title ?? ""}</HeadingTwo>
         <ul className="w-full grid grid-cols-auto_fit gap-[33px] ">
           {data?.map((product) => (
             <ProductCard t={t} product={product} />

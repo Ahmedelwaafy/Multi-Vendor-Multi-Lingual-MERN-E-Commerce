@@ -78,6 +78,12 @@ const config = {
         new4: "repeat(4, minmax(100px, 500px))",
         auto_fit: "repeat(auto-fit, minmax(250px, 1fr))",
       },
+      height: {
+        "page-height": "calc(100vh - 140px)",
+      },
+      minHeight: {
+        "page-height": "calc(100vh - 140px)",
+      },
     },
     screens: {
       "6xl": { max: "1536px" },

@@ -227,7 +227,7 @@ export const usePostData = (
     data?: object;
     file?: boolean;
     addToken?: boolean;
-    method?: "POST" | "DELETE";
+    method?: "POST" | "DELETE" | "PATCH" | "PUT";
   }
 
   const posterFunction = async ({
