@@ -57,6 +57,10 @@ const vendorSchema = new mongoose.Schema({
     type: String,
     default: "Seller",
   },
+  views: {
+    type: Number,
+    default: 0,
+  },
   platform: {
     type: String,
     enum: ["mobile", "website"],

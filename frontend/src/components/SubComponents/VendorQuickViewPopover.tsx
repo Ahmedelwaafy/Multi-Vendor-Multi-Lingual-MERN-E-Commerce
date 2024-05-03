@@ -25,7 +25,7 @@ function VendorQuickViewPopover({
       <HoverCardTrigger>
         {" "}
         <LangLink
-          to={`/shops/${product?.shop_id}/${product?.shop?.name?.replace(
+          to={`/vendors/${product?.shop_id}/${product?.shop?.name?.replace(
             /\s+/g,
             "-"
           )}`}

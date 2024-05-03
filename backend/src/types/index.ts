@@ -46,6 +46,7 @@ export interface VendorType {
     url: string;
   };
   zipCode: number;
+  views: number;
   withdrawMethod?: object;
   availableBalance?: number;
   transactions?: Transaction[];

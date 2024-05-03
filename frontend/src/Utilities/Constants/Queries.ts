@@ -9,6 +9,8 @@ export const USER = {
   ADDRESSES: "UserAddresses",
 };
 export const VENDOR = {
+  VENDOR_PUBLIC_DATA: "vendorPublicData",
+  VENDOR_INCREASE_VIEWS: "vendorIncreaseViews",
   VENDOR_DATA: "vendorData",
   ORDERS: "VendorOrders",
   REFUNDS: "VendorRefunds",

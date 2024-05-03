@@ -3,7 +3,7 @@ import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import path from "path";
-import { authRouter, userRouter, vendorRouter } from "./Routes";
+import { authRouter, userRouter, vendorRouter, publicRouter } from "./Routes";
 import customError from "./Utils/CustomError";
 import { globalErrorHandler } from "./middleware";
 import rateLimit from "express-rate-limit";
@@ -47,14 +47,13 @@ app.use(express.json({ limit: "10kb" }));
 app.use(sanitize());
 app.use(xss());
 app.use(hpp({ whitelist: ["duration"] }));
- 
+
 /* if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 } */
 app.use(express.static("./public"));
 app.use("/", express.static("uploads"));
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
-
 
 app.use((req: any, res: Response, next) => {
   req.requestedAt = new Date().toISOString();
@@ -69,6 +68,7 @@ app.get("/api/test", (req: any, res: any) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/vendor", vendorRouter);
+app.use("/api/v1", publicRouter);
 
 app.get("*", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
@@ -80,7 +80,6 @@ app.get("*", (req: Request, res: Response) => {
   const err = new customError(`route ${req.originalUrl} not found`, 404);
   next(err);
 }); */
-
 
 //global error handler
 

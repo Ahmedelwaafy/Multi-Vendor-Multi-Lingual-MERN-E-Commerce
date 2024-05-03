@@ -1,5 +1,4 @@
 {
- 
   "provide_all_fields": "Please provide all fields",
   "user_already_exists": "User already exists try to login!",
   "passwords_do_not_match": "Passwords do not match",
@@ -11,5 +10,6 @@
   "account_activated_success_msg": "Your account has been activated successfully.!",
   "login_provide_email_pass": "Please provide email and password",
   "incorrect_email_pass": "Incorrect email or password",
-  "login_success": "Logged in Successfully"
+  "login_success": "Logged in Successfully",
+  "wrong_vendor_id": "The vendor no longer exists"
 }

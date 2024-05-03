@@ -277,7 +277,10 @@ export const signupVendor = asyncErrorHandler(
       confirmPassword,
       address,
       zipCode,
-      file: fileUrl,
+      avatar: {
+        public_id: "",
+        url: `https://sacramento.onrender.com/${fileUrl}`,
+      },
       /* file: {
         public_id: myCloud.public_id,
         url: myCloud.secure_url,
@@ -324,7 +327,7 @@ export const activateVendor = asyncErrorHandler(
       platform,
       password,
       confirmPassword,
-      file,
+      avatar,
       address,
       zipCode,
     } = newVendor as JwtPayload;
@@ -342,7 +345,7 @@ export const activateVendor = asyncErrorHandler(
       platform,
       password,
       confirmPassword,
-      file,
+      avatar,
       address,
       zipCode,
     });
