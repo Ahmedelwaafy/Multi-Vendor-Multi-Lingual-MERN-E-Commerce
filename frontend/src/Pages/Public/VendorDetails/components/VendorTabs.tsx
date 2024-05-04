@@ -6,7 +6,7 @@ import VendorProductsTab from "./VendorProductsTab";
 import { IVendorType } from "@/types";
 import { TFunction } from "i18next";
 
-function VendorDetailsTabs({
+function VendorTabs({
   vendor,
   t,
   className,
@@ -37,4 +37,4 @@ function VendorDetailsTabs({
   );
 }
 
-export default VendorDetailsTabs;
+export default VendorTabs;
