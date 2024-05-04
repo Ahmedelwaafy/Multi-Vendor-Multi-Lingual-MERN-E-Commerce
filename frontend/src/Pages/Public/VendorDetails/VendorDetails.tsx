@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, useParams } from "react-router-dom";
 import VendorDetailsAside from "./components/VendorDetailsAside";
-import VendorDetailsTabs from "./components/VendorDetailsTabs";
 
 export function Component() {
   const { t, i18n } = useTranslation("vendorDetails");
@@ -40,7 +39,6 @@ export function Component() {
   if (error || isPaused) {
     return <ErrorMessage message={t("ErrorMessage")} />;
   }
-  
 
   return (
     <Container className="flex gap-10 md:flex-col h-full min-h-[calc(100vh-180px)] pt-10">
@@ -57,12 +55,12 @@ export function Component() {
         t={t}
         isPending={isPending}
       />
-      <VendorDetailsTabs
+      {/*  <VendorDetailsTabs
         className="grow md:w-full"
         vendor={data?.vendor}
         t={t}
         isPending={isPending}
-      />
+      /> */}
     </Container>
   );
 }
