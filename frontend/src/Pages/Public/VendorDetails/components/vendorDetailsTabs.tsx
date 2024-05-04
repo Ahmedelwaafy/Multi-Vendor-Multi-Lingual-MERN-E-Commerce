@@ -1,10 +1,10 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import VendorReviewsTab from "./VendorReviewsTab";
+import VendorEventsTab from "./VendorEventsTab";
+import VendorProductsTab from "./VendorProductsTab";
 import { IVendorType } from "@/types";
 import { TFunction } from "i18next";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import VendorProductsTab from "./VendorProductsTab";
-import VendorEventsTab from "./VendorEventsTab";
-import VendorReviewsTab from "./VendorReviewsTab";
 
 function VendorDetailsTabs({
   vendor,
