@@ -66,31 +66,46 @@ export const VendorDashboardRoutes = [
     path: "dashboard",
     lazy: () => import("../../Pages/Vendor/Dashboard/Dashboard.tsx"),
   },
-  /* {
-              path: "orders",
-              lazy: () => import("./Pages/Vendor/Orders/Orders.tsx"),
-            },
-            {
-              path: "refunds",
-              lazy: () => import("./Pages/Vendor/Refunds/Refunds.tsx"),
-            },
-            {
-              path: "inbox",
-              lazy: () => import("./Pages/Vendor/Inbox/Inbox.tsx"),
-            },
-            {
-              path: "track",
-              lazy: () => import("./Pages/Vendor/TrackOrders/TrackOrders.tsx"),
-            },
-            {
-              path: "payment-methods",
-              lazy: () =>
-                import("./Pages/Vendor/PaymentMethods/PaymentMethods.tsx"),
-            },
-            {
-              path: "address",
-              lazy: () => import("./Pages/Vendor/Address/VendorAddress.tsx"),
-            }, */
+  {
+    path: "orders",
+    lazy: () => import("../../Pages/Vendor/Orders/Orders.tsx"),
+  },
+  {
+    path: "products",
+    lazy: () => import("../../Pages/Vendor/Products/AllProducts.tsx"),
+  },
+  {
+    path: "create-product",
+    lazy: () => import("../../Pages/Vendor/Products/CreateProduct.tsx"),
+  },
+  {
+    path: "events",
+    lazy: () => import("../../Pages/Vendor/Events/AllEvents.tsx"),
+  },
+  {
+    path: "create-event",
+    lazy: () => import("../../Pages/Vendor/Events/CreateEvent.tsx"),
+  },
+  {
+    path: "withdraw-money",
+    lazy: () => import("../../Pages/Vendor/WithdrawMoney/WithdrawMoney.tsx"),
+  },
+  {
+    path: "inbox",
+    lazy: () => import("../../Pages/Vendor/Inbox/Inbox.tsx"),
+  },
+  {
+    path: "discount-codes",
+    lazy: () => import("../../Pages/Vendor/DiscountCodes/DiscountCodes.tsx"),
+  },
+  {
+    path: "refunds",
+    lazy: () => import("../../Pages/Vendor/Refunds/Refunds.tsx"),
+  },
+  {
+    path: "settings",
+    lazy: () => import("../../Pages/Vendor/Settings/Settings.tsx"),
+  },
 ];
 
 export const UserAuthRoutes = [

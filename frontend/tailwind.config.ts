@@ -80,9 +80,11 @@ const config = {
       },
       height: {
         "page-height": "calc(100vh - 140px)",
+        "vendor-dash-page-height": "calc(100vh - 156px)",
       },
       minHeight: {
         "page-height": "calc(100vh - 140px)",
+        "vendor-dash-page-height": "calc(100vh - 156px)",
       },
     },
     screens: {

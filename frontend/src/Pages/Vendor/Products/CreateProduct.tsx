@@ -1,69 +1,43 @@
-import { usePostData } from "@/Hooks/useAxios";
-import {
-  CheckBox,
-  EmailComponent,
-  NumberComponent,
-  PasswordComponent,
-  PhoneComponent,
-  SubmitBtnComponent,
-  TextComponent,
-  UploadFileComponent,
-} from "@/components/FormComponents";
-import Captcha from "@/components/FormComponents/Captcha";
-import {
-  Heading,
-  HelmetTags,
-  LangLink,
-  Logo,
-  SubHeading,
-} from "@/components/MainComponents";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { TextComponent } from "@/components/FormComponents";
+import { Heading, HelmetTags } from "@/components/MainComponents";
+import { useFetchData, usePostData } from "@/Hooks/useAxios";
+import { VENDOR } from "@/Utilities/Constants/Queries";
 import { useRef } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { toast } from "sonner";
-
 type FormValues = {
-  avatar: string | null | undefined;
-  shop_name_en: string;
-  shop_name_ar: string;
-  email: string;
-  phone: number | string;
-  address: string;
-  zipCode: number | string;
-  password: number | string;
-  confirmPassword: number | string;
-  accept_condition: boolean | string;
-  platform: string;
+  product_name_en: string;
+  product_name_ar: string;
+  description: string;
+  category: string;
+  tags: string;
+  price: number | string;
+  discount: number | string;
+  stock: number | string;
 };
-
 export function Component() {
-  const { t, i18n } = useTranslation("Register_Page");
-  const lang = i18n.language?.startsWith("ar") ? "ar" : "en";
-  const navigate = useNavigate();
-
+  const { t, i18n } = useTranslation("VendorCreateProduct");
+  const lng = i18n.language?.startsWith("ar") ? "ar" : "en";
   const captchaRef = useRef(null);
-
+  const navigate = useNavigate();
   const methods = useForm<FormValues>({
     mode: "onChange",
     defaultValues: {
-      avatar: "",
-      shop_name_en: "",
-      shop_name_ar: "",
-      phone: "",
-      email: "",
-      address: "",
-      zipCode: "",
-      password: "",
-      confirmPassword: "",
-      accept_condition: false,
-      platform: "website",
+      product_name_en: "",
+      product_name_ar: "",
+      description: "",
+      category: "",
+      tags: "",
+      price: "",
+      discount: "",
+      stock: "",
     },
   });
 
   const {
-    mutate: registerUser,
+    mutate: CreateProduct,
     isPending,
     error: ServerErrors,
   } = usePostData(
@@ -71,7 +45,7 @@ export function Component() {
     () => {
       captchaRef?.current?.reset();
       methods.reset();
-      navigate(`/${lang}`);
+      navigate(`/${lng}/shop/products`);
     },
     false,
     () => {
@@ -80,38 +54,51 @@ export function Component() {
   );
   const onSubmit = async (data: FormValues) => {
     try {
-      const file = data?.avatar?.[0];
-      const name = { en: data?.shop_name_en, ar: data?.shop_name_ar };
-      delete data.avatar;
-      delete data.shop_name_en;
-      delete data.shop_name_ar;
+      const name = { en: data?.product_name_en, ar: data?.product_name_ar };
+      delete data.product_name_en;
+      delete data.product_name_ar;
       await captchaRef?.current?.executeAsync();
-      registerUser({
-        api: import.meta.env.VITE_REGISTER_VENDOR,
-        data: { ...data, file, name },
+      CreateProduct({
+        api: import.meta.env.VITE_VENDOR_CREATE_PRODUCT,
+        data: { ...data, name },
         file: true,
       });
-      console.log({ ...data, file, name });
+      console.log({ ...data, name });
     } catch (error) {
       toast.error(
         "Cannot contact reCAPTCHA. Check your connection and try again."
       );
     }
   };
+  const [vendorProfileData, refetchVendorProfileData] = useOutletContext();
+  /*   const {
+    data: orders,
+    refetch,
+    isPending,
+    isError,
+    isPaused,
+  } = useFetchData(
+    VENDOR.CREATE_PRODUCT,
+    import.meta.env.VITE_VENDOR_CREATE_PRODUCT,
+    false,
+    "",
+    3 * 60 * 1000,
+    3 * 60 * 1000,
+    true,
+    true
+  ); */
 
   return (
-    <section className="custom__pattern flex-col-center w-full min-h-screen px-5 py-10 ss:px-3">
+    <section className="flex-col-center w-full pt-5  ">
       <HelmetTags
-        title={t("tab.title")}
-        description={t("tab.description")}
-        canonical="register"
+        title={`${vendorProfileData?.name || ""} ${t("tab.title")}`}
+        description={`${vendorProfileData?.name || ""} ${t("tab.description")}`}
+        index={false}
       />
-      <Logo className="text-secondary" />
-      <Heading className="mt-5 mb-2  text-secondary">{t("heading")}</Heading>
-      <SubHeading className="text-balance text-center mb-6 text-secondary">
-        {t("welcome_msg")}
-      </SubHeading>
 
+      <Heading className="mb-5 text-secondary uppercase">
+        {t("heading")}
+      </Heading>
       <FormProvider {...methods}>
         <form
           encType="multipart/form-data"
@@ -119,28 +106,22 @@ export function Component() {
           onSubmit={methods.handleSubmit(onSubmit)}
           className="flex-col-center w-2/5 md:w-10/12 min-w-[550px] md:min-w-[300px] gap-1 border py-5 px-7 border-muted rounded-3xl shadow-xl hover:animated-blob  "
         >
-          {" "}
-          <UploadFileComponent
-            ServerErrors={ServerErrors}
-            name="avatar"
-            t={t}
-            fileFor="user"
-          />
+         
           {/** Name  */}
           <div className="flex w-full items-start justify-between gap-16 xl:gap-10 md:flex-col  md:gap-2 mt-4">
             <TextComponent
               t={t}
-              name="shop_name_en"
-              label={t("form.shop_name_en.label")}
-              placeholder={t("form.shop_name_en.placeholder")}
+              name="product_name_en"
+              label={t("form.product_name_en.label")}
+              placeholder={t("form.product_name_en.placeholder")}
               ServerErrors={ServerErrors}
               validations={{ pattern: /^[A-Za-z\s]+$/ }}
             />
             <TextComponent
               t={t}
-              name="shop_name_ar"
-              label={t("form.shop_name_ar.label")}
-              placeholder={t("form.shop_name_ar.placeholder")}
+              name="product_name_ar"
+              label={t("form.product_name_ar.label")}
+              placeholder={t("form.product_name_ar.placeholder")}
               ServerErrors={ServerErrors}
               validations={{ pattern: /^[؀-ۿ\s]+$/ }}
             />
@@ -173,7 +154,6 @@ export function Component() {
               label={t("form.address.label")}
               placeholder={t("form.address.placeholder")}
               ServerErrors={ServerErrors}
-              icon={faLocationDot}
             />
             {/** zipCode  */}
             <NumberComponent

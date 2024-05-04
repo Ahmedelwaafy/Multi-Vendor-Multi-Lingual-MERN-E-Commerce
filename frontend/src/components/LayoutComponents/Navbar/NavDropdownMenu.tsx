@@ -50,24 +50,18 @@ function NavDropdownMenu({
     }
   }, [error, logOut]);
 
-  const userInfoData = {
-    name: "Ahmed Hassan Ibrahem",
-    photo:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="text-background">
         {UserSession ? (
           <div className="flex-center gap-3 ">
             {/* <span className="2xl:hidden">
-              {userInfoData?.name?.split(" ")?.slice(0, 2)?.join(" ")}
+              {data?.user?.name?.split(" ")?.slice(0, 2)?.join(" ")}
             </span> */}
             <Avatar>
-              <AvatarImage src={userInfoData?.photo} />
+              <AvatarImage src={data?.user?.avatar?.url} />
               <AvatarFallback className="bg-background text-primary font-medium">
-                {AvatarFallbackName(userInfoData?.name)}
+                {AvatarFallbackName(data?.user?.name)}
               </AvatarFallback>
             </Avatar>
           </div>

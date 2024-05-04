@@ -1,11 +1,6 @@
 import { cn } from "@/lib/utils";
 import { IFormElementProps } from "@/types";
-import {
-  faCircleInfo,
-  faHandHoldingHeart,
-  faShield,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFormContext } from "react-hook-form";
 
@@ -22,7 +17,7 @@ function TextComponent({
   Bgcolor = "light",
   alignment = "vertical",
   withIcon = true,
-  icon = "user",
+  icon,
   t,
   disabled = false,
   className,
@@ -90,21 +85,13 @@ function TextComponent({
           <FontAwesomeIcon
             className={`.input__icon w-4 trns absolute left-3 rtl:left-auto rtl:right-3   peer-focus:opacity-100 peer-focus:animate-jump   ${
               dirtyFields?.[name] ? "opacity-100" : "opacity-50"
-            } ${label ? "top-[47px]" : "top-[11px]"} ${
+            } ${label ? "top-[45px]" : "top-[11px]"} ${
               errors?.[name] ||
               ServerErrors?.response?.data?.errors?.[name]?.[0]
                 ? " text-error "
                 : ""
             }`}
-            icon={
-              icon === "user"
-                ? faUser
-                : icon === "code"
-                ? faShield
-                : icon === "referral"
-                ? faHandHoldingHeart
-                : faUser
-            }
+            icon={icon ? icon : faUser}
           />
         )}
         {errors?.[name] && (

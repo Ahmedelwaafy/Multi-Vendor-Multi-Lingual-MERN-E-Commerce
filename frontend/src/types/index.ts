@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { AxiosError } from "axios";
 import { TFunction } from "i18next";
 import {
@@ -28,7 +29,7 @@ export interface IFormElementProps {
   value?: string | number;
   rows?: number;
   withIcon?: true | false;
-  icon?: string;
+  icon?:  IconProp;
   confirmName?: string;
   confirmName2?: string;
   className?: string;

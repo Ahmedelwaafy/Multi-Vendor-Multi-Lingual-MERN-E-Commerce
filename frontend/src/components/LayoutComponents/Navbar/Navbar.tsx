@@ -32,8 +32,10 @@ function Navbar({ vendor }: { vendor?: boolean }) {
   }
   return (
     <>
-      <header>
-        <section className="Navbar__top w-full h-20 ss:h-24 bg-primary text-background z-50 ">
+      <header className={` ${vendor && "sticky top-0 z-50"}`}>
+        <section
+          className={`Navbar__top w-full h-20 ss:h-24 bg-primary text-background z-50`}
+        >
           <Container className=" w-full h-full items-center flex justify-between ss:flex-col ss:justify-center ss:gap-3">
             <div className="flex items-center gap-5">
               <Logo />{" "}
@@ -87,7 +89,11 @@ function Navbar({ vendor }: { vendor?: boolean }) {
           </Container>
         </section>
       </header>
-      <section className="Navbar__mid h-9 bg- sticky top-0 custom__pattern z-50">
+      <section
+        className={`Navbar__mid h-9 bg- sticky  custom__pattern z-50 ${
+          vendor ? " top-20 ss:top-24 shadow-md" : "top-0"
+        }`}
+      >
         <Container className="w-full h-full flex items-center justify-center gap-3 ">
           <span className="text-transparent  bg-clip-text bg-gradient-to-r from-black via-[#ed1b24] to-[#0e8714] tracking-widest">
             {t("Navbar.banner_text")}

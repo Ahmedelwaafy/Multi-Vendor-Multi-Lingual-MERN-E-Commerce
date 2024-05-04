@@ -60,7 +60,7 @@ function UserDashboardLayout() {
           <section className=" grow mx-10 xs:my-5">
             <Outlet
               context={[
-                userProfileData,
+                userProfileData?.user,
                 refetchUserProfileData,
                 isPending,
                 isError,

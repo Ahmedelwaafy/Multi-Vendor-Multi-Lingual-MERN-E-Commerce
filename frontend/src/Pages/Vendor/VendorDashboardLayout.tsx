@@ -50,9 +50,9 @@ function VendorDashboardLayout() {
       <Navbar vendor />
 
       <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
-        <main className="w-full   min-h-[calc(100vh-180px)] pt-10  flex justify-between items-start ">
+        <main className="w-full   min-h-[calc(100vh-116px)] pt-10  flex justify-between items-start ">
           <VendorSidebarMenu
-            className="w-[25%] max-w-[350px]   min-w-[250px] md:min-w-[50px] md:w-[50px]  bg-secondary rounded-r-3xl rtl:rounded-r-none rtl:rounded-l-3xl text-background min-h-[calc(100vh-140px)] overflow-hidden shadow-xl"
+            className="w-[25%] max-w-[350px]   min-w-[250px] md:min-w-[50px] md:w-[50px]  bg-secondary rounded-r-3xl rtl:rounded-r-none rtl:rounded-l-3xl text-background min-h-vendor-dash-page-height overflow-hidden shadow-xl sticky top-[156px]"
             pointsCount={vendorProfileData?.points?.verified_points}
             affiliateListCount={vendorProfileData?.points?.affiliate_vendors}
             notificationsCount={vendorProfileData?.points?.notifications}
@@ -60,7 +60,7 @@ function VendorDashboardLayout() {
           <section className=" grow mx-10 xs:my-5">
             <Outlet
               context={[
-                vendorProfileData,
+                vendorProfileData?.vendor,
                 refetchVendorProfileData,
                 isPending,
                 isError,

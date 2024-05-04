@@ -1,12 +1,12 @@
 import { Heading, HelmetTags } from "@/components/MainComponents";
 import { useFetchData } from "@/Hooks/useAxios";
-import { USER } from "@/Utilities/Constants/Queries";
+import { VENDOR } from "@/Utilities/Constants/Queries";
 import UserOrdersColumns from "@/Utilities/TablesColumns/UserOrdersColumns";
 import { useTranslation } from "react-i18next";
 import { useOutletContext } from "react-router-dom";
 
 export function Component() {
-  const { t, i18n } = useTranslation("UserRefunds");
+  const { t, i18n } = useTranslation("VendorDashboard");
   const lng = i18n.language?.startsWith("ar") ? "ar" : "en";
 
   const [vendorProfileData] = useOutletContext();
@@ -17,12 +17,12 @@ export function Component() {
     isError,
     isPaused,
   } = useFetchData(
-    USER.REFUNDS,
-    import.meta.env.VITE_GET_USER_REFUNDS,
+    VENDOR.DASHBOARD,
+    import.meta.env.VITE_GET_VENDOR_DASHBOARD,
     false,
     "",
-    30 * 60 * 1000,
-    30 * 60 * 1000,
+    3 * 60 * 1000,
+    3 * 60 * 1000,
     true,
     true
   );

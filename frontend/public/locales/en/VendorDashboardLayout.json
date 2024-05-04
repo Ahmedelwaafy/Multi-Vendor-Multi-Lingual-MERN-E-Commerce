@@ -1,13 +1,16 @@
 {
-  "settings": "Settings",
   "menu": {
-    "profile": "Profile",
-    "orders": "Orders",
-    "refunds": "Refunds",
+    "dashboard": "Dashboard",
+    "orders": "All Orders",
+    "products": "All Products",
+    "create_product": "Create Product",
+    "events": "All Events",
+    "create_event": "Create Event",
+    "withdraw": "Withdraw Money",
     "inbox": "Inbox",
-    "track_orders": "Track Orders",
-    "payment_methods": "Payment Methods",
-    "address": "Address",
+    "discount_codes": "Discount Codes",
+    "refunds": "Refunds",
+    "settings": "Settings",
     "log_out": "Log Out",
     "count_formatted": "({{count,number}})"
   },

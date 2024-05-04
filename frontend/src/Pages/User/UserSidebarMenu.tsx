@@ -4,6 +4,7 @@ import {
 } from "@/app/Features/MiscellaneousSlice";
 import { useAppDispatch, useAppSelector } from "@/app/reduxHooks";
 import { LangLink, LogOutPopUp } from "@/components/MainComponents";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -86,57 +87,59 @@ function UserSidebarMenu({
   ];
   return (
     <aside className={cn("sticky top-[140px] min-h-full", className)}>
-      <ul className="flex flex-col gap-1 min-h-page-height justify-center  ">
-        {MenuItems?.map((item) => (
-          <li
-            onClick={() => dispatchRedux(setCurrentTab(item?.link))}
-            key={item?.id}
-            className={`w-full h-[55px] trns hover:bg-background hover:text-secondary ${
-              (currentTab === item?.link || pathname?.includes(item?.link)) &&
-              "bg-background text-secondary"
-            }`}
-          >
-            <LangLink
-              className={`w-full h-full pl-12 xl:pl-5 md:pl-0 rtl:pl-0 rtl:xl:pl-0 rtl:md:pl-0 rtl:pr-12 rtl:xl:pr-5 rtl:md:pr-0  inline-block`}
-              href={`/${item?.link}`}
+      <ScrollArea className=" h-page-height ">
+        <ul className="flex flex-col gap-1  justify-center  h-page-height  py-5 ">
+          {MenuItems?.map((item) => (
+            <li
+              onClick={() => dispatchRedux(setCurrentTab(item?.link))}
+              key={item?.id}
+              className={`w-full h-[55px] trns hover:bg-background hover:text-secondary ${
+                (currentTab === item?.link || pathname?.includes(item?.link)) &&
+                "bg-background text-secondary"
+              }`}
             >
-              <div className="grow  h-full flex items-center justify-start md:justify-center gap-4  text-lg font-">
-                <FontAwesomeIcon
-                  icon={item?.icon}
-                  className="max-w-[25px] max-h-[25px]   w-[30px] "
-                />
-                <h3 className=" md:hidden">
-                  {item?.title}
+              <LangLink
+                className={`w-full h-full pl-12 xl:pl-5 md:pl-0 rtl:pl-0 rtl:xl:pl-0 rtl:md:pl-0 rtl:pr-12 rtl:xl:pr-5 rtl:md:pr-0  inline-block`}
+                href={`/${item?.link}`}
+              >
+                <div className="grow  h-full flex items-center justify-start md:justify-center gap-4  text-lg font-">
+                  <FontAwesomeIcon
+                    icon={item?.icon}
+                    className="max-w-[25px] max-h-[25px]   w-[30px] "
+                  />
+                  <h3 className=" md:hidden">
+                    {item?.title}
 
-                  <span className="text-base mx-1 md:hidden">
-                    {item?.count
-                      ? t("menu.count_formatted", { count: item?.count })
-                      : ""}
-                  </span>
-                </h3>
-              </div>
-            </LangLink>
-          </li>
-        ))}
-        <LogOutPopUp t={t}>
-          <button
-            className={`w-full h-[55px] trns hover:bg-background hover:text-secondary `}
-          >
-            <div
-              className={`w-full h-full pl-12 xl:pl-5 md:pl-0 rtl:pl-0 rtl:xl:pl-0 rtl:md:pl-0 rtl:pr-12 rtl:xl:pr-5 rtl:md:pr-0  inline-block`}
+                    <span className="text-base mx-1 md:hidden">
+                      {item?.count
+                        ? t("menu.count_formatted", { count: item?.count })
+                        : ""}
+                    </span>
+                  </h3>
+                </div>
+              </LangLink>
+            </li>
+          ))}
+          <LogOutPopUp t={t}>
+            <button
+              className={`w-full h-[55px] trns hover:bg-background hover:text-secondary `}
             >
-              <div className="grow  h-full flex items-center justify-start md:justify-center gap-4  text-lg font-">
-                {" "}
-                <FontAwesomeIcon
-                  icon={faArrowRightFromBracket}
-                  className="max-w-[25px] max-h-[25px]  w-[30px] "
-                />
-                <h3 className=" md:hidden">{t("menu.log_out")}</h3>
+              <div
+                className={`w-full h-full pl-12 xl:pl-5 md:pl-0 rtl:pl-0 rtl:xl:pl-0 rtl:md:pl-0 rtl:pr-12 rtl:xl:pr-5 rtl:md:pr-0  inline-block`}
+              >
+                <div className="grow  h-full flex items-center justify-start md:justify-center gap-4  text-lg font-">
+                  {" "}
+                  <FontAwesomeIcon
+                    icon={faArrowRightFromBracket}
+                    className="max-w-[25px] max-h-[25px]  w-[30px] "
+                  />
+                  <h3 className=" md:hidden">{t("menu.log_out")}</h3>
+                </div>
               </div>
-            </div>
-          </button>
-        </LogOutPopUp>
-      </ul>
+            </button>
+          </LogOutPopUp>
+        </ul>
+      </ScrollArea>
     </aside>
   );
 }

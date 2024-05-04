@@ -9,13 +9,18 @@ export const USER = {
   ADDRESSES: "UserAddresses",
 };
 export const VENDOR = {
+  VENDOR_DATA: "vendorData",
   VENDOR_PUBLIC_DATA: "vendorPublicData",
   INCREASE_VENDOR_VIEWS: "increaseVendorViews",
-  VENDOR_DATA: "vendorData",
+  DASHBOARD: "vendorDashboard",
   ORDERS: "VendorOrders",
-  REFUNDS: "VendorRefunds",
+  PRODUCTS: "VendorProducts",
+  CREATE_PRODUCT: "VendorCreateProduct",
+  EVENTS: "VendorEvents",
+  CREATE_EVENT: "VendorCreateEvent",
+  WITHDRAW_MONEY: "VendorWithdrawMoney",
   INBOX: "VendorInbox",
-  TRACK_ORDERS: "VendorTrackOrderS",
-  PAYMENT_METHODS: "VendorPaymentMethods",
-  ADDRESSES: "VendorAddresses",
+  DISCOUNT_CODES: "VendorDiscountCodes",
+  REFUNDS: "VendorRefunds",
+  SETTINGS: "VendorSettings",
 };
