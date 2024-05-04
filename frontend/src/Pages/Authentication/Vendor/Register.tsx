@@ -25,7 +25,8 @@ import { toast } from "sonner";
 
 type FormValues = {
   avatar: string | null | undefined;
-  shop_name: string;
+  shop_name_en: string;
+  shop_name_ar: string;
   email: string;
   phone: number | string;
   address: string;
@@ -47,7 +48,8 @@ export function Component() {
     mode: "onChange",
     defaultValues: {
       avatar: "",
-      shop_name: "",
+      shop_name_en: "",
+      shop_name_ar: "",
       phone: "",
       email: "",
       address: "",
@@ -78,16 +80,17 @@ export function Component() {
   const onSubmit = async (data: FormValues) => {
     try {
       const file = data?.avatar?.[0];
-      const name = data?.shop_name;
+      const name = { en: data?.shop_name_en, ar: data?.shop_name_ar };
       delete data.avatar;
-      delete data.shop_name;
+      delete data.shop_name_en;
+      delete data.shop_name_ar;
       await captchaRef?.current?.executeAsync();
       registerUser({
         api: import.meta.env.VITE_REGISTER_VENDOR,
         data: { ...data, file, name },
         file: true,
       });
-      console.log({ ...data, file });
+      console.log({ ...data, file, name });
     } catch (error) {
       toast.error(
         "Cannot contact reCAPTCHA. Check your connection and try again."
@@ -123,14 +126,24 @@ export function Component() {
             fileFor="user"
           />
           {/** Name  */}
-          <TextComponent
-            t={t}
-            name="shop_name"
-            className="w-full"
-            label={t("form.shop_name.label")}
-            placeholder={t("form.shop_name.placeholder")}
-            ServerErrors={ServerErrors}
-          />
+          <div className="flex w-full items-start justify-between gap-16 xl:gap-10 md:flex-col  md:gap-2 mt-4">
+            <TextComponent
+              t={t}
+              name="shop_name_en"
+              label={t("form.shop_name_en.label")}
+              placeholder={t("form.shop_name_en.placeholder")}
+              ServerErrors={ServerErrors}
+              validations={{ pattern: /^[A-Za-z\s]+$/ }}
+            />
+            <TextComponent
+              t={t}
+              name="shop_name_ar"
+              label={t("form.shop_name_ar.label")}
+              placeholder={t("form.shop_name_ar.placeholder")}
+              ServerErrors={ServerErrors}
+              validations={{ pattern: /^[؀-ۿ\s]+$/ }}
+            />
+          </div>
           {/**   Email & Phone*/}
           <div className="flex w-full items-start justify-between gap-16 xl:gap-10 md:flex-col  md:gap-2">
             {/** Email  */}

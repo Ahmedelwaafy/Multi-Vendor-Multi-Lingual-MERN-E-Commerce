@@ -27,8 +27,12 @@ export default asyncErrorHandler(
       const error = new customError("Vendor recently changed password", 401);
       return next(error);
     }
+    const localizedVendor = Vendor.schema.methods.toJSONLocalizedOnly(
+      currentVendor,
+      req.language
+    );
 
-    req.vendor = currentVendor;
+    req.vendor = localizedVendor;
     next();
   }
 );

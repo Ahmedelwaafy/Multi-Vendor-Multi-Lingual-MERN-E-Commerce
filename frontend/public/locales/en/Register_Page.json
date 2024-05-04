@@ -41,9 +41,13 @@
       "CTA": "Terms & Conditions",
       "validation_required": "You must accept the terms & Conditions."
     },
-    "shop_name": {
-      "label": "Shop Name",
-      "placeholder": "Shop Name"
+    "shop_name_en": {
+      "label": "Shop Name (English)",
+      "placeholder": "Shop Name (English)"
+    },
+    "shop_name_ar": {
+      "label": "Shop Name (Arabic)",
+      "placeholder": "Shop Name (Arabic)"
     },
     "address": {
       "label": "Address",
@@ -81,8 +85,13 @@
     "name": {
       "required": "Name is required"
     },
-    "shop_name": {
-      "required": "Address is required"
+    "shop_name_en": {
+      "required": "English Name is required",
+      "pattern": "Only english letters are allowed"
+    },
+    "shop_name_ar": {
+      "required": "Arabic Name is required",
+      "pattern": "Only arabic letters are allowed"
     },
     "address": {
       "required": "Address is required"

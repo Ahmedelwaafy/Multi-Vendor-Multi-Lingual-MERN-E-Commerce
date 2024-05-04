@@ -18,7 +18,8 @@ export const logOutVendor = asyncErrorHandler(
       .cookie("jwt_vendor", null, {
         expires: new Date(Date.now()),
         httpOnly: true,
-        sameSite: "none",
+        //sameSite requires enabling secure option
+        //sameSite: "none",
         secure: process.env.NODE_ENV === "production" ? true : false,
       })
       .json({
@@ -40,9 +41,14 @@ export const getVendorPublicData = asyncErrorHandler(
       const error = new customError(req.t("wrong_vendor_id"), 404);
       return next(error);
     }
+    const localizedVendor = Vendor.schema.methods.toJSONLocalizedOnly(
+      vendor,
+      req.language
+    );
+
     res.status(200).json({
       success: true,
-      vendor,
+      vendor: localizedVendor,
     });
   }
 );

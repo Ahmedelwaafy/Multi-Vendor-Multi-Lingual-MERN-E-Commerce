@@ -47,7 +47,7 @@ function VendorDashboardLayout() {
         <ProductQuickViewPopUp t={t} />
       </Suspense>
       <ScrollToTop />
-      <Navbar />
+      <Navbar vendor />
 
       <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
         <main className="w-full   min-h-[calc(100vh-180px)] pt-10  flex justify-between items-start ">

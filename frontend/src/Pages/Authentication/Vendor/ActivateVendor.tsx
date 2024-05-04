@@ -26,7 +26,7 @@ export function Component() {
     true,
     () => {
       setTimeout(() => {
-        navigate(`/${lang}/login`);
+        navigate(`/${lang}/seller/login`);
       }, 5000);
     },
     false,

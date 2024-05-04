@@ -16,6 +16,10 @@
       "Login": "Login",
       "Register": "Register"
     },
+    "NavDropdownMenuVendor": {
+      "dashboard": "Seller Dashboard",
+      "Log_out": "Log out"
+    },
     "cart": {
       "price_formatted": "${{price,number}}",
       "count_formatted": "{{count,number}} Items",

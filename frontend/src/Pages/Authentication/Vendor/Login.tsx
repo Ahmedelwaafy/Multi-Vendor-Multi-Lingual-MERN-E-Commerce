@@ -66,9 +66,11 @@ export function Component() {
           resolve();
         }, 500);
       });
+      //console.log("logged in");
       queryClient.clear();
       methods.reset();
-      navigate(`/${lang}/shop/dashboard`);
+      /* navigate(`/${lang}/shop/dashboard`);
+      window.location.reload(); */
     },
     false,
     () => {

@@ -235,9 +235,9 @@ export const signupVendor = asyncErrorHandler(
     } = req.body;
     console.log("phone", phone);
 
-    const fileName = req.file.filename;
+    const fileName = req?.file?.filename;
     const filePath = `uploads/${fileName}`;
-    const fileUrl = path.join(fileName);
+    const fileUrl = path?.join(fileName);
 
     if (
       !name ||
@@ -296,8 +296,11 @@ export const signupVendor = asyncErrorHandler(
     try {
       await sendEmail({
         email: vendor.email,
-        subject: "Activate your account",
-        message: `Hello ${vendor.name}, please click on the link to activate your seller account: ${activationUrl}`,
+        subject: req.t("activate_vendor_mail_subject"),
+        message:
+          req.t("activate_vendor_mail_message", {
+            name: req.language === "ar" ? vendor?.name?.ar : vendor?.name?.en,
+          }) + activationUrl,
       });
       res.status(201).json({
         success: true,
@@ -371,7 +374,13 @@ export const loginVendor = asyncErrorHandler(
       const error = new customError("Incorrect email or password", 401);
       return next(error);
     }
-    sendCookieTokenResponseVendor(vendor, 201, res, req);
+    sendCookieTokenResponseVendor(
+      vendor,
+      201,
+      res,
+      req,
+      req.t("login_success")
+    );
   }
 );
 
@@ -429,6 +438,12 @@ export const resetPasswordVendor = asyncErrorHandler(
     vendor.passwordResetExpires = undefined;
     //vendor.passwordChangedAt = Date.now() ;
     await vendor.save();
-    sendCookieTokenResponseVendor(vendor, 201, res, req);
+    sendCookieTokenResponseVendor(
+      vendor,
+      201,
+      res,
+      req,
+      "Password Updated Successfully"
+    );
   }
 );

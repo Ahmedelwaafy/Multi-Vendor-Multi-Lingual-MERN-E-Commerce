@@ -20,8 +20,16 @@ import { TFunction } from "i18next";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function NavDropdownMenu({ t, lng }: { t: TFunction; lng: string }) {
-  const {UserSession} = UseAuth();
+function NavDropdownMenu({
+  t,
+  lng,
+  vendor,
+}: {
+  t: TFunction;
+  lng: string;
+  vendor?: boolean;
+}) {
+  const { UserSession } = UseAuth();
   const navigate = useNavigate();
   const [logOut] = useHandleLogOut();
   const dispatchRedux = useAppDispatch();

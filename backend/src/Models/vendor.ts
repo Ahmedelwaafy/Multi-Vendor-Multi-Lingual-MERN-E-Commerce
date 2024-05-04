@@ -3,12 +3,13 @@ import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 import validator from "validator";
 import crypto from "crypto";
+import mongooseI18n from "mongoose-i18n-localize";
 import { VendorType } from "../types";
-
 const vendorSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please enter your name!"],
+    i18n: true,
   },
   email: {
     type: String,
@@ -121,6 +122,9 @@ const vendorSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+});
+vendorSchema.plugin(mongooseI18n, {
+  locales: ["en", "ar"],
 });
 
 vendorSchema.pre("save", async function (next) {

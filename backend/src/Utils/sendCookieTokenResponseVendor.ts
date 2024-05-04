@@ -7,6 +7,7 @@ const sendCookieTokenResponse = (
   statusCode: number,
   res: Response,
   req: CustomRequest,
+  message: string
 ) => {
   const token = signToken({ id: vendor._id });
   const options = {
@@ -19,12 +20,9 @@ const sendCookieTokenResponse = (
   };
 
   vendor.password = undefined;
-  res
-    .status(statusCode)
-    .cookie("jwt_vendor", token, options)
-    .json({
-      message: req.t("success", { ns: "test1" }),
-      data: { vendor },
-    });
+  res.status(statusCode).cookie("jwt_vendor", token, options).json({
+    message,
+    data: { vendor },
+  });
 };
 export default sendCookieTokenResponse;

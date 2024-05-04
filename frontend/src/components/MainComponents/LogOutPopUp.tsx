@@ -15,11 +15,13 @@ import { Button } from "../ui/button";
 function LogOutPopUp({
   t,
   children,
+  vendor,
 }: {
   t: TFunction;
   children: React.ReactNode;
+  vendor?: boolean;
 }) {
-  const [logOut, isPending] = useHandleLogOut();
+  const [logOut, isPending] = useHandleLogOut(vendor ? "vendor" : "user");
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();

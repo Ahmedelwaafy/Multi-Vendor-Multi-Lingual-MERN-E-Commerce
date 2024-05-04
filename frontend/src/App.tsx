@@ -79,7 +79,7 @@ function App() {
         {
           element: (
             <ProtectedRoutes
-              redirectPath={`/${lng}`}
+              redirectPath={`/${lng}/seller/login`}
               isAllowed={!!VendorSession}
             >
               <VendorDashboardLayout />
@@ -105,7 +105,7 @@ function App() {
         {
           element: (
             <ProtectedRoutes
-              redirectPath={`/${lng}`}
+              redirectPath={`/${lng}/shop/dashboard`}
               isAllowed={VendorSession ? false : true}
             >
               <AuthLayout />
