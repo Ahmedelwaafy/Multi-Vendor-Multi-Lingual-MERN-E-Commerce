@@ -1,14 +1,13 @@
-import { MainLoader } from "@/components/LayoutComponents";
 import { Container, HelmetTags } from "@/components/MainComponents";
 import { ErrorMessage } from "@/components/SubComponents";
 import { useFetchData, usePostData } from "@/Hooks/useAxios";
 import { VENDOR } from "@/Utilities/Constants/Queries";
+import { AxiosError } from "axios";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, useParams } from "react-router-dom";
 import VendorDetailsAside from "./components/VendorDetailsAside";
 import VendorDetailsTabs from "./components/VendorDetailsTabs";
-import { AxiosError } from "axios";
 
 export function Component() {
   const { t, i18n } = useTranslation("vendorDetails");
