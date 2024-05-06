@@ -1,6 +1,6 @@
 export { default as PhoneComponent } from "./PhoneComponent";
 export { default as EmailComponent } from "./EmailComponent";
-export { default as MessageComponent } from "./MessageComponent";
+export { default as TextareaComponent } from "./TextareaComponent";
 export { default as TextComponent } from "./TextComponent";
 export { default as NumberComponent } from "./NumberComponent";
 
@@ -10,6 +10,5 @@ export { default as PasswordComponent } from "./PasswordComponent";
 export { default as SelectBox } from "./SelectBox";
 export { default as ComboBox } from "./ComboBox";
 export { default as UploadFileComponent } from "./UploadFileComponent";
-/* export { default as Captcha } from "./Captcha";
-
- */
+export { default as DragDropArea } from "./DragDropArea";
+export { default as Captcha } from "./Captcha";

@@ -29,7 +29,7 @@ function Captcha({
         onChange={onChange}
       />{" "}
       {ServerError && (
-        <p className="pt-2 text-xs text-red-500">
+        <p className="pt-2 text-xs text-destructive">
           {
             //!--- server errors --------
             ServerError

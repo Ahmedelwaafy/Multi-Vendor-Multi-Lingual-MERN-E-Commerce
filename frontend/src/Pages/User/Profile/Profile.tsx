@@ -260,6 +260,7 @@ export function Component() {
               ServerErrors={ServerErrors}
               required={false}
               disableFormatting
+              icon={faAddressBook}
               validations={{
                 pattern: /^[\d]{5}/,
                 maxLength: 5,

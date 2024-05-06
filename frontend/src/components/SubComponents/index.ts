@@ -12,3 +12,4 @@ export { default as CountDown } from "./CountDown";
 export { default as ProductPrice } from "./ProductPrice";
 export { default as VendorQuickViewPopover } from "./VendorQuickViewPopover";
 export { default as VendorAvatar } from "./VendorAvatar";
+export { default as DeletePopUp } from "./DeletePopUp";

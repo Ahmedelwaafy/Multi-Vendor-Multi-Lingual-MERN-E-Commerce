@@ -94,6 +94,7 @@ const config = {
       "2xl": { max: "1270px" },
       xl: { max: "1200px" },
       lg: { max: "1024px" },
+      amd: { max: "850px" },
       md: { max: "768px" },
       ss: { max: "660px" },
       sm: { max: "560px" },

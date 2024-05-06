@@ -181,7 +181,10 @@ function Footer() {
 
             <ul className="  h-full w-full flex flex-col items-start  justify-start gap-7 ss:items-center ">
               {categories?.map((category) => (
-                <li className="w-fit opacity-80 hover:opacity-100 trns   hover:translate-x-3 hover:scale-105">
+                <li
+                  key={category}
+                  className="w-fit opacity-80 hover:opacity-100 trns   hover:translate-x-3 hover:scale-105"
+                >
                   <Link
                     rel="noreferrer"
                     target="_blank"

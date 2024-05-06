@@ -36,8 +36,8 @@ function VendorSidebarMenu({
 }) {
   const { pathname } = useLocation();
   const segments = pathname?.split("/");
-  console.log(segments?.[segments?.length - 1]);
-
+/*   console.log(segments?.[segments?.length - 1]);
+ */
   const currentTab = useAppSelector(currentVendorMenuTab);
   const dispatchRedux = useAppDispatch();
 
@@ -115,7 +115,7 @@ function VendorSidebarMenu({
       count: affiliateListCount || 0,
     },
     {
-      id: 10,
+      id: 11,
       title: t("menu.settings"),
       link: "settings",
       icon: faGears,

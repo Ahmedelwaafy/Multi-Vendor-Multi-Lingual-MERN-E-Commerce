@@ -15,8 +15,8 @@ import { TableHeadSortHide } from "@/components/MainComponents/DataTable/TableHe
 import { ColumnDef } from "@tanstack/react-table";
 import { TFunction } from "i18next";
 import { formatCurrency } from "@/lib/utils";
-import { TableHeadDate } from "@/components/MainComponents/DataTable/TableHeadDate";
-import { TableHeadPrice } from "@/components/MainComponents/DataTable/TableHeadPrice";
+import { TableCellDate } from "@/components/MainComponents/DataTable/TableCellDate";
+import { TableCellPrice } from "@/components/MainComponents/DataTable/TableCellPrice";
 type order = {
   date: Date;
   order_id: number;
@@ -54,7 +54,7 @@ const UserOrdersColumns = (t: TFunction): ColumnDef<order>[] => [
     header: ({ column }) => (
       <TableHeadSortHide column={column} title={t("table.headers.date")} />
     ),
-    cell: ({ row }) => <TableHeadDate title={row.getValue("date")} />,
+    cell: ({ row }) => <TableCellDate title={row.getValue("date")} />,
   },
   {
     accessorKey: "order_id",
@@ -75,7 +75,7 @@ const UserOrdersColumns = (t: TFunction): ColumnDef<order>[] => [
     header: () => (
       <div className="text-right font-medium">{t("table.headers.total")}</div>
     ),
-    cell: ({ row }) => <TableHeadPrice title={row.getValue("total")} />,
+    cell: ({ row }) => <TableCellPrice title={row.getValue("total")} />,
   },
   {
     id: "actions",

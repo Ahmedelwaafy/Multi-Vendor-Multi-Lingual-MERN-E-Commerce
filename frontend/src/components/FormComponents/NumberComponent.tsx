@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { IFormElementProps } from "@/types";
-import { faAddressBook, faCommentDollar } from "@fortawesome/free-solid-svg-icons";
+import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFormContext } from "react-hook-form";
 
@@ -17,7 +17,7 @@ function NumberComponent({
   Bgcolor = "light",
   alignment = "vertical",
   withIcon = true,
-  icon = "user",
+  icon,
   t,
   disabled = false,
   className,
@@ -73,6 +73,7 @@ function NumberComponent({
         <input
           dir={dir}
           disabled={disabled}
+          
           className={`w-full peer ${
             withIcon && "pl-9 focus:pl-9 rtl:pl-0 rtl:pr-9 rtl:focus:pr-9 "
           }  ${
@@ -107,7 +108,7 @@ function NumberComponent({
                 ? " text-error "
                 : ""
             }`}
-            icon={icon === "offer" ? faCommentDollar : faAddressBook}
+            icon={icon ? icon : faDollarSign}
           />
         )}
         {errors?.[name] && (
@@ -116,6 +117,7 @@ function NumberComponent({
               t(`validations.${name}.required`)}
             {(errors?.[name]?.type === "pattern" ||
               errors?.[name]?.type === "min" ||
+              errors?.[name]?.type === "max" ||
               errors?.[name]?.type === "maxLength" ||
               errors?.[name]?.type === "minLength") &&
               t([`validations.${name}.pattern`, `validations.${name}.min`])}

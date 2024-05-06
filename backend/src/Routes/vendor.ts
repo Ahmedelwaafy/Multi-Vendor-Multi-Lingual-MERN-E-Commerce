@@ -6,14 +6,14 @@ import {
   getVendorPublicData,
   increaseVendorViews,
 } from "../Controllers/vendor";
-import { protectVendor } from "../middleware";
+import { IsVendor } from "../middleware";
 
 const PublicRouter = express.Router();
 
 PublicRouter.route("/get-vendor-public/:vendor_id").get(getVendorPublicData);
 PublicRouter.route("/increase-views").patch(increaseVendorViews);
 
-const privateRouter = PublicRouter.use(protectVendor);
+const privateRouter = PublicRouter.use(IsVendor);
 
 privateRouter.route("/get-vendor").get(getVendorData);
 

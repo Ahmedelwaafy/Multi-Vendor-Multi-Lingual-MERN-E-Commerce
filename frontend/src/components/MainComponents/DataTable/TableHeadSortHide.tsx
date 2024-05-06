@@ -16,6 +16,7 @@ import {
   faSort,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 
 interface TableHeadSortHideProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -28,12 +29,14 @@ export function TableHeadSortHide<TData, TValue>({
   title,
   className,
 }: TableHeadSortHideProps<TData, TValue>) {
+  const { i18n } = useTranslation();
+  const lng = i18n.language?.startsWith("ar") ? "ar" : "en";
   if (!column.getCanSort()) {
     return <div className={cn(className)}>{title}</div>;
   }
 
   return (
-    <div className={cn("flex-center  " , className)}>
+    <div className={cn("flex-center  ", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -56,22 +59,22 @@ export function TableHeadSortHide<TData, TValue>({
               className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
               icon={faArrowUp}
             />
-            Asc
+            {lng === "en" ? "Asc" : "تصاعدي"}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
             <FontAwesomeIcon
               className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
               icon={faArrowDown}
             />
-            Desc
+            {lng === "en" ? "Desc" : "تنازلي"}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
             <FontAwesomeIcon
               className="mr-2 h-3.5 w-3.5 text-muted-foreground/70"
               icon={faEyeSlash}
-            />{" "}
-            Hide
+            />
+            {lng === "en" ? "Hide" : "إخفاء"}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

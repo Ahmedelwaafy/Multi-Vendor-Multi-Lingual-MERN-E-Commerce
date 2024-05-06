@@ -17,7 +17,10 @@ import {
   Logo,
   SubHeading,
 } from "@/components/MainComponents";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAddressBook,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -183,6 +186,7 @@ export function Component() {
               placeholder={t("form.zipCode.placeholder")}
               ServerErrors={ServerErrors}
               disableFormatting
+              icon={faAddressBook}
               validations={{
                 pattern: /^[\d]{5}/,
                 maxLength: 5,
@@ -233,7 +237,7 @@ export function Component() {
               </div>
             </CheckBox>
             {methods.formState.errors.accept_condition && (
-              <p className=" text-xs text-red-500">
+              <p className=" text-xs text-destructive">
                 {methods.formState.errors.accept_condition.type ===
                   "required" && t("form.terms.validation_required")}
               </p>
@@ -242,7 +246,7 @@ export function Component() {
               //!--- server errors --------
               ServerErrors &&
                 ServerErrors?.response?.data?.errors?.accept_condition && (
-                  <p className=" text-xs text-red-500">
+                  <p className=" text-xs text-destructive">
                     {ServerErrors?.response?.data?.errors?.accept_condition[0]}
                   </p>
                 )

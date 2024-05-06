@@ -15,8 +15,9 @@ import { IComboBoxProps } from "@/types";
 import { faCheck, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { FieldValues, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { ScrollArea } from "../ui/scroll-area";
 
 export default function ComboBox({
   className = "w-full",
@@ -74,7 +75,7 @@ export default function ComboBox({
           //! here we control the background
 
           className={`selected-item text-base flex outline-none round justify-between w-full px-3 items-center gap-5 ${
-            light ? "bg-white" : " bg-transparent"
+            light ? "bg-background" : " bg-transparent"
           }  w-full h-full  cursor-pointer  ${
             selectedItem ? "text-input" : "text-input  "
           }`}
@@ -101,7 +102,7 @@ export default function ComboBox({
         <Command
           className={` ${
             light
-              ? "bg-white border-primary "
+              ? "bg-background border-primary "
               : "bg-background border-background"
           }`}
         >
@@ -109,11 +110,11 @@ export default function ComboBox({
             className={`search-wrapper ${
               selectBox ? "h-0 opacity-0 pointer-events-none " : "h-12 "
             }  w-full   ${
-              light ? "bg-white justify-" : "bg-background justify-"
+              light ? "bg-background justify-" : "bg-background justify-"
             } `}
           >
             <CommandInput
-              className={` placeholder:text-input placeholder:opacity-50 placeholder:font-medium rounded-[6px] `}
+              className={` placeholder:text-input placeholder:opacity-50 placeholder:font-medium rounded-[6px] text-foreground`}
               autoFocus={light ? false : true}
               placeholder={`${
                 i18n?.language === "ar" ? "ابحث ..." : "Search ..."
@@ -123,47 +124,49 @@ export default function ComboBox({
           <CommandEmpty>
             {i18n?.language === "ar" ? "لا يوجد نتائج" : NotFoundMessage}
           </CommandEmpty>{" "}
-          <CommandGroup className="h-fit max-h-72 overflow-y-auto">
-            {data?.map((item) => (
-              <CommandItem
-                className={`   hover:bg-input 
+          <ScrollArea className="max-h-72 overflow-y-auto">
+            <CommandGroup className="">
+              {data?.map((item) => (
+                <CommandItem
+                  className={`   hover:bg-input 
                 text-input  ${
                   light
                     ? "aria-selected:bg-input aria-selected:text-background"
                     : "aria-selected:bg-input aria-selected:text-background"
                 } ${
-                  selectedItem === item?.name?.toLowerCase()
-                    ? "bg-input text-background"
-                    : "pl-8 rtl:pl-0 rtl:pr-8"
-                } `}
-                key={item?.id}
-                value={item?.name}
-                onSelect={(currentValue) => {
-                  //!it converts to lower case by default
-                  setSelectedItem(
-                    currentValue === selectedItem ? "" : currentValue
-                  );
-                  setValue && setValue(stateName, item?.id);
-                  setSearchParams &&
-                    setSearchParams((params) => {
-                      params.set("srt", item?.id);
-                      return params;
-                    });
-                  callBcFn && callBcFn(item?.id);
-                  setOpen(false);
-                }}
-              >
-                {selectedItem === item?.name?.toLowerCase() && (
-                  <FontAwesomeIcon
-                    className={cn("mr-2 rtl:mr-0 rtl:ml-2 h-4 w-4")}
-                    icon={faCheck}
-                  />
-                )}
+                    selectedItem === item?.name?.toLowerCase()
+                      ? "bg-input text-background"
+                      : "pl-8 rtl:pl-0 rtl:pr-8"
+                  } `}
+                  key={item?.id}
+                  value={item?.name}
+                  onSelect={(currentValue) => {
+                    //!it converts to lower case by default
+                    setSelectedItem(
+                      currentValue === selectedItem ? "" : currentValue
+                    );
+                    setValue && setValue(stateName, item?.id);
+                    setSearchParams &&
+                      setSearchParams((params) => {
+                        params.set("srt", item?.id);
+                        return params;
+                      });
+                    callBcFn && callBcFn(item?.id);
+                    setOpen(false);
+                  }}
+                >
+                  {selectedItem === item?.name?.toLowerCase() && (
+                    <FontAwesomeIcon
+                      className={cn("mr-2 rtl:mr-0 rtl:ml-2 h-4 w-4")}
+                      icon={faCheck}
+                    />
+                  )}
 
-                {item?.name}
-              </CommandItem>
-            ))}
-          </CommandGroup>
+                  {item?.name}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </ScrollArea>
         </Command>
       </PopoverContent>
     </Popover>

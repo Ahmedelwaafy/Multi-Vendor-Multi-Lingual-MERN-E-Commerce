@@ -29,7 +29,7 @@ export interface IFormElementProps {
   value?: string | number;
   rows?: number;
   withIcon?: true | false;
-  icon?:  IconProp;
+  icon?: IconProp;
   confirmName?: string;
   confirmName2?: string;
   className?: string;
@@ -73,10 +73,9 @@ export interface IHeadingsProps {
   colored?: true | false;
 }
 
-export interface IComboBoxProps<T extends FieldValues> {
+export interface IComboBoxProps {
   data: { id: number | string; name: string }[];
   placeholder?: string;
-  setValue?: UseFormSetValue<T>;
   stateName?: string;
   className?: string;
   light?: true | false;

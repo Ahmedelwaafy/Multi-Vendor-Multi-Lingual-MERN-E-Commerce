@@ -24,7 +24,7 @@ interface Shop {
 }
 
 export interface IProductType {
-  id: number;
+  _id: number;
   name: string;
   description: string;
   category: string;
@@ -37,7 +37,8 @@ export interface IProductType {
   shop: Shop;
   is_fav: boolean;
   createdAt: string;
-  original_price?: number;
+  originalPrice: number;
+  finalPrice: number;
   ratings?: number;
   sold_out?: number;
   tags?: string;

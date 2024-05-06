@@ -1,4 +1,3 @@
-
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Table } from "@tanstack/react-table";
 
@@ -25,10 +24,9 @@ export function TableSelectColumnsBtn<TData>({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="  rounded-md">
-          {" "}
-          <FontAwesomeIcon className=" mr-2 h-4 w-4" icon={faSliders} />
-          {lng === "ar" ? "عرض" : "View"}
+        <Button variant="outline" className="  rounded-md flex gap-2 items-center">
+          <FontAwesomeIcon className="  h-4 w-4" icon={faSliders} />
+          <span>{lng === "ar" ? "عرض" : "View"}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">

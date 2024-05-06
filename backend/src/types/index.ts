@@ -70,6 +70,7 @@ import { Request } from "express";
 export interface CustomRequest extends Request {
   user?: UserType;
   vendor?: VendorType;
+  localizedVendor?: VendorType;
   avatar?: {
     filename: string;
     originalname: string;
@@ -112,4 +113,34 @@ interface PaymentInfo {
   id?: string;
   status?: string;
   type?: string;
+}
+
+interface Image {
+  public_id: string;
+  url: string;
+}
+
+interface Review {
+  user: object;
+  rating: number;
+  comment: string;
+  productId: string;
+  createdAt: Date;
+}
+
+export interface productType {
+  name: string;
+  description: string;
+  category: string;
+  tags?: string;
+  originalPrice: number;
+  finalPrice: number;
+  stock: number;
+  images: Image[];
+  reviews: Review[];
+  ratings?: number;
+  vendorID: string;
+  vendor: object;
+  sold_out: number;
+  createdAt: Date;
 }

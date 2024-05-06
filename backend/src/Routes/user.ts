@@ -1,11 +1,11 @@
 import express from "express";
 
 import { getUserData, logOut } from "../Controllers/user";
-import { protect } from "../middleware";
+import { IsUser } from "../middleware";
 
 const router = express.Router();
 
-router.route("/get-user").get(protect, getUserData);
-router.route("/log-out").post(protect, logOut);
+router.route("/get-user").get(IsUser, getUserData);
+router.route("/log-out").post(IsUser, logOut);
 
 export default router;

@@ -37,16 +37,15 @@ function LogOutPopUp({
             <form method="post" onSubmit={onSubmit}>
               {/** Submit Button */}
               <div className="w-full flex justify-between items-center mt-5">
-                <Button variant={"destructive"} className="rounded-md " asChild>
-                  <DialogClose
-                    type="button"
-                    /*  onClick={() => {
+                <DialogClose
+                  className="btn__destructive"
+                  type="button"
+                  /*  onClick={() => {
                 dispatchRedux(setToggleLogOutPopUp(false));
               }} */
-                  >
-                    {t("LogOutPopUp.CancelBtnText")}
-                  </DialogClose>
-                </Button>
+                >
+                  {t("LogOutPopUp.CancelBtnText")}
+                </DialogClose>
                 <SubmitBtnComponent
                   disabled={isPending}
                   isPending={isPending}

@@ -69,13 +69,8 @@ function DataTable<TData, TValue>({
   });
 
   return (
-    <div
-      className={cn(
-        "w-full   "
-      )}
-    >
-      {" "}
-      <div className="flex items-center justify-between sm:flex-col sm:items-start gap-5 ">
+    <div className={cn("w-full ")}>
+      <div className="flex items-center justify-between sm:flex-col sm:items-center gap-5 w-full">
         {filteredColumn && (
           <input
             className="max-w-sm w-full dark-bg-inputs "
@@ -94,7 +89,10 @@ function DataTable<TData, TValue>({
         <TableSelectColumnsBtn table={table} lng={lng} />
       </div>
       <ScrollArea
-        className={cn("w-full rounded-md border border-muted my-7", className)}
+        className={cn(
+          "w-full rounded-md border border-muted my-7 mx-auto",
+          className
+        )}
       >
         <Table>
           <TableHeader>

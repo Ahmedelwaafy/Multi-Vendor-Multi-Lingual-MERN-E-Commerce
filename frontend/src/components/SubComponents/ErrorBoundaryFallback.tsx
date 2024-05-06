@@ -24,7 +24,7 @@ export default function ErrorBoundaryFallback(props: FallbackProps) {
           <div className="w-1/2  md:w-full flex flex-col md:items-center">
             <h1 className="font-bold text-7xl">{t("heading")}</h1>
             <h2 className="font-medium text-2xl my-3">{t("sub_heading")}</h2>
-            <p className="text-red-500">{error.message}</p>
+            <p className="text-destructive">{error.message}</p>
 
             <button
               className="!w-fit mx mt-5"

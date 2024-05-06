@@ -16,6 +16,7 @@ import { CustomRequest } from "../types";
 import path from "path";
 import fs from "fs";
 import Vendor from "../Models/vendor";
+import Product from "../Models/product";
 
 function deleteFile(filePath: string) {
   fs.unlink(filePath, (err) => {
@@ -30,6 +31,8 @@ function deleteFile(filePath: string) {
 
 export const signup = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
+    console.log("User body", req.body);
+
     const { name, email, phone, platform, password, confirmPassword } =
       req.body;
     const fileName = req.file.filename;

@@ -1,0 +1,105 @@
+{
+  "tab": {
+    "title": " | Create Product",
+    "description": " | Create Product Page"
+  },
+  "heading": "Create Product",
+  "form": {
+    "product_name_en": {
+      "label": "Product Name (English)",
+      "placeholder": "Product Name (English)"
+    },
+    "product_name_ar": {
+      "label": "Product Name (Arabic)",
+      "placeholder": "Product Name (Arabic)"
+    },
+    "description_en": {
+      "label": "Description (English)",
+      "placeholder": "Description (English)"
+    },
+    "description_ar": {
+      "label": "Description (Arabic)",
+      "placeholder": "Description (Arabic)"
+    },
+    "category": {
+      "label": "Category",
+      "placeholder": "Category"
+    },
+    "tags": {
+      "label": "Tags",
+      "placeholder": "Add tags separated by comma"
+    },
+    "price": {
+      "label": "Original Price",
+      "placeholder": "Original Price"
+    },
+    "final_price": "Final price will be {{price,number}}$",
+    "discount": {
+      "label": "Discount",
+      "placeholder": "Discount"
+    },
+    "stock": {
+      "label": "Stock",
+      "placeholder": "Stock"
+    },
+    "images": {
+      "label": "Add product images"
+    },
+    "SubmitBtnComponent": { "value": "Add Product" }
+  },
+  "validations": {
+    "product_name_en": {
+      "required": "English Name is required",
+      "pattern": "Only english letters are allowed"
+    },
+    "product_name_ar": {
+      "required": "Arabic Name is required",
+      "pattern": "Only arabic letters are allowed"
+    },
+    "description_en": {
+      "required": "English Description is required",
+      "pattern": "Only english letters are allowed"
+    },
+    "description_ar": {
+      "required": "Arabic Description is required",
+      "pattern": "Only arabic letters are allowed"
+    },
+
+    "category": {
+      "required": "Category is required"
+    },
+    "tags": {
+      "required": "Tags are required"
+    },
+    "price": {
+      "required": "Price is required",
+      "pattern": "Invalid Price",
+      "min": "Invalid Price"
+    },
+    "discount": {
+      "pattern": "Invalid discount",
+      "max": "Discount cannot exceed 100%",
+      "min": "Invalid discount"
+    },
+    "stock": {
+      "required": "Stock is required",
+      "pattern": "Invalid Stock",
+      "min": "Invalid Stock"
+    },
+    "images": {
+      "required": "Please add at least one product image"
+    }
+  },
+  "DragDropArea": {
+    "title_while_dragging": "Drop images here",
+    "title": "Drag & Drop images here",
+    "or": "or",
+    "Browse": "Browse",
+    "rejectedImages": {
+      "max_size_err_msg": "Max image size is 2MB.",
+      "size_txt": "Size:",
+      "size_unit": "M",
+      "Canceled": "Canceled"
+    }
+  }
+}

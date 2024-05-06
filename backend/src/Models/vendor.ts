@@ -36,6 +36,7 @@ const vendorSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+    i18n: true,
   },
   address: {
     type: String,

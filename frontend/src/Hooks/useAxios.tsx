@@ -58,7 +58,8 @@ export const useFetchData = (
   cacheTime = 5000,
   staleTime = 0,
   enabled = true,
-  addToken: boolean = false
+  addToken: boolean = false,
+  QueryOptions?: object
 ) => {
   const { UserSession } = UseAuth();
   const { i18n } = useTranslation();
@@ -74,6 +75,7 @@ export const useFetchData = (
     cacheTime: cacheTime,
     staleTime: staleTime,
     retry: 1,
+    ...QueryOptions,
   };
   return useQuery({
     queryKey: [identifier, id],
@@ -248,6 +250,7 @@ export const usePostData = (
       url: api,
       method: method,
       headers: headers,
+      //data: JSON.stringify(data),
       data: data,
       withCredentials: UserSession || addToken ? true : false,
     };

@@ -3,7 +3,13 @@ import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import path from "path";
-import { authRouter, userRouter, vendorRouter, publicRouter } from "./Routes";
+import {
+  authRouter,
+  userRouter,
+  vendorRouter,
+  publicRouter,
+  productRouter,
+} from "./Routes";
 import customError from "./Utils/CustomError";
 import { globalErrorHandler } from "./middleware";
 import rateLimit from "express-rate-limit";
@@ -68,6 +74,7 @@ app.get("/api/test", (req: any, res: any) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/vendor", vendorRouter);
+app.use("/api/v1/product", productRouter);
 app.use("/api/v1", publicRouter);
 
 app.get("*", (req: Request, res: Response) => {

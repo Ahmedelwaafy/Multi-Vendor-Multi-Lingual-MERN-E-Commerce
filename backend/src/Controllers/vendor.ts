@@ -2,6 +2,7 @@ import { NextFunction, Response } from "express";
 import { CustomRequest } from "../types";
 import { asyncErrorHandler, customError } from "../Utils";
 import Vendor from "../Models/vendor";
+import Product from "../Models/product";
 
 export const getVendorData = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {

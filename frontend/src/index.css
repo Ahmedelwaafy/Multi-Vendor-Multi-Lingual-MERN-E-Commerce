@@ -157,6 +157,12 @@ html:lang(ar) body {
       border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
     }
   }
+  .ease-cubic-bezier {
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .btn__destructive {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-base font-medium ring-offset-background transition-all duration-300 ease-in-out active:scale-95 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-destructive text-background hover:bg-transparent border-destructive border-2 hover:text-destructive;
+  }
 }
 
 /* //! --- forms ---- */
