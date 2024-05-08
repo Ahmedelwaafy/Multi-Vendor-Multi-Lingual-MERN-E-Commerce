@@ -9,8 +9,8 @@ i18next
     fallbackLng: "en",
     lng: "en",
     preload: ["en", "ar"],
-    ns: ["validations", "success"], // Define your namespaces here
-    defaultNS: "validations", // Set the default namespace if needed
+    ns: ["validations", "success", "error"], 
+    defaultNS: "validations", 
     backend: {
       loadPath: `./src/locales/{{lng}}/{{ns}}.json`,
     },

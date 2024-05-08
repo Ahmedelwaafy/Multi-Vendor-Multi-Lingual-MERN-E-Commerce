@@ -23,18 +23,15 @@ export function Component() {
     true,
     { refetchOnMount: true }
   );
-  const {
-    mutate,
-    isPending: isDeleting,
-    error: ServerErrors,
-  } = usePostData(true, () => {
+  const { mutate, isPending: isDeleting } = usePostData(true, () => {
     refetch();
   });
-  //revalidate products api;
   function deleteProduct(id: string) {
-    alert(id);
-    refetch();
-    //mutate({ api: import.meta.env.VITE_SUBSCRIBE, data: {productId:id} })
+    mutate({
+      api: import.meta.env.VITE_VENDOR_DELETE_PRODUCT,
+      data: { productId: id },
+      method: "DELETE",
+    });
   }
   const columns = ProductsColumns(t, deleteProduct, isDeleting);
 

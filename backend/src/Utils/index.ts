@@ -6,3 +6,4 @@ export { default as sendEmail } from "./sendEmail";
 export { default as signToken } from "./signToken";
 export { default as verifyToken } from "./verifyToken";
 export { default as upload } from "./multer";
+export { default as deleteFile } from "./deleteFile";

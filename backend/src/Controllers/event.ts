@@ -1,9 +1,9 @@
 import { NextFunction, Response } from "express";
 import { CustomRequest } from "../types";
 import { asyncErrorHandler, customError, deleteFile } from "../Utils";
-import Product from "../Models/product";
+import Event from "../Models/event";
 
-export const addProduct = asyncErrorHandler(
+export const addEvent = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const imageFiles = req?.files as Express.Multer.File[];
     const images = imageFiles?.map((file) => {
@@ -13,65 +13,65 @@ export const addProduct = asyncErrorHandler(
       };
     });
 
-    const product = await Product.create({
+    const event = await Event.create({
       ...req.body,
       images,
       vendorID: req.vendor._id.toString(),
     });
     res.status(200).json({
       success: true,
-      product,
-      message: req.t("product_added_successfully", { ns: "success" }),
+      event,
+      message: req.t("event_added_successfully", { ns: "success" }),
     });
   }
 );
-export const getVendorProducts = asyncErrorHandler(
+export const getVendorEvents = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
-    const products = await Product.find({
+    const events = await Event.find({
       vendorID: req.vendor._id.toString(),
     });
-    const localizedProducts = Product.schema.methods.toJSONLocalizedOnly(
-      products,
+    const localizedEvents = Event.schema.methods.toJSONLocalizedOnly(
+      events,
       req.language
     );
     res.status(200).json({
       success: true,
-      products: localizedProducts,
+      events: localizedEvents,
     });
   }
 );
-export const deleteVendorProduct = asyncErrorHandler(
+export const deleteVendorEvent = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
-    //const product = await Product.findById(req.body.productId);
-    const deletedProduct = await Product.findByIdAndDelete(req.body.productId);
+    //const event = await Event.findById(req.body.eventId);
+    const deletedEvent = await Event.findByIdAndDelete(req.body.eventId);
 
-    //console.log(deletedProduct.vendorID.toString(), req.vendor._id.toString());
+    //console.log(deletedEvent.vendorID.toString(), req.vendor._id.toString());
 
-    if (!deletedProduct) {
+    if (!deletedEvent) {
       return next(
-        new customError(req.t("product_not_found", { ns: "error" }), 404)
+        new customError(req.t("event_not_found", { ns: "error" }), 404)
       );
     } else if (
-      deletedProduct.vendorID.toString() !== req.vendor._id.toString()
+      deletedEvent.vendorID.toString() !== req.vendor._id.toString()
     ) {
       return next(
         new customError(req.t("action_not_allowed", { ns: "error" }), 401)
       );
     }
-    deletedProduct.images.forEach((image) => {
+    deletedEvent.images.forEach((image) => {
       deleteFile(`uploads/${image.url}`);
     });
-    //console.log("deletedProduct", deletedProduct);
+    //console.log("deletedEvent", deletedEvent);
 
-    if (!deletedProduct) {
+    if (!deletedEvent) {
       return next(
-        new customError(req.t("delete_product_failed", { ns: "error" }), 500)
+        new customError(req.t("delete_event_failed", { ns: "error" }), 500)
       );
     }
 
     res.status(200).json({
       success: true,
-      message: req.t("product_deleted_successfully", { ns: "success" }),
+      message: req.t("event_deleted_successfully", { ns: "success" }),
     });
   }
 );

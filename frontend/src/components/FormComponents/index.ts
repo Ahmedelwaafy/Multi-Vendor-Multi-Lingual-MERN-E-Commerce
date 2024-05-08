@@ -12,3 +12,4 @@ export { default as ComboBox } from "./ComboBox";
 export { default as UploadFileComponent } from "./UploadFileComponent";
 export { default as DragDropArea } from "./DragDropArea";
 export { default as Captcha } from "./Captcha";
+export { default as DateRangePicker } from "./DateRangePicker";

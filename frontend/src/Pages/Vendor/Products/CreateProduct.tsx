@@ -25,8 +25,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { toast } from "sonner";
 type FormValues = {
-  product_name_en: string;
-  product_name_ar: string;
+  name_en: string;
+  name_ar: string;
   description_en: string;
   description_ar: string;
   category: string;
@@ -47,8 +47,8 @@ export function Component() {
   const methods = useForm<FormValues>({
     mode: "onChange",
     defaultValues: {
-      product_name_en: "product name en",
-      product_name_ar: "اسم",
+      name_en: "product name en",
+      name_ar: "اسم",
       description_en: "description en",
       description_ar: "وصف",
       category: "4",
@@ -97,8 +97,8 @@ export function Component() {
 
     try {
       const {
-        product_name_ar,
-        product_name_en,
+        name_ar,
+        name_en,
         description_ar,
         description_en,
         category,
@@ -110,7 +110,7 @@ export function Component() {
       } = data;
 
       const finalData = {
-        name: { en: product_name_en, ar: product_name_ar },
+        name: { en: name_en, ar: name_ar },
         description: { en: description_en, ar: description_ar },
         category,
         discount,
@@ -167,9 +167,9 @@ export function Component() {
                 {/**English Name  */}
                 <TextComponent
                   t={t}
-                  name="product_name_en"
-                  label={t("form.product_name_en.label")}
-                  placeholder={t("form.product_name_en.placeholder")}
+                  name="name_en"
+                  label={t("form.name_en.label")}
+                  placeholder={t("form.name_en.placeholder")}
                   ServerErrors={ServerErrors}
                   className="w-full"
                   validations={{ pattern: /^[A-Za-z\d\s]+$/ }}
@@ -178,9 +178,9 @@ export function Component() {
                 {/**Arabic Name  */}
                 <TextComponent
                   t={t}
-                  name="product_name_ar"
-                  label={t("form.product_name_ar.label")}
-                  placeholder={t("form.product_name_ar.placeholder")}
+                  name="name_ar"
+                  label={t("form.name_ar.label")}
+                  placeholder={t("form.name_ar.placeholder")}
                   ServerErrors={ServerErrors}
                   className="w-full "
                   validations={{ pattern: /^[؀-ۿ\d\s]+$/ }}

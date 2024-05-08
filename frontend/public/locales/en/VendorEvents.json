@@ -1,28 +1,30 @@
 {
   "tab": {
-    "title": " | Products",
-    "description": " | My Products Page"
+    "title": " | Events",
+    "description": " | My Events Page"
   },
-  "heading": "My Products",
+  "heading": "My Events",
   "ErrorMessage": "Something wrong has happened, please try again later!",
   "table": {
     "search_placeholder": "Filter by name...",
     "headers": {
-      "product_id": "ID",
+      "event_id": "ID",
       "name": "Name",
       "price": "Price",
       "stock": "Stock",
       "sold_out": "Sold Out",
       "preview": "Preview",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "status": "Status",
       "delete": "Delete"
     },
     "actions": { "label": "Actions", "edit": "Edit", "delete": "Delete" },
     "copied_to_clipboard": "Copied to clipboard"
   },
   "DeletePopUp": {
-    "Title": "Are you sure you want to delete this product ?",
+    "Title": "Are you sure you want to delete this event ?",
     "SubmitBtnText": "Confirm",
-    "CancelBtnText": "Cancel",
-    "toast_error": "Please log in first!"
+    "CancelBtnText": "Cancel"
   }
 }

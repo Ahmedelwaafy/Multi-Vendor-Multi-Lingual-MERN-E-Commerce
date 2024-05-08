@@ -33,9 +33,8 @@ export interface IProductType {
   views: number;
   images: Image[];
   reviews: IReviewType[];
-  shop_id: string;
-  shop: Shop;
-  is_fav: boolean;
+  vendorID: string;
+  isFav: boolean;
   createdAt: string;
   originalPrice: number;
   finalPrice: number;
@@ -43,26 +42,12 @@ export interface IProductType {
   sold_out?: number;
   tags?: string;
 }
-export interface IEventType {
-  id: number;
-  name: string;
-  description: string;
-  category: string;
-  start_Date: Date;
-  finish_Date: Date;
-  discount_Price: number;
-  stock: number;
-  views: number;
-  images: Image[];
-  shopId: string;
-  createdAt: string;
-  shop: Shop;
-  status?: string;
-  tags?: string;
-  original_price?: number;
-  sold_out?: number; // Sold_out is optional with default value 0
-}
 
+export interface IEventType extends IProductType {
+  startDate: Date;
+  endDate: Date;
+  status: string;
+}
 export interface IPaymentMethodType {
   id: 1;
   name: string;

@@ -44,6 +44,14 @@ const productSchema = new mongoose.Schema({
       },
     },
   ],
+  views: {
+    type: Number,
+    default: 0,
+  },
+  isFav: {
+    type: Boolean,
+    default: false,
+  },
   reviews: [
     {
       user: {

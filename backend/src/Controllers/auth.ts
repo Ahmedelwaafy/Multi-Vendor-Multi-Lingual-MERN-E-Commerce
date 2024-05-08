@@ -1,31 +1,22 @@
+import crypto from "crypto";
+import { NextFunction, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
+import path from "path";
 import User from "../Models/user";
+import Vendor from "../Models/vendor";
+import { CustomRequest } from "../types";
 import {
   asyncErrorHandler,
   customError,
-  sendEmail,
+  deleteFile,
   sendCookieTokenResponse,
+  sendCookieTokenResponseVendor,
+  sendEmail,
   signToken,
   verifyToken,
-  sendCookieTokenResponseVendor,
 } from "../Utils";
-import util from "util";
-import crypto from "crypto";
-import jwt, { JwtPayload } from "jsonwebtoken";
-import { Request, Response, NextFunction } from "express";
-import { CustomRequest } from "../types";
-import path from "path";
-import fs from "fs";
-import Vendor from "../Models/vendor";
-import Product from "../Models/product";
 
-function deleteFile(filePath: string) {
-  fs.unlink(filePath, (err) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log("File deleted successfully");
-  });
-}
+
 
 //! -------User
 

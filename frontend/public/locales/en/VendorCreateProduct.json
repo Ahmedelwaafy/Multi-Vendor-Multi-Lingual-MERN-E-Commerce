@@ -1,17 +1,20 @@
 {
   "tab": {
     "title": " | Create Product",
-    "description": " | Create Product Page"
+    "title_event": " | Create Event",
+    "description": " | Create Product Page",
+    "description_event": " | Create Event Page"
   },
   "heading": "Create Product",
+  "heading_event": "Create Event",
   "form": {
-    "product_name_en": {
-      "label": "Product Name (English)",
-      "placeholder": "Product Name (English)"
+    "name_en": {
+      "label": "Name (English)",
+      "placeholder": "Name (English)"
     },
-    "product_name_ar": {
-      "label": "Product Name (Arabic)",
-      "placeholder": "Product Name (Arabic)"
+    "name_ar": {
+      "label": "Name (Arabic)",
+      "placeholder": "Name (Arabic)"
     },
     "description_en": {
       "label": "Description (English)",
@@ -25,6 +28,7 @@
       "label": "Category",
       "placeholder": "Category"
     },
+
     "tags": {
       "label": "Tags",
       "placeholder": "Add tags separated by comma"
@@ -42,17 +46,20 @@
       "label": "Stock",
       "placeholder": "Stock"
     },
-    "images": {
-      "label": "Add product images"
+    "duration": {
+      "label": "Duration"
     },
-    "SubmitBtnComponent": { "value": "Add Product" }
+    "images": {
+      "label": "Add images"
+    },
+    "SubmitBtnComponent": { "value": "Add Product", "value_event": "Add Event" }
   },
   "validations": {
-    "product_name_en": {
+    "name_en": {
       "required": "English Name is required",
       "pattern": "Only english letters are allowed"
     },
-    "product_name_ar": {
+    "name_ar": {
       "required": "Arabic Name is required",
       "pattern": "Only arabic letters are allowed"
     },
@@ -67,6 +74,9 @@
 
     "category": {
       "required": "Category is required"
+    },
+    "duration": {
+      "required": "Duration is required"
     },
     "tags": {
       "required": "Tags are required"

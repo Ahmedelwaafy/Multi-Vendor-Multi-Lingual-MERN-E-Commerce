@@ -1,1 +1,6 @@
-{ "product_added_successfully": "Product added successfully" }
+{
+  "product_added_successfully": "Product added successfully",
+  "event_added_successfully": "Event added successfully",
+  "product_deleted_successfully": "Product deleted successfully",
+  "event_deleted_successfully": "Event deleted successfully"
+}

@@ -1,10 +1,10 @@
 import express from "express";
 
 import {
-  addProduct,
-  getVendorProducts,
-  deleteVendorProduct,
-} from "../Controllers/product";
+  addEvent,
+  getVendorEvents,
+  deleteVendorEvent,
+} from "../Controllers/event";
 import { IsVendor } from "../middleware";
 import upload from "../Utils/multer";
 
@@ -16,8 +16,7 @@ PublicRouter.route("/increase-views").patch(increaseVendorViews); */
 const privateRouter = PublicRouter.use(IsVendor);
 privateRouter
   .route("")
-  .post(upload.array("images[]", 5), addProduct);
-privateRouter.route("/vendor-products").get(getVendorProducts);
-privateRouter.route("").delete(deleteVendorProduct);
+  .post(upload.array("images[]", 5), addEvent).delete(deleteVendorEvent);
+privateRouter.route("/vendor-events").get(getVendorEvents);
 
 export default PublicRouter;

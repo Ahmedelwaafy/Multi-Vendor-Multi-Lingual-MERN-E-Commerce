@@ -8,7 +8,7 @@ interface TableCellDateProps {
 export function TableCellDate({ title, className }: TableCellDateProps) {
   return (
     <div className={cn("font-medium ", className)}>
-      {title.toLocaleDateString(undefined, {
+      {new Date(title).toLocaleDateString(undefined, {
         year: "numeric",
         month: "short",
         day: "numeric",

@@ -141,6 +141,12 @@ export interface productType {
   ratings?: number;
   vendorID: string;
   vendor: object;
+  isFav: boolean;
   sold_out: number;
   createdAt: Date;
+}
+export interface eventType extends productType {
+  startDate: Date;
+  endDate: Date;
+  status: string;
 }
