@@ -48,6 +48,19 @@ export interface IEventType extends IProductType {
   endDate: Date;
   status: string;
 }
+
+export interface IDiscountCodeType {
+  _id: string;
+  name: string;
+  value: number;
+  maxUsage: number;
+  usageCount: number;
+  vendorID: string;
+  ProductID: string;
+  minPrice?: number;
+  maxPrice?: number;
+  createdAt: string;
+}
 export interface IPaymentMethodType {
   id: 1;
   name: string;

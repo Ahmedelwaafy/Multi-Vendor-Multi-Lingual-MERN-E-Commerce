@@ -42,22 +42,21 @@ export const getVendorProducts = asyncErrorHandler(
 );
 export const deleteVendorProduct = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
-    //const product = await Product.findById(req.body.productId);
-    const deletedProduct = await Product.findByIdAndDelete(req.body.productId);
+    const product = await Product.findById(req.body.productId);
 
     //console.log(deletedProduct.vendorID.toString(), req.vendor._id.toString());
 
-    if (!deletedProduct) {
+    if (!product) {
       return next(
         new customError(req.t("product_not_found", { ns: "error" }), 404)
       );
-    } else if (
-      deletedProduct.vendorID.toString() !== req.vendor._id.toString()
-    ) {
+    } else if (product.vendorID.toString() !== req.vendor._id.toString()) {
       return next(
         new customError(req.t("action_not_allowed", { ns: "error" }), 401)
       );
     }
+    const deletedProduct = await Product.findByIdAndDelete(req.body.productId);
+
     deletedProduct.images.forEach((image) => {
       deleteFile(`uploads/${image.url}`);
     });

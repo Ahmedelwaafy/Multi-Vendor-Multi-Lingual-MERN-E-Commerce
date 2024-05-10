@@ -150,3 +150,14 @@ export interface eventType extends productType {
   endDate: Date;
   status: string;
 }
+export interface discountCodeType {
+  name: string;
+  value: number;
+  maxUsage: number;
+  usageCount: number;
+  vendorID: string;
+  ProductID: string;
+  minPrice?: number;
+  maxPrice?: number;
+  createdAt: Date;
+}

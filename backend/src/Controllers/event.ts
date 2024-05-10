@@ -42,23 +42,22 @@ export const getVendorEvents = asyncErrorHandler(
 );
 export const deleteVendorEvent = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
-    //const event = await Event.findById(req.body.eventId);
-    const deletedEvent = await Event.findByIdAndDelete(req.body.eventId);
+    const event = await Event.findById(req.body.eventId);
 
     //console.log(deletedEvent.vendorID.toString(), req.vendor._id.toString());
 
-    if (!deletedEvent) {
+    if (!event) {
       return next(
         new customError(req.t("event_not_found", { ns: "error" }), 404)
       );
-    } else if (
-      deletedEvent.vendorID.toString() !== req.vendor._id.toString()
-    ) {
+    } else if (event.vendorID.toString() !== req.vendor._id.toString()) {
       return next(
         new customError(req.t("action_not_allowed", { ns: "error" }), 401)
       );
     }
-    deletedEvent.images.forEach((image) => {
+    const deletedEvent = await Event.findByIdAndDelete(req.body.eventId);
+
+    event.images.forEach((image) => {
       deleteFile(`uploads/${image.url}`);
     });
     //console.log("deletedEvent", deletedEvent);

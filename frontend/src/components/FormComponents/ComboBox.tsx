@@ -47,7 +47,7 @@ export default function ComboBox({
     if (data && searchParams) {
       const name = data?.find(
         (item) =>
-          Number(item.id) ===
+          Number(item._id) ===
           Number(searchParams.get(`${getDefaultValueFromURL}`))
       )?.name;
 
@@ -138,20 +138,20 @@ export default function ComboBox({
                       ? "bg-input text-background"
                       : "pl-8 rtl:pl-0 rtl:pr-8"
                   } `}
-                  key={item?.id}
+                  key={item?._id}
                   value={item?.name}
                   onSelect={(currentValue) => {
                     //!it converts to lower case by default
                     setSelectedItem(
                       currentValue === selectedItem ? "" : currentValue
                     );
-                    setValue && setValue(stateName, item?.id);
+                    setValue && setValue(stateName, item?._id);
                     setSearchParams &&
                       setSearchParams((params) => {
-                        params.set("srt", item?.id);
+                        params.set("srt", item?._id);
                         return params;
                       });
-                    callBcFn && callBcFn(item?.id);
+                    callBcFn && callBcFn(item?._id);
                     setOpen(false);
                   }}
                 >

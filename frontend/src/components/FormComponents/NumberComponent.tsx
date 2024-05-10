@@ -58,7 +58,7 @@ function NumberComponent({
     >
       {label && (
         <h3
-          className={`text-base  ${
+          className={`text-base sm:truncate  ${
             alignment === "vertical" ? "min-w-fit " : "min-w-[210px] truncate"
           } trns ${
             errors?.[name] || ServerErrors?.response?.data?.errors?.[name]?.[0]

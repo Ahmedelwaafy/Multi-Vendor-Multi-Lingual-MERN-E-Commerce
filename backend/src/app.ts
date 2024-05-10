@@ -10,6 +10,7 @@ import {
   publicRouter,
   productRouter,
   eventRouter,
+  discountCodeRouter,
 } from "./Routes";
 import customError from "./Utils/CustomError";
 import { globalErrorHandler } from "./middleware";
@@ -77,6 +78,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/vendor", vendorRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/event", eventRouter);
+app.use("/api/v1/discount-code", discountCodeRouter);
 app.use("/api/v1", publicRouter);
 
 app.get("*", (req: Request, res: Response) => {

@@ -74,7 +74,7 @@ export interface IHeadingsProps {
 }
 
 export interface IComboBoxProps {
-  data: { id: number | string; name: string }[];
+  data: { _id: number | string; name: string }[];
   placeholder?: string;
   stateName?: string;
   className?: string;

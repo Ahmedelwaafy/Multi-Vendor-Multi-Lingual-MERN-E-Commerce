@@ -3,5 +3,8 @@
   "event_not_found": "Event not found!",
   "action_not_allowed": "You are not allowed to perform this action!",
   "delete_product_failed": "Failed to delete this product!",
-  "delete_event_failed": "Failed to delete this event!"
+  "delete_event_failed": "Failed to delete this event!",
+  "Coupon_already_exists": "Coupon with this name already exists!",
+  "discountCode_not_found": "Discount code not found!",
+  "delete_discountCode_failed": "Failed to delete this discountCode!"
 }

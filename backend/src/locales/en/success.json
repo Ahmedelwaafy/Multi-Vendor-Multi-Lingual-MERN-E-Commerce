@@ -2,5 +2,7 @@
   "product_added_successfully": "Product added successfully",
   "event_added_successfully": "Event added successfully",
   "product_deleted_successfully": "Product deleted successfully",
-  "event_deleted_successfully": "Event deleted successfully"
+  "event_deleted_successfully": "Event deleted successfully",
+  "discountCode_added_successfully": "Discount code added successfully!",
+  "discountCode_deleted_successfully": "Discount code deleted successfully!"
 }

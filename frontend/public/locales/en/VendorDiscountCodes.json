@@ -1,0 +1,89 @@
+{
+  "tab": {
+    "title": " | Discount Codes",
+    "description": " | My Discount Codes Page"
+  },
+  "heading": "My Discount  Codes",
+  "ErrorMessage": "Something wrong has happened, please try again later!",
+  "table": {
+    "search_placeholder": "Filter by name...",
+    "headers": {
+      "discountCode_id": "ID",
+      "name": "Name",
+      "ProductName": "Product",
+      "value": "Value",
+      "maxUsage": "Max Usage",
+      "usageCount": "Usage Count",
+      "minPrice": "Min Price",
+      "maxPrice": "Max Price",
+      "createdAt": "Created At",
+      "delete": "Delete"
+    },
+    "actions": { "label": "Actions", "edit": "Edit" },
+    "copied_to_clipboard": "Copied to clipboard"
+  },
+  "add_new": "Add New Coupon",
+  "DeletePopUp": {
+    "Title": "Are you sure you want to delete this discountCode ?",
+    "SubmitBtnText": "Confirm",
+    "CancelBtnText": "Cancel",
+    "toast_error": "Please log in first!"
+  },
+  "form": {
+    "name": {
+      "label": "Name",
+      "placeholder": "Ex. prod2024"
+    },
+    "value": {
+      "label": "Discount Percentage",
+      "placeholder": "EX. 15"
+    },
+    "maxUsage": {
+      "label": "Max Usage",
+      "placeholder": "Max usage count"
+    },
+
+    "minPrice": {
+      "label": "Min Price",
+      "placeholder": "Min product's price to apply this coupon"
+    },
+    "maxPrice": {
+      "label": "Max Price",
+      "placeholder": "Max product's price to apply this coupon"
+    },
+    "ProductID": {
+      "label": "Choose Product",
+      "placeholder": "Choose Product"
+    },
+    "SubmitBtnComponent": { "value": "Add Discount Code" }
+  },
+  "validations": {
+    "name": {
+      "required": "Name is required"
+    },
+
+    "value": {
+      "pattern": "Invalid value",
+      "max": "Value cannot exceed 100%",
+      "min": "Invalid value"
+    },
+    "maxUsage": {
+      "required": "Max Usage is required",
+      "pattern": "Invalid Value",
+      "min": "Invalid Value"
+    },
+    "minPrice": {
+      "required": "Min Price is required",
+      "pattern": "Invalid Value",
+      "min": "Invalid Value"
+    },
+    "maxPrice": {
+      "required": "Max Price is required",
+      "pattern": "Invalid Value",
+      "min": "Invalid Value"
+    },
+    "ProductID": {
+      "required": "Product is required"
+    }
+  }
+}

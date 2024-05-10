@@ -96,7 +96,7 @@ export const VendorDashboardRoutes = [
   },
   {
     path: "discount-codes",
-    lazy: () => import("../../Pages/Vendor/DiscountCodes/DiscountCodes.tsx"),
+    lazy: () => import("../../Pages/Vendor/DiscountCodes/ِAllDiscountCodes.tsx"),
   },
   {
     path: "refunds",
