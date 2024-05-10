@@ -5,14 +5,15 @@ import { register } from "swiper/element/bundle";
 import { SwiperOptions } from "swiper/types";
 import { LangLink } from "@/components/MainComponents";
 import { TFunction } from "i18next";
+import { Image } from "@/types/CardsTypes";
 
 register();
 type SingleSlide = {
-  id: number;
+  _id: number;
   title: string;
-  subtitle: string;
-  description: string;
-  image: string;
+  subTitle: string;
+  link: string;
+  img: Image;
 };
 type HeroProps = {
   data: SingleSlide[];
@@ -69,42 +70,37 @@ const Hero = ({ data, t }: HeroProps) => {
 
       <swiper-container init={false} ref={swiperElRef}>
         {data?.map((slide) => (
-          <swiper-slide key={slide?.id}>
+          <swiper-slide key={slide?._id}>
             <div className="w-full h-[calc(100vh-180px)] relative flex-center  text-background ">
               <div className="hero__slider--overlay absolute inset-0 z-10 bg-[#0a1c1f] opacity-50"></div>
               <img
                 className="absolute inset-0 w-full h-full object-cover mb-10 z-0"
-                src={slide?.image}
-                alt={slide?.image}
+                src={slide?.img?.url}
+                alt={slide?.title}
               />
               <div className="slide_content--text flex-center flex-col max-w-[70%] md:max-w-[90%] text-center gap-3">
-                <h4
-                  className="relative z-20 line-clamp-1"
-                  data-swiper-parallax-x="-200"
-                  //data-swiper-parallax-duration="300"
-                >
-                  {slide?.title}
-                </h4>
                 <h1
                   className="relative z-20 text-4xl 4xl:text-3xl font-bold mb-3 line-clamp-2 rtl:!leading-normal"
                   data-swiper-parallax-x="-400"
                   //data-swiper-parallax-duration="300"
                 >
-                  {slide?.subtitle}
+                  {slide?.title}
                 </h1>
-                <h3
+                <h2
                   className="relative z-20 text-xl line-clamp-2 "
                   data-swiper-parallax-x="-600"
                   //data-swiper-parallax-duration="300"
                 >
-                  {slide?.description}
-                </h3>{" "}
-                <LangLink
-                  className="rounded-full py-2 px-4 border-2 border-secondary bg-secondary text-background trns hover:bg-background hover:text-secondary hover:border-background active:scale-90 z-20"
-                  to={`/products`}
-                >
-                  {t("hero_cta")}
-                </LangLink>
+                  {slide?.subTitle}
+                </h2>{" "}
+                <div className="z-20 mt-5" data-swiper-parallax-x="-800">
+                  <LangLink
+                    className="rounded-full py-2 px-4 border-2 border-secondary bg-secondary text-background trns hover:bg-background hover:text-secondary hover:border-background active:scale-90 "
+                    to={`/${slide?.link}`}
+                  >
+                    {t("hero_cta")}
+                  </LangLink>
+                </div>
               </div>
             </div>
           </swiper-slide>

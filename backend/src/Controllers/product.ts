@@ -40,6 +40,7 @@ export const getVendorProducts = asyncErrorHandler(
     });
   }
 );
+
 export const deleteVendorProduct = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const product = await Product.findById(req.body.productId);
@@ -71,6 +72,56 @@ export const deleteVendorProduct = asyncErrorHandler(
     res.status(200).json({
       success: true,
       message: req.t("product_deleted_successfully", { ns: "success" }),
+    });
+  }
+);
+
+export const getAllProducts = asyncErrorHandler(
+  async (req: CustomRequest, res: Response, next: NextFunction) => {
+    const products = await Product.find();
+    const localizedProducts = Product.schema.methods.toJSONLocalizedOnly(
+      products,
+      req.language
+    );
+    res.status(200).json({
+      success: true,
+      products: localizedProducts,
+    });
+  }
+);
+export const getProductDetails = asyncErrorHandler(
+  async (req: CustomRequest, res: Response, next: NextFunction) => {
+    const product = await Product.findById(req.params.productID);
+    const localizedProduct = Product.schema.methods.toJSONLocalizedOnly(
+      product,
+      req.language
+    );
+    res.status(200).json({
+      success: true,
+      product: localizedProduct,
+    });
+  }
+);
+
+export const increaseProductViews = asyncErrorHandler(
+  async (req: CustomRequest, res: Response, next: NextFunction) => {
+    const { productID } = req.body;
+    console.log("productID", productID);
+
+    const product = await Product.findByIdAndUpdate(productID, {
+      $inc: { views: 1 },
+    });
+
+    if (!product || !productID) {
+      const error = new customError(
+        req.t("wrong_product_id", { ns: "error" }),
+        404
+      );
+      return next(error);
+    }
+    res.status(200).json({
+      success: true,
+      product,
     });
   }
 );

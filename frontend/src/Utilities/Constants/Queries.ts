@@ -24,3 +24,10 @@ export const VENDOR = {
   REFUNDS: "VendorRefunds",
   SETTINGS: "VendorSettings",
 };
+export const PUBLIC = {
+  HOMEPAGE: "HomePage",
+  NAVBAR: "Navbar",
+  FOOTER: "Footer",
+  ALL_PRODUCTS: "AllProducts",
+  BEST_SELLING: "AllProducts",
+};

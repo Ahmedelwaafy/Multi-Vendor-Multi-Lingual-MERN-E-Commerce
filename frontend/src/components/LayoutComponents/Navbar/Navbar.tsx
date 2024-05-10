@@ -15,6 +15,8 @@ import NavDropdownMenu from "./NavDropdownMenu";
 import NavDropdownMenuVendor from "./NavDropdownMenuVendor";
 import MenuItems from "./NavMenuItems";
 import NavSearch from "./NavSearch";
+import { useFetchData } from "@/Hooks/useAxios";
+import { PUBLIC } from "@/Utilities/Constants/Queries";
 
 function Navbar({ vendor }: { vendor?: boolean }) {
   const { t, i18n } = useTranslation("Layout");
@@ -30,6 +32,16 @@ function Navbar({ vendor }: { vendor?: boolean }) {
       window.location.replace(temp.join("/"));
     }
   }
+  const { data } = useFetchData(
+    PUBLIC.NAVBAR,
+    import.meta.env.VITE_GET_NAVBAR,
+    false,
+    "",
+    30 * 60 * 1000,
+    5 * 60 * 1000,
+    true,
+    true
+  );
   return (
     <>
       <header className={` ${vendor && "sticky top-0 z-50"}`}>

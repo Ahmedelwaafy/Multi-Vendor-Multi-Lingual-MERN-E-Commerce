@@ -1,5 +1,5 @@
 import { IEventType } from "@/types/CardsTypes";
-import { CountDown } from "../SubComponents";
+import { CountDown, ProductPrice } from "../SubComponents";
 import { cn } from "@/lib/utils";
 import { TFunction } from "i18next";
 
@@ -31,29 +31,8 @@ function EventCard({
         <h3 className="text-lg opacity-70 text-justify">
           {event?.description}
         </h3>
-        <div className="event__price--sold mt-4 flex justify-between items-center mb-6">
-          <h6 className="event__price--original text-lg font-semibold">
-            {t("event_card.count_formatted", {
-              count: event?.original_price,
-            })}
-            $
-            {event?.discount_Price && (
-              <sup className="event__price--discount line-through mx-1 text-accent">
-                {t("event_card.count_formatted", {
-                  count: event?.discount_Price,
-                })}
-                $
-              </sup>
-            )}
-          </h6>
-          <p className="event__sold text-sm text-accent font-semibold">
-            {t("event_card.count_formatted", {
-              count: event?.sold_out,
-              context: "sold",
-            })}
-          </p>
-        </div>
-        <CountDown data={{ _id: event?.id, finish_Date: event?.finish_Date }} />
+        <ProductPrice product={event} t={t} />
+        <CountDown data={{ _id: event?._id, endDate: event?.endDate }} />
       </div>
     </div>
   );

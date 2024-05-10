@@ -41,7 +41,7 @@ function ProductCard({
       )}
     >
       <LangLink
-        to={`/products/${product?.id}/${product.name?.replace(/\s+/g, "-")}`}
+        to={`/products/${product?._id}/${product.name?.replace(/\s+/g, "-")}`}
         className="product__img--wrapper group w-full h-60  overflow-hidden block relative"
       >
         <img
@@ -58,7 +58,7 @@ function ProductCard({
           <div className="product__actions flex items-center justify-start gap-7 bg-gray-100 py-3 px-5">
             <Tooltip>
               <TooltipTrigger>
-                <AddToFavorites id={product?.id} is_fav={product?.is_fav} />
+                <AddToFavorites id={product?._id} is_fav={product?.isFav} />
               </TooltipTrigger>
               <TooltipContent>
                 <p>{t("product_card.tooltips.add_to_wishlist")}</p>
@@ -67,7 +67,7 @@ function ProductCard({
 
             <Tooltip>
               <TooltipTrigger>
-                <AddToCartBtn id={product?.id} type="icon" t={t} />
+                <AddToCartBtn id={product?._id} type="icon" t={t} />
               </TooltipTrigger>
               <TooltipContent>
                 <p>{t("product_card.tooltips.add_to_cart")}</p>
@@ -100,7 +100,7 @@ function ProductCard({
             <Tooltip>
               <TooltipTrigger>
                 <LangLink
-                  to={`/products/${product?.id}/${product.name?.replace(
+                  to={`/products/${product?._id}/${product.name?.replace(
                     /\s+/g,
                     "-"
                   )}`}

@@ -12,13 +12,13 @@ export default function ProductPrice({
     <div className="product__price--sold mt-4 flex justify-between items-center">
       <h6 className="product__price--original text-lg font-semibold">
         {t("product_card.tooltips.count_formatted", {
-          count: product?.original_price,
+          count: product?.finalPrice,
         })}
         $
-        {product?.discount_Price && (
+        {product?.originalPrice !== product?.finalPrice && (
           <sup className="product__price--discount line-through mx-1 text-accent">
             {t("product_card.tooltips.count_formatted", {
-              count: product?.discount_Price,
+              count: product?.originalPrice,
             })}
             $
           </sup>

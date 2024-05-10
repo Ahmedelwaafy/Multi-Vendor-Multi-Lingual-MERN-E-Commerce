@@ -1,13 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { usePostData } from "@/Hooks/useAxios";
+import { useEffect, useState } from "react";
 type timeLeft = {
   days?: number;
   hours?: number;
   minutes?: number;
   seconds?: number;
 };
-const CountDown = ({ data }: { data: { _id: number; finish_Date: Date } }) => {
+const CountDown = ({ data }: { data: { _id: number; endDate: Date } }) => {
   const [timeLeft, setTimeLeft] = useState<timeLeft>(calculateTimeLeft());
+  const { mutate } = usePostData();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,13 +21,17 @@ const CountDown = ({ data }: { data: { _id: number; finish_Date: Date } }) => {
       typeof timeLeft?.minutes === "undefined" &&
       typeof timeLeft?.seconds === "undefined"
     ) {
-      //axios.delete(`${server}/event/delete-shop-event/${data._id}`);
+      mutate({
+        api: import.meta.env.VITE_VENDOR_DELETE_EVENT,
+        data: { eventId: data?._id },
+        method: "DELETE",
+      });
     }
     return () => clearTimeout(timer);
   });
 
   function calculateTimeLeft() {
-    const difference = +new Date(data.finish_Date) - +new Date();
+    const difference = +new Date(data?.endDate) - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {
@@ -41,7 +46,7 @@ const CountDown = ({ data }: { data: { _id: number; finish_Date: Date } }) => {
     return timeLeft;
   }
 
-  const timerComponents = Object.keys(timeLeft).map((interval:string) => {
+  const timerComponents = Object.keys(timeLeft).map((interval: string) => {
     if (!timeLeft[interval]) {
       return null;
     }

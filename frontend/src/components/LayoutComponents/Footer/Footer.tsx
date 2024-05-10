@@ -16,10 +16,20 @@ import { useFetchData, usePostData } from "@/Hooks/useAxios";
 import { Container, Logo } from "@/components/MainComponents";
 import SubscribeToNewsLetter from "./SubscribeToNewsLetter";
 import { categories } from "@/constants";
+import { PUBLIC } from "@/Utilities/Constants/Queries";
 
 function Footer() {
   const { t } = useTranslation("Layout");
-
+ const { data } = useFetchData(
+   PUBLIC.FOOTER,
+   import.meta.env.VITE_GET_FOOTER,
+   false,
+   "",
+   30 * 60 * 1000,
+   5 * 60 * 1000,
+   true,
+   true
+ );
   const {
     register,
     handleSubmit,

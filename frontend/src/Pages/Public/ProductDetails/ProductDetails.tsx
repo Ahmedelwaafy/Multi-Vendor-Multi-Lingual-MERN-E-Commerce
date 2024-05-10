@@ -4,7 +4,7 @@ import ProductInfoTabs from "./components/ProductInfoTabs";
 import RelatedProducts from "./components/RelatedProducts";
 import { Navigate, useParams } from "react-router-dom";
 import { ErrorMessage } from "@/components/SubComponents";
-import { useFetchData } from "@/Hooks/useAxios";
+import { useFetchData, usePostData } from "@/Hooks/useAxios";
 import { IProductType } from "@/types/CardsTypes";
 import { useTranslation } from "react-i18next";
 import { products } from "@/constants";
@@ -32,20 +32,16 @@ export function Component() {
     true,
     true
   );
-  /*  useFetchData(
-    "increaseViews",
-    `${import.meta.env.VITE_INCREASE_SINGLE_PRODUCT_VIEWS}${product?.id}`,
-    true,
-    productID,
-    5000,
-    0,
-    !!product,
-    true
-  ); */
-
-  /* useEffect(() => {
+  const { mutate } = usePostData();
+  useEffect(() => {
+    mutate({
+      api: import.meta.env.VITE_INCREASE_SINGLE_PRODUCT_VIEWS,
+      method: "PATCH",
+      data: { productID },
+    });
     window.scrollTo({ top: 0 });
-  }, [productID]); */
+  }, [mutate, productID]);
+
   if (error?.response?.status === 404) {
     return <Navigate to={`/${i18n.language}/not-found`} />;
   }

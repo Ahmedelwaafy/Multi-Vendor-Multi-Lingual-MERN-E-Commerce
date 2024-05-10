@@ -4,7 +4,7 @@ interface User {
   email: string;
 }
 
-interface Image {
+export interface Image {
   public_id: string;
   url: string;
 }
@@ -28,7 +28,6 @@ export interface IProductType {
   name: string;
   description: string;
   category: string;
-  discount_Price: number;
   stock: number;
   views: number;
   images: Image[];

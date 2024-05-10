@@ -12,16 +12,19 @@ import Features from "./Components/Features";
 import Hero from "./Components/Hero";
 import NewArrivals from "./Components/NewArrivals";
 import PopularEvents from "./Components/PopularEvents";
+import { PUBLIC } from "@/Utilities/Constants/Queries";
 
 export function Component() {
   const { t, i18n } = useTranslation("HomePage");
   const { data } = useFetchData(
-    "HomePage",
-    import.meta.env.VITE_LANDING_PAGE,
+    PUBLIC.HOMEPAGE,
+    import.meta.env.VITE_HOMEPAGE,
     false,
     "",
     30 * 60 * 1000,
-    5 * 60 * 1000
+    5 * 60 * 1000,
+    true,
+    true
   );
 
   return (
@@ -31,19 +34,26 @@ export function Component() {
         description={"meta_description"}
         canonical=""
       />
-      <Hero t={t} data={heroSlides} />
-      <Features />
+      <Hero t={t} data={data?.data?.sliders} />
+      <Features t={t} />
       <ProductsGrid
         t={t}
         title={t("best_deals")}
-        data={products?.slice(0, 4)}
+        data={data?.data?.bestDeals}
       />
-      <NewArrivals t={t} title={t("new_arrivals")} data={NewArrivalsData} />
-      <PopularEvents t={t} title={t("popular_events")} event={events[7]} />
+      <NewArrivals
+        t={t}
+        data={data?.data?.newArrivals}
+      />
+      <PopularEvents
+        t={t}
+        title={t("popular_events")}
+        event={data?.data?.event}
+      />
       <ProductsGrid
         t={t}
         title={t("featured_products")}
-        data={products?.slice(0, 12)}
+        data={data?.data?.featuredProducts}
       />
     </section>
   );

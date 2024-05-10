@@ -1,53 +1,32 @@
 import { Container } from "@/components/MainComponents";
 import {
-  faCartArrowDown
+  faHandHoldingDollar,
+  faGift,
+  faStore,
+  faTruckFast,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TFunction } from "i18next";
 
-function Features() {
+function Features({ t }: { t: TFunction }) {
+  const data = [faTruckFast, faGift, faHandHoldingDollar, faStore];
   return (
     <Container>
-      <ul className="grid grid-cols-4 2xl:grid-cols-2 md:grid-cols-1 gap-7 bg-muted  w-full min-h-40 py-5 rounded-3xl">
-        <li className="flex-center gap-5 group select-none">
-          <FontAwesomeIcon
-            className="text-2xl group-hover:animate-wiggle-more"
-            icon={faCartArrowDown}
-          />{" "}
-          <div>
-            <h3 className="font-bold">Free Shipping</h3>
-            <h4 className="text-sm opacity-70">From all orders over 1000$</h4>
-          </div>
-        </li>
-        <li className="flex-center gap-5 group select-none">
-          <FontAwesomeIcon
-            className="text-2xl group-hover:animate-wiggle-more"
-            icon={faCartArrowDown}
-          />{" "}
-          <div>
-            <h3 className="font-bold">Free Shipping</h3>
-            <h4 className="text-sm opacity-70">From all orders over 1000$</h4>
-          </div>
-        </li>
-        <li className="flex-center gap-5 group select-none">
-          <FontAwesomeIcon
-            className="text-2xl group-hover:animate-wiggle-more"
-            icon={faCartArrowDown}
-          />{" "}
-          <div>
-            <h3 className="font-bold">Free Shipping</h3>
-            <h4 className="text-sm opacity-70">From all orders over 1000$</h4>
-          </div>
-        </li>
-        <li className="flex-center gap-5 group select-none">
-          <FontAwesomeIcon
-            className="text-2xl group-hover:animate-wiggle-more"
-            icon={faCartArrowDown}
-          />{" "}
-          <div>
-            <h3 className="font-bold">Free Shipping</h3>
-            <h4 className="text-sm opacity-70">From all orders over 1000$</h4>
-          </div>
-        </li>
+      <ul className="grid grid-cols-4 2xl:grid-cols-2 md:grid-cols-1 md:justify-items-center gap-7 bg-muted  w-full min-h-40 py-5 rounded-3xl">
+        {data?.map((item, index) => (
+          <li className="flex-center gap-5 group select-none md:min-w-[220px]  md:w-fit md:justify-start">
+            <FontAwesomeIcon
+              className="text-2xl group-hover:animate-wiggle-more"
+              icon={item}
+            />{" "}
+            <div>
+              <h3 className="font-bold">{t(`Features.${index}.title`)}</h3>
+              <h4 className="text-sm opacity-70">
+                {t(`Features.${index}.sub_title`)}
+              </h4>
+            </div>
+          </li>
+        ))}
       </ul>
     </Container>
   );

@@ -6,5 +6,6 @@
   "delete_event_failed": "Failed to delete this event!",
   "Coupon_already_exists": "Coupon with this name already exists!",
   "discountCode_not_found": "Discount code not found!",
-  "delete_discountCode_failed": "Failed to delete this discountCode!"
+  "delete_discountCode_failed": "Failed to delete this discountCode!",
+  "wrong_product_id": "Wrong product id!"
 }

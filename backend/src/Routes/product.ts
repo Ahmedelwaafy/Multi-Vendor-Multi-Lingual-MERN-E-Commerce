@@ -4,14 +4,18 @@ import {
   addProduct,
   getVendorProducts,
   deleteVendorProduct,
+  getAllProducts,
+  getProductDetails,
+  increaseProductViews,
 } from "../Controllers/product";
 import { IsVendor } from "../middleware";
 import upload from "../Utils/multer";
 
 const PublicRouter = express.Router();
 
-/* PublicRouter.route("/get-vendor-public/:vendor_id").get(getVendorPublicData);
-PublicRouter.route("/increase-views").patch(increaseVendorViews); */
+PublicRouter.route("/all").get(getAllProducts);
+PublicRouter.route("/:productID").get(getProductDetails);
+PublicRouter.route("/increase-views").patch(increaseProductViews);
 
 const privateRouter = PublicRouter.use(IsVendor);
 privateRouter
