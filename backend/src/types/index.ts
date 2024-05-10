@@ -142,6 +142,7 @@ export interface productType {
   vendorID: string;
   vendor: object;
   isFav: boolean;
+  accepted: boolean;
   sold_out: number;
   createdAt: Date;
 }
@@ -159,5 +160,17 @@ export interface discountCodeType {
   ProductID: string;
   minPrice?: number;
   maxPrice?: number;
+  createdAt: Date;
+}
+export interface sliderType {
+  title: string;
+  subTitle: string;
+  link: string;
+  img: Image;
+  createdAt: Date;
+}
+export interface categoryType {
+  name: string;
+  img: Image;
   createdAt: Date;
 }

@@ -4,5 +4,7 @@
   "product_deleted_successfully": "Product deleted successfully",
   "event_deleted_successfully": "Event deleted successfully",
   "discountCode_added_successfully": "Discount code added successfully!",
-  "discountCode_deleted_successfully": "Discount code deleted successfully!"
+  "discountCode_deleted_successfully": "Discount code deleted successfully!",
+  "slider_added_successfully": "Slider added successfully",
+  "category_added_successfully": "Category added successfully"
 }

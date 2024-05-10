@@ -11,6 +11,7 @@ import {
   productRouter,
   eventRouter,
   discountCodeRouter,
+  adminRouter,
 } from "./Routes";
 import customError from "./Utils/CustomError";
 import { globalErrorHandler } from "./middleware";
@@ -76,6 +77,7 @@ app.get("/api/test", (req: any, res: any) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/vendor", vendorRouter);
+app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/event", eventRouter);
 app.use("/api/v1/discount-code", discountCodeRouter);

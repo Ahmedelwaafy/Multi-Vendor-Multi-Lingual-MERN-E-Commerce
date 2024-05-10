@@ -39,7 +39,7 @@ function ScrollToTop() {
       } group trns fixed right-5 bottom-16  p-1 shadow-lg shadow-secondary w-12 flex-center  aspect-square rounded-full z-50`}
     >
       <span
-        className="bg-accent w-full h-full rounded-full flex-center"
+        className="bg-muted w-full h-full rounded-full flex-center"
         ref={progressValue}
       >
         <FontAwesomeIcon
