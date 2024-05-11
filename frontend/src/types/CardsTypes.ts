@@ -74,3 +74,8 @@ export interface IAddressType {
   phone: number;
   default: boolean;
 }
+export interface ICategoryType {
+  _id: 1;
+  name: string;
+  img: Image;
+}

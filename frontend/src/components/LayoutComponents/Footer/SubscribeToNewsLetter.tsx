@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 function SubscribeToNewsLetter({ className }: { className?: string }) {
-  const { t, i18n } = useTranslation("Layout");
+  const { t } = useTranslation("Layout");
   const captchaRef = useRef(null);
   type FormValues = {
     email: string;
@@ -21,12 +21,10 @@ function SubscribeToNewsLetter({ className }: { className?: string }) {
     handleSubmit,
     formState: { errors, isValid },
     reset,
-    setValue,
   } = useForm<FormValues>({
     mode: "onChange",
     defaultValues: {
       email: "",
-      not_ropot: "yes",
       platform: "website",
     },
   });
@@ -38,25 +36,25 @@ function SubscribeToNewsLetter({ className }: { className?: string }) {
   } = usePostData(
     true,
     () => {
-      captchaRef?.current?.reset();
-      //reset();
+      //captchaRef?.current?.reset();
+      reset();
     },
     false,
     () => {
-      captchaRef?.current?.reset();
+      //captchaRef?.current?.reset();
     }
   );
 
   const onSubmit = async (data: FormValues) => {
-    try {
-      //await captchaRef?.current?.executeAsync();
-      mutate({ api: import.meta.env.VITE_SUBSCRIBE, data: data });
+    mutate({ api: import.meta.env.VITE_SUBSCRIBE_TO_NEWSLETTER, data: data });
+    /* try {
+      await captchaRef?.current?.executeAsync();
     } catch (error) {
       console.log(error);
       toast.error(
         "Cannot contact reCAPTCHA. Check your connection and try again."
       );
-    }
+    } */
   };
   return (
     <form
@@ -64,9 +62,9 @@ function SubscribeToNewsLetter({ className }: { className?: string }) {
       method="post"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex shadow-xl border-background border-2 rounded-[8px] overflow-hidden">
+      <div className="flex shadow-xl border-background border-2 rounded-[8px] overflow-hidden ">
         <input
-          className="dark-bg-inputs w-full shadow-none focus:shadow-none rounded-r-none  rtl:rounded-l-none "
+          className="dark-bg-inputs w-full shadow-none focus:shadow-none rounded-r-none  rtl:rounded-l-none  dark:!text-foreground  dark:placeholder:!text-foreground"
           type="text"
           placeholder={t("Footer.email.placeholder")}
           autoComplete="off"
@@ -79,7 +77,9 @@ function SubscribeToNewsLetter({ className }: { className?: string }) {
           disabled={!isValid}
           type="submit"
           className={`  text-background bg-primary-foreground rounded-r-[6px] rtl:rounded-l-[6px] rtl:rounded-r-none  w-[105px] shrink-0  flex-center h-10 ${
-            isValid ? "opacity-100" : "opacity-100 cursor-not-allowed"
+            isValid
+              ? "opacity-100"
+              : "opacity-100 cursor-not-allowed  dark:!bg-foreground"
           }`}
         >
           {isPending ? (
@@ -103,7 +103,8 @@ function SubscribeToNewsLetter({ className }: { className?: string }) {
           </p>
         )
       }
-      {/*  <Captcha
+      <div className="!absolute right-0 bottom-0">
+        {/*  <Captcha
         refs={captchaRef}
         lang={i18n.language}
         ServerError={
@@ -113,6 +114,7 @@ function SubscribeToNewsLetter({ className }: { className?: string }) {
             : null
         }
       /> */}
+      </div>
     </form>
   );
 }

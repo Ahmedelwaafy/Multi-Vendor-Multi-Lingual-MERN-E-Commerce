@@ -67,7 +67,7 @@ export const useFetchData = (
 
   const useQueryOptions = {
     select: (data: any) => {
-      return select ? data[0] : data;
+      return select ? data?.data : data;
     },
     refetchOnMount: false,
     refetchOnWindowFocus: false,

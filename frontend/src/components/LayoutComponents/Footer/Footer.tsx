@@ -5,99 +5,60 @@ import {
   faXTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import LangLink from "@/components/MainComponents/LangLink.tsx";
-import { useFetchData, usePostData } from "@/Hooks/useAxios";
 import { Container, Logo } from "@/components/MainComponents";
-import SubscribeToNewsLetter from "./SubscribeToNewsLetter";
-import { categories } from "@/constants";
+import LangLink from "@/components/MainComponents/LangLink.tsx";
+import { useFetchData } from "@/Hooks/useAxios";
+import { ICategoryType } from "@/types/CardsTypes";
 import { PUBLIC } from "@/Utilities/Constants/Queries";
+import { useTranslation } from "react-i18next";
+import SubscribeToNewsLetter from "./SubscribeToNewsLetter";
 
 function Footer() {
   const { t } = useTranslation("Layout");
- const { data } = useFetchData(
-   PUBLIC.FOOTER,
-   import.meta.env.VITE_GET_FOOTER,
-   false,
-   "",
-   30 * 60 * 1000,
-   5 * 60 * 1000,
-   true,
-   true
- );
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    reset,
-  } = useForm({
-    mode: "onChange",
-    defaultValues: {
-      email: "",
-      from: "Web",
-    },
-  });
-  const {
-    mutate,
-    isPending,
-    error: ServerErrors,
-  } = usePostData(true, () => {
-    reset();
-  });
+
   const { data } = useFetchData(
-    "Footer",
-    import.meta.env.VITE_FOOTER,
+    PUBLIC.FOOTER,
+    import.meta.env.VITE_GET_FOOTER,
     false,
     "",
-    30 * 60 * 1000,
-    5 * 60 * 1000
+    5 * 60 * 1000,
+    5 * 60 * 1000,
+    true,
+    true
   );
-
-  const onSubmit = (data) => {
-    mutate({ api: import.meta.env.VITE_SUBSCRIBE, data: data });
-  };
 
   return (
     <footer
       /* style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.9))`,
       }} */
-      className="relative custom__pattern w-full h-auto text- pt-40 ss:pt-44 pb-10 mt-44  rounded-t- hover: rounded-t-3xl transition-all duration-1000 ease-linear  bg-primary-foreground"
+      className="relative custom__pattern w-full h-auto text- pt-40 ss:pt-44 pb-10 mt-44  rounded-t- hover: rounded-t-3xl transition-all duration-1000 ease-linear  bg-primary-foreground "
     >
       <Container>
-        <div className="absolute__banner  w-3/4 absolute   lg:min-h-[208px] top-0 -translate-y-1/2 left-1/2 -translate-x-1/2   rounded-full lg:rounded-xl overflow-hidden bg">
+        <div className="absolute__banner  w-3/4 absolute   lg:min-h-[208px] top-0 -translate-y-1/2 left-1/2 -translate-x-1/2   rounded-full lg:rounded-xl overflow-hidden bg ">
           <div className="banner__wrapper relative w-full h-52 lg:h-64 lg:bg-primary flex-col-center lg:px-10 ">
-            <div className="absolute__banner--top bg-primary-foreground lg:bg-transparent custom__pattern h-1/2 lg:h-1/3 w-full px-10 lg:px-0 flex items-end text-background lg:items-center ">
-              <h3 className="text-4xl ss:text-2xl font-bold lg:text-center line-clamp-2 w-3/6 lg:w-full ">
-                Lorem ipsum dolor sit
-                {data?.top_banner?.big_text}
+            <div className="absolute__banner--top bg-primary-foreground lg:bg-transparent custom__pattern h-1/2 lg:h-1/3 w-full px-10 lg:px-0 flex items-end text-background lg:items-center">
+              <h3 className="text-4xl ss:text-2xl font-bold lg:text-center line-clamp-2 w-3/6 lg:w-full  dark:!text-foreground">
+                {data?.data?.topBanner?.title}
               </h3>
             </div>
             <div className="absolute__banner--bottom bg-background text-primary-foreground h-1/2 lg:h-1/3 w-full px-10 lg:px-0 flex items-start lg:bg-transparent lg:text-background lg:items-center">
-              <h4 className="lg:text-center line-clamp-2 w-3/6 lg:w-full ">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui
-                minima non recusa ndae.sit amet consectetur adipisicing elit.
-                Qui minima non recusandae.
-                {data?.top_banner?.small_text}
+              <h4 className="lg:text-center line-clamp-2 w-3/6 lg:w-full  dark:!text-foreground">
+                {data?.data?.topBanner?.subTitle}
               </h4>
             </div>
             <SubscribeToNewsLetter className="absolute right-10 rtl:right-auto rtl:left-10 top-1/2 -translate-y-1/2 mt-3 lg:static lg:-translate-y-0" />
           </div>
         </div>
-        <section className="footer-content-grid grid grid-cols-auto_fit gap-[30px] h-full   text-background ">
+        <section className="footer-content-grid grid grid-cols-auto_fit gap-[30px] h-full   text-background  dark:!text-foreground">
           <div className="footer-col1-logo  h-full flex flex-col gap-4 ss:items-center  ">
             <Logo />
 
-            <p className="text-base text- justify font-sub-heading w-fit opacity80 ss:text-center line-clamp-3 ">
-              {data?.about?.about}
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Repudiandae iusto asperiores laudantium nisi natus consequuntur
-              quas temporibus magnam rem? Nemo?
+            <p className="text-base text- justify font-sub-heading w-fit opacity80 ss:text-center line-clamp-6 ">
+              {data?.data?.about}
             </p>
             <div className="socials w-fit flex  items-center gap-4 ">
               <Link rel="noreferrer" target="_blank" to={data?.facebook}>
@@ -190,15 +151,18 @@ function Footer() {
             </h2>
 
             <ul className="  h-full w-full flex flex-col items-start  justify-start gap-7 ss:items-center ">
-              {categories?.map((category) => (
+              {data?.data?.categories?.map((category: ICategoryType) => (
                 <li
-                  key={category}
+                  key={category?._id}
                   className="w-fit opacity-80 hover:opacity-100 trns   hover:translate-x-3 hover:scale-105"
                 >
                   <Link
                     rel="noreferrer"
                     target="_blank"
-                    to={`/categories/${category?.name}`}
+                    to={`/categories/${category?._id}/${category?.name?.replace(
+                      /\s+/g,
+                      "-"
+                    )}`}
                     className="truncate"
                   >
                     {category?.name}
@@ -266,7 +230,7 @@ function Footer() {
       <Container className="">
         <div className="footer_bottom flex  md:flex-col md:items-center gap-7 justify-between items-center px-3 ">
           <h5 className="text-background text-sm md:text-center">
-            © Copyright 2024 Sacramento | Powered by {""}
+            {data?.data?.copyright}
             <Link
               rel="noreferrer"
               target="_blank"
@@ -279,21 +243,25 @@ function Footer() {
           </h5>
           <div className="payment__options flex gap-7 ss:gap-5">
             <img
+              loading="lazy"
               className="w-16 ss:w-14 shrink-0"
               src="/assets/images/Mastercard.png"
               alt="Mastercard"
             />
             <img
+              loading="lazy"
               className="w-16 ss:w-14 shrink-0"
               src="/assets/images/visa.jpg"
               alt="Mastercard"
             />
             <img
+              loading="lazy"
               className="w-16 ss:w-14 shrink-0"
               src="/assets/images/Paypal.png"
               alt="Mastercard"
             />
             <img
+              loading="lazy"
               className="w-16 ss:w-14 shrink-0"
               src="../../../../public/assets/images/Stripe.png"
               alt="Mastercard"

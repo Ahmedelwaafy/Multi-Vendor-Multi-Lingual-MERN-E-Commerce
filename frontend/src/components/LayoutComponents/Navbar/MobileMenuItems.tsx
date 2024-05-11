@@ -20,15 +20,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { LangLink, LangNavLink, Logo } from "@/components/MainComponents";
 import { useState } from "react";
-import { categories, brands } from "@/constants";
+import { ICategoryType, Image } from "@/types/CardsTypes";
 
 function MobileMenuItems({
   t,
   lng,
   className,
+  categories,
+  brands,
 }: {
   t: TFunction;
   lng: string;
+  categories: ICategoryType[];
+  brands: { _id: string; name: string; avatar: Image }[];
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -75,8 +79,8 @@ function MobileMenuItems({
                         <ul className="w-full flex-col-center gap-7 mt-7">
                           {categories?.map((category) => (
                             <LangLink
-                              className={` trns hover:scale-90 rounded-full px-4 py-2 h-10 border-2 border-secondary w-40             hover:bg-secondary hover:text-background flex-center`}
-                              key={category?.id}
+                              className={` trns hover:scale-90 rounded-full px-4 py-2 h-10 border-2 border-secondary w-48  text-center  hover:bg-secondary hover:text-background flex-center`}
+                              key={category?._id}
                               to={`/${category?.name}`}
                             >
                               {category?.name}
@@ -102,13 +106,16 @@ function MobileMenuItems({
                       <AccordionContent>
                         {" "}
                         <ul className="w-full flex-col-center gap-7 mt-7">
-                          {brands?.map((category) => (
+                          {brands?.map((brand) => (
                             <LangLink
-                              className={` trns hover:scale-90 rounded-full px-4 py-2 h-10 border-2 border-secondary w-40             hover:bg-secondary hover:text-background flex-center`}
-                              key={category?.id}
-                              to={`/${category?.name}`}
+                              className={` trns hover:scale-90 rounded-full px-4 py-2 h-10 border-2 border-secondary w-40  hover:bg-secondary hover:text-background flex-center`}
+                              key={brand?._id}
+                              to={`/brands/${brand?._id}/${brand?.name?.replace(
+                                /\s+/g,
+                                "-"
+                              )}`}
                             >
-                              {category?.name}
+                              {brand?.name}
                             </LangLink>
                           ))}
                         </ul>

@@ -44,7 +44,7 @@ function NavSearch({
   }, [searchParams]);
 
   return (
-    <div className={cn("w-[500px] lg:w-[330px] h-10", className)}>
+    <div className={cn("w-[500px] lg:w-[330px] h-10 ", className)}>
       <label
         className="relative h-full w-full text-primary"
         htmlFor="NavSearch"
@@ -67,12 +67,12 @@ function NavSearch({
             }
           >
             <FontAwesomeIcon
-              className="w-full max-w-full max-h-full "
+              className="w-full max-w-full max-h-full  dark:!text-foreground"
               icon={faMagnifyingGlass}
             />
           </Link>
           <span
-            className={`  w-fit trns font- ${
+            className={`  w-fit trns font-  dark:!text-foreground dark:opacity-90 ${
               filteredText || !togglePlaceholder
                 ? "opacity-0 translate-x-14 rtl:-translate-x-14"
                 : "opacity-50 "

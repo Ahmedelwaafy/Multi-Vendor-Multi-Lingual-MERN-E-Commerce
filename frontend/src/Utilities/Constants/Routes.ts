@@ -13,15 +13,19 @@ export const PublicRoutes = [
     lazy: () => import("../../Pages/Public/ProductDetails/ProductDetails.tsx"),
   },
   {
+    path: "categories/:categoryID/*",
+    lazy: () => import("../../Pages/Public/Products/Products.tsx"),
+  },
+  {
     path: "best-selling",
     lazy: () => import("../../Pages/Public/BestSelling/BestSelling.tsx"),
   },
   {
-    path: "vendors",
+    path: "brand",
     lazy: () => import("../../Pages/Public/Vendors/Vendors.tsx"),
   },
   {
-    path: "vendors/:vendorID/*",
+    path: "brands/:brandID/*",
     lazy: () => import("../../Pages/Public/VendorDetails/VendorDetails.tsx"),
   },
   {

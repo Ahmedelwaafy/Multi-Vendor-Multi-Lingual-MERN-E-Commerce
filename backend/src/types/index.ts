@@ -174,3 +174,8 @@ export interface categoryType {
   img: Image;
   createdAt: Date;
 }
+export interface subscriberType {
+  email: string;
+  platform: string;
+  createdAt: Date;
+}

@@ -17,6 +17,7 @@ import MenuItems from "./NavMenuItems";
 import NavSearch from "./NavSearch";
 import { useFetchData } from "@/Hooks/useAxios";
 import { PUBLIC } from "@/Utilities/Constants/Queries";
+import { categories } from '../../../../../backend/src/Utils/constants';
 
 function Navbar({ vendor }: { vendor?: boolean }) {
   const { t, i18n } = useTranslation("Layout");
@@ -37,7 +38,7 @@ function Navbar({ vendor }: { vendor?: boolean }) {
     import.meta.env.VITE_GET_NAVBAR,
     false,
     "",
-    30 * 60 * 1000,
+    5 * 60 * 1000,
     5 * 60 * 1000,
     true,
     true
@@ -46,7 +47,7 @@ function Navbar({ vendor }: { vendor?: boolean }) {
     <>
       <header className={` ${vendor && "sticky top-0 z-50"}`}>
         <section
-          className={`Navbar__top w-full h-20 ss:h-24 bg-primary text-background z-50`}
+          className={`Navbar__top w-full h-20 ss:h-24 bg-primary dark:bg-muted text-background z-50`}
         >
           <Container className=" w-full h-full items-center flex justify-between ss:flex-col ss:justify-center ss:gap-3">
             <div className="flex items-center gap-5">
@@ -102,7 +103,7 @@ function Navbar({ vendor }: { vendor?: boolean }) {
         </section>
       </header>
       <section
-        className={`Navbar__mid h-9 bg- sticky  custom__pattern z-50 ${
+        className={`Navbar__mid h-9 bg- sticky  custom__pattern z-50  ${
           vendor ? " top-20 ss:top-24 shadow-md" : "top-0"
         }`}
       >
@@ -118,17 +119,25 @@ function Navbar({ vendor }: { vendor?: boolean }) {
         </Container>
       </section>
       {!vendor && (
-        <nav className="Navbar__bottom h-16 bg-secondary sticky top-9 z-50 shadow-xl border-b border-b-background">
+        <nav className="Navbar__bottom h-16 bg-secondary dark:bg-muted sticky top-9 z-50 shadow-xl border-b border-b-background">
           <Container className="w-full h-full flex items-center justify-between gap-3 ">
             <div className="Navbar__bottom--actions flex gap-5 items-center text-background">
               <Wishlist t={t} lng={lng} />
               <Cart t={t} lng={lng} />
             </div>
-            <MenuItems t={t} lng={lng} className="md:hidden" />
+            <MenuItems
+              t={t}
+              lng={lng}
+              className="md:hidden"
+              categories={data?.data?.categories}
+              brands={data?.data?.brands}
+            />
             <MobileMenuItems
               t={t}
               lng={lng}
               className="hidden md:block text-background "
+              categories={data?.data?.categories}
+              brands={data?.data?.brands}
             />
 
             <NavDropdownMenu t={t} lng={lng} />

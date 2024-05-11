@@ -14,15 +14,19 @@ import { cn } from "@/lib/utils";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TFunction } from "i18next";
-import { categories, brands } from "@/constants";
+import { ICategoryType, Image } from "@/types/CardsTypes";
 
 export default function MenuItems({
   t,
   lng,
   className,
+  categories,
+  brands,
 }: {
   t: TFunction;
   lng: string;
+  categories: ICategoryType[];
+  brands: { _id: string; name: string; avatar: Image }[];
   className?: string;
 }) {
   return (
@@ -45,14 +49,20 @@ export default function MenuItems({
             {t("Navbar.items.categories")}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="w-[600px] lg:w-[400px] grid grid-cols-3 lg:grid-cols-2 gap-3 p-6 ">
+            <ul className="w-[600px] lg:w-[400px] grid grid-cols-3 lg:grid-cols-2 gap-3 p-6  ">
               {categories?.map((category) => (
                 <ListItem
-                  key={category?.id}
-                  href="/docs"
-                  //title={category?.name}
+                  key={category?._id}
+                  href={`/${lng}/categories/${
+                    category?._id
+                  }/${category?.name?.replace(/\s+/g, "-")}`}
                 >
-                  <FontAwesomeIcon className="" icon={faDollarSign} />
+                  <img
+                    className="size-10 shrink-0 rounded-md object-cover"
+                    loading="lazy"
+                    src={category?.img?.url}
+                    alt={category?.name}
+                  />
                   {category?.name}
                 </ListItem>
               ))}
@@ -67,12 +77,18 @@ export default function MenuItems({
             <ul className="w-[600px] lg:w-[400px] grid grid-cols-3 lg:grid-cols-2 gap-3 p-6 ">
               {brands?.map((brand) => (
                 <ListItem
-                  //className="h-28 rounded-xl"
-                  key={brand?.id}
-                  href="/docs"
-                  //title={brand?.name}
+                  key={brand?._id}
+                  href={`/${lng}/brands/${brand?._id}/${brand?.name?.replace(
+                    /\s+/g,
+                    "-"
+                  )}`}
                 >
-                  <FontAwesomeIcon className="" icon={faDollarSign} />
+                  <img
+                    className="size-10 shrink-0 rounded-md object-cover"
+                    loading="lazy"
+                    src={brand?.avatar?.url}
+                    alt={brand?.name}
+                  />
                   {brand?.name}
                 </ListItem>
               ))}
@@ -101,13 +117,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none text-secondary transition-colors hover:bg-secondary hover:text-background focus:bg-secondary focus:text-background h-20 flex-col-center shadow-sm border border-secondary ",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none text-secondary transition-colors hover:bg-secondary hover:!text-background focus:bg-secondary focus:text-background h-20 flex-col-center shadow-sm border border-secondary ",
             className
           )}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <div className="line-clamp-2 text-sm leading-snug text-muted-foreground w-full flex justify-center gap-3">
+          <div className="line-clamp-2 text-sm leading-snug  w-full flex justify-start items-center gap-3">
             {children}
           </div>
         </a>

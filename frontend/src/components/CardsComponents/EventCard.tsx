@@ -21,6 +21,7 @@ function EventCard({
     >
       <div className="event__left w-full  ">
         <img
+          loading="lazy"
           className="w-10/12 sm:w-full object-cover max-w-[550px]"
           src={event?.images?.[0]?.url}
           alt={event?.name}

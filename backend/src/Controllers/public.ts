@@ -6,7 +6,7 @@ import Slider from "../Models/slider";
 import Product from "../Models/product";
 import Event from "../Models/event";
 import Category from "../Models/category";
-import { PipelineStage } from "mongoose";
+import Subscriber from "../Models/subscriber";
 
 //! ----- homePage controller -----
 
@@ -98,9 +98,15 @@ export const getNavbar = asyncErrorHandler(
       categories,
       req.language
     );
+    const vendors = await Vendor.find().select("name avatar").limit(6);
+    const localizedVendors = Vendor.schema.methods.toJSONLocalizedOnly(
+      vendors,
+      req.language
+    );
     res.status(200).json({
       success: true,
-      data: { categories: localizedCategories },
+      data: { categories: localizedCategories, brands: localizedVendors },
+      title: req.t("footer.topBanner.title", { ns: "static" }),
     });
   }
 );
@@ -113,9 +119,44 @@ export const getFooter = asyncErrorHandler(
       categories,
       req.language
     );
+    const currentYear = new Date().getFullYear();
+
     res.status(200).json({
       success: true,
-      data: { categories: localizedCategories },
+      data: {
+        categories: localizedCategories,
+        topBanner: {
+          title: req.t("footer.topBanner.title", { ns: "static" }),
+          subTitle: req.t("footer.topBanner.subTitle", { ns: "static" }),
+        },
+        about: req.t("footer.about", { ns: "static" }),
+        copyright: req.t("footer.copyright", {
+          ns: "static",
+          year: currentYear,
+          website_name: "Sacramento",
+        }),
+      },
+    });
+  }
+);
+
+//! ----- footer controller -----
+
+export const subscribeToNewsletter = asyncErrorHandler(
+  async (req: CustomRequest, res: Response, next: NextFunction) => {
+     const subscriberExists = await Subscriber.findOne({ email:req.body.email });
+
+     if (subscriberExists) {
+       const error = new customError(req.t("subscriber_already_exists"), 400);
+       return next(error);
+     }
+
+    const subscriber = await Subscriber.create({...req.body});
+    
+
+    res.status(200).json({
+      success: true,
+      message: req.t("added_to_newsletter", { ns: "success" }),
     });
   }
 );

@@ -1,0 +1,10 @@
+{
+  "footer": {
+    "topBanner": {
+      "title": "Subscribe to our newsletter",
+      "subTitle": "Get all the latest information on events, sales and offers."
+    },
+    "about": "Sacramento is a Multi-Vendor Multi-Lingual MERN E-Commerce and a leading provider of online shopping. We have over 1000s of products from top brands.",
+    "copyright": "© Copyright {{year}} {{website_name}} | Developed by "
+  }
+}

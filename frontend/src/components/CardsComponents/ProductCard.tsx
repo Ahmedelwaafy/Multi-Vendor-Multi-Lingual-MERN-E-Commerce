@@ -45,6 +45,7 @@ function ProductCard({
         className="product__img--wrapper group w-full h-60  overflow-hidden block relative"
       >
         <img
+          loading="lazy"
           className="w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-110 object-cover"
           src={product.images[0]?.url}
           alt={product.name}

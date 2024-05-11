@@ -9,8 +9,8 @@ i18next
     fallbackLng: "en",
     lng: "en",
     preload: ["en", "ar"],
-    ns: ["validations", "success", "error"], 
-    defaultNS: "validations", 
+    ns: ["validations", "success", "error", "static"],
+    defaultNS: "validations",
     backend: {
       loadPath: `./src/locales/{{lng}}/{{ns}}.json`,
     },

@@ -13,5 +13,6 @@
   "login_provide_email_pass": "Please provide email and password",
   "incorrect_email_pass": "Incorrect email or password",
   "login_success": "Logged in Successfully",
-  "wrong_vendor_id": "The vendor no longer exists"
+  "wrong_vendor_id": "The vendor no longer exists",
+  "subscriber_already_exists": "you are already a subscriber!"
 }
