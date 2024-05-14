@@ -61,7 +61,7 @@ function NewArrivals({ data, t }: props) {
             {data?.map((slide) => (
               <swiper-slide key={slide?._id}>
                 <div className="w-full flex justify-center">
-                  <div className="relative w-9/12 max-w-[400px] max-h-[450px] rounded-[30px] overflow-hidden border  group">
+                  <div className="relative w-9/12 max-w-[400px] max-h-[450px] rounded-[30px] overflow-hidden border  group bg-slate-100">
                     <img
                       className="w-full  object-cover"
                       src={slide?.images[0]?.url}
