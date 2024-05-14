@@ -105,7 +105,7 @@ function ProductCard({
                     /\s+/g,
                     "-"
                   )}`}
-                  className=" mb-3 line-clamp-2 font-semibold text-xl "
+                  className=" mb-3 line-clamp-2 font-semibold text-xl text-start"
                 >
                   {product?.name}
                 </LangLink>

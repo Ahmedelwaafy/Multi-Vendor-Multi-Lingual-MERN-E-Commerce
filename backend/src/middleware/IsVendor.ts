@@ -34,6 +34,8 @@ export default asyncErrorHandler(
     //vendor data is already localized
     //req.localizedVendor = localizedVendor;
     //vendor data is not localized (en + ar)
+    //console.log("test", localizedVendor);
+
     req.vendor = localizedVendor;
     next();
   }

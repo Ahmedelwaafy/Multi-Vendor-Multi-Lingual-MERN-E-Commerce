@@ -27,6 +27,8 @@ export const addProduct = asyncErrorHandler(
 );
 export const getVendorProducts = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
+    console.log("test",req.vendor);
+    
     const products = await Product.find({
       vendorID: req.vendor._id.toString(),
     });
@@ -36,7 +38,7 @@ export const getVendorProducts = asyncErrorHandler(
     );
     res.status(200).json({
       success: true,
-      products: localizedProducts,
+      products: "localizedProducts",
     });
   }
 );
