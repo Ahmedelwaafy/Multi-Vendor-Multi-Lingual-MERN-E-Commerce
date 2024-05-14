@@ -40,10 +40,12 @@ export const getHomePage = asyncErrorHandler(
       );
 
     const event = await Event.find().sort({ createdAt: -1 }).limit(1);
+
     const localizedEvent = Event.schema.methods.toJSONLocalizedOnly(
       event,
       req.language
     );
+
     res.status(200).json({
       success: true,
       data: {
@@ -144,15 +146,16 @@ export const getFooter = asyncErrorHandler(
 
 export const subscribeToNewsletter = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
-     const subscriberExists = await Subscriber.findOne({ email:req.body.email });
+    const subscriberExists = await Subscriber.findOne({
+      email: req.body.email,
+    });
 
-     if (subscriberExists) {
-       const error = new customError(req.t("subscriber_already_exists"), 400);
-       return next(error);
-     }
+    if (subscriberExists) {
+      const error = new customError(req.t("subscriber_already_exists"), 400);
+      return next(error);
+    }
 
-    const subscriber = await Subscriber.create({...req.body});
-    
+    const subscriber = await Subscriber.create({ ...req.body });
 
     res.status(200).json({
       success: true,

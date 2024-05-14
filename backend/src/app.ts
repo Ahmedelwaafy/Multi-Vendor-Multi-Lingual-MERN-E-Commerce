@@ -44,7 +44,7 @@ app.use(
 );
 
 let limiter = rateLimit({
-  max: 200,
+  max: 400,
   windowMs: 60 * 60 * 1000,
   message: "Too many requests from this IP, please try again in an hour!",
 });

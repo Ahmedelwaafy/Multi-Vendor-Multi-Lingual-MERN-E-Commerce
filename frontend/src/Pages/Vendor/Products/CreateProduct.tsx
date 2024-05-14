@@ -8,7 +8,7 @@ import {
 } from "@/components/FormComponents";
 import Captcha from "@/components/FormComponents/Captcha";
 import { Heading, HelmetTags } from "@/components/MainComponents";
-import { categories } from "@/constants";
+import { categories, PATTERNS } from "@/constants";
 import { usePostData } from "@/Hooks/useAxios";
 import { cn } from "@/lib/utils";
 import {
@@ -52,10 +52,10 @@ export function Component() {
       description_en: "description en",
       description_ar: "وصف",
       category: "4",
-      tags: "tags, tags2",
-      price: "55555",
+      tags: "T-Shirt, Soft ",
+      price: "250",
       discount: 0,
-      stock: "7588",
+      stock: "20",
       images: [],
     },
   });
@@ -172,7 +172,7 @@ export function Component() {
                   placeholder={t("form.name_en.placeholder")}
                   ServerErrors={ServerErrors}
                   className="w-full"
-                  validations={{ pattern: /^[A-Za-z\d\s]+$/ }}
+                  validations={{ pattern: PATTERNS.PRODUCT_NAME_EN }}
                   icon={faCartFlatbed}
                 />
                 {/**Arabic Name  */}
@@ -183,7 +183,7 @@ export function Component() {
                   placeholder={t("form.name_ar.placeholder")}
                   ServerErrors={ServerErrors}
                   className="w-full "
-                  validations={{ pattern: /^[؀-ۿ\d\s]+$/ }}
+                  validations={{ pattern: PATTERNS.PRODUCT_NAME_AR }}
                   icon={faCartFlatbed}
                 />
                 {/**English Description  */}
@@ -194,7 +194,7 @@ export function Component() {
                   name="description_en"
                   ServerErrors={ServerErrors}
                   rows={2}
-                  validations={{ pattern: /^[A-Za-z\d\s]+$/ }}
+                  validations={{ pattern: PATTERNS.PRODUCT_NAME_EN }}
                 />
                 {/**Arabic Description  */}
                 <TextareaComponent
@@ -205,7 +205,7 @@ export function Component() {
                   ServerErrors={ServerErrors}
                   rows={2}
                   className="mt-6"
-                  validations={{ pattern: /^[؀-ۿ\d\s]+$/ }}
+                  validations={{ pattern: PATTERNS.PRODUCT_NAME_AR }}
                 />
               </div>
               <div className="step__two w-1/3 px-1 flex flex-col justify-start">

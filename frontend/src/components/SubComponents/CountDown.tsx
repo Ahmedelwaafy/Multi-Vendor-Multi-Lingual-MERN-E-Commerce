@@ -1,4 +1,6 @@
 import { usePostData } from "@/Hooks/useAxios";
+import { PUBLIC } from "@/Utilities/Constants/Queries";
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 type timeLeft = {
   days?: number;
@@ -8,7 +10,12 @@ type timeLeft = {
 };
 const CountDown = ({ data }: { data: { _id: number; endDate: Date } }) => {
   const [timeLeft, setTimeLeft] = useState<timeLeft>(calculateTimeLeft());
-  const { mutate } = usePostData();
+  const [requestSent, setRequestSent] = useState(false);
+  const queryClient = useQueryClient();
+
+  const { mutate } = usePostData(false, () => {
+    window.location.reload();
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,16 +26,26 @@ const CountDown = ({ data }: { data: { _id: number; endDate: Date } }) => {
       typeof timeLeft?.days === "undefined" &&
       typeof timeLeft?.hours === "undefined" &&
       typeof timeLeft?.minutes === "undefined" &&
-      typeof timeLeft?.seconds === "undefined"
+      typeof timeLeft?.seconds === "undefined" &&
+      !requestSent
     ) {
       mutate({
-        api: import.meta.env.VITE_VENDOR_DELETE_EVENT,
+        api: import.meta.env.VITE_DELETE_EXPIRED_EVENT,
         data: { eventId: data?._id },
         method: "DELETE",
       });
+      setRequestSent(true);
     }
     return () => clearTimeout(timer);
-  });
+  }, [
+    timeLeft.days,
+    timeLeft.hours,
+    timeLeft.minutes,
+    timeLeft.seconds,
+    requestSent,
+    mutate,
+    data._id,
+  ]);
 
   function calculateTimeLeft() {
     const difference = +new Date(data?.endDate) - +new Date();

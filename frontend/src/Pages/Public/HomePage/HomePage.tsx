@@ -41,10 +41,7 @@ export function Component() {
         title={t("best_deals")}
         data={data?.data?.bestDeals}
       />
-      <NewArrivals
-        t={t}
-        data={data?.data?.newArrivals}
-      />
+      <NewArrivals t={t} data={data?.data?.newArrivals} />
       <PopularEvents
         t={t}
         title={t("popular_events")}

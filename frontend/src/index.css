@@ -35,11 +35,11 @@ html:lang(ar) body {
     --foreground: #662ee3;
     /*     --foreground: #300AA4;
  */
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: #fcfafe;
+    --card-foreground: #662ee3;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: #fcfafe;
+    --popover-foreground: #662ee3;
 
     --primary: #9c43e9;
     --primary-foreground: #210861;
@@ -58,7 +58,7 @@ html:lang(ar) body {
 
     --border: 214.3 31.8% 91.4%;
     --input: #662ee3;
-    --ring: 222.2 84% 4.9%;
+    --ring: #662ee3;
 
     --radius: 0.5rem;
   }
@@ -67,7 +67,7 @@ html:lang(ar) body {
     --background: #3d1da0;
     --foreground: #fcfafe;
 
-    --card: 222.2 84% 4.9%;
+    --card: #662ee3;
     --card-foreground: 210 40% 98%;
 
     --popover: #3d1da0;

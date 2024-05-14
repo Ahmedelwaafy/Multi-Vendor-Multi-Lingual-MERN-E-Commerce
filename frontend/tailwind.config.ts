@@ -23,7 +23,7 @@ const config = {
         error: "#db2777",
         border: "hsl(var(--border))",
         input: "var(--input)",
-        ring: "hsl(var(--ring))",
+        ring: "var(--ring)",
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
@@ -51,8 +51,8 @@ const config = {
           foreground: "var(--popover-foreground)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
         },
       },
       borderRadius: {

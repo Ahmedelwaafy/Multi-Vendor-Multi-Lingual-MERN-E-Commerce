@@ -74,3 +74,33 @@ export const deleteVendorEvent = asyncErrorHandler(
     });
   }
 );
+export const deleteExpiredEvent = asyncErrorHandler(
+  async (req: CustomRequest, res: Response, next: NextFunction) => {
+    const event = await Event.findById(req.body.eventId);
+
+    //console.log(deletedEvent.vendorID.toString(), req.vendor._id.toString());
+//TODO: check if event is expired
+    if (!event) {
+      return next(
+        new customError(req.t("event_not_found", { ns: "error" }), 404)
+      );
+    }
+    const deletedEvent = await Event.findByIdAndDelete(req.body.eventId);
+
+    event.images.forEach((image) => {
+      deleteFile(`uploads/${image.url}`);
+    });
+    //console.log("deletedEvent", deletedEvent);
+
+    if (!deletedEvent) {
+      return next(
+        new customError(req.t("delete_event_failed", { ns: "error" }), 500)
+      );
+    }
+
+    res.status(200).json({
+      success: true,
+      message: req.t("event_deleted_successfully", { ns: "success" }),
+    });
+  }
+);

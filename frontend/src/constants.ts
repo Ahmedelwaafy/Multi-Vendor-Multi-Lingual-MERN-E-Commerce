@@ -1,3 +1,7 @@
+export const PATTERNS = {
+  PRODUCT_NAME_EN: "/^[A-Za-zds-',.]+$/",
+  PRODUCT_NAME_AR: "/^[؀-ۿds-,.]+$/",
+};
 export const categories = [
   {
     _id: 1,

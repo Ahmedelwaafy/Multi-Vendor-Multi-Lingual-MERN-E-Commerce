@@ -9,7 +9,7 @@ import {
 } from "@/components/FormComponents";
 import Captcha from "@/components/FormComponents/Captcha";
 import { Heading, HelmetTags } from "@/components/MainComponents";
-import { categories } from "@/constants";
+import { categories, PATTERNS } from "@/constants";
 import { usePostData } from "@/Hooks/useAxios";
 import { cn } from "@/lib/utils";
 import {
@@ -189,7 +189,7 @@ export function Component() {
                   placeholder={t("form.name_en.placeholder")}
                   ServerErrors={ServerErrors}
                   className="w-full"
-                  validations={{ pattern: /^[A-Za-z\d\s]+$/ }}
+                  validations={{ pattern: PATTERNS.PRODUCT_NAME_EN }}
                   icon={faCartFlatbed}
                 />
                 {/**Arabic Name  */}
@@ -200,7 +200,7 @@ export function Component() {
                   placeholder={t("form.name_ar.placeholder")}
                   ServerErrors={ServerErrors}
                   className="w-full "
-                  validations={{ pattern: /^[؀-ۿ\d\s]+$/ }}
+                  validations={{ pattern: PATTERNS.PRODUCT_NAME_AR }}
                   icon={faCartFlatbed}
                 />
                 {/**English Description  */}
@@ -211,7 +211,7 @@ export function Component() {
                   name="description_en"
                   ServerErrors={ServerErrors}
                   rows={2}
-                  validations={{ pattern: /^[A-Za-z\d\s]+$/ }}
+                  validations={{ pattern: PATTERNS.PRODUCT_NAME_EN }}
                 />
                 {/**Arabic Description  */}
                 <TextareaComponent
@@ -222,7 +222,7 @@ export function Component() {
                   ServerErrors={ServerErrors}
                   rows={2}
                   className="mt-6"
-                  validations={{ pattern: /^[؀-ۿ\d\s]+$/ }}
+                  validations={{ pattern: /^[؀-ۿ\d\s-]+$/ }}
                 />
               </div>
               <div className="step__two w-1/3 px-1 flex flex-col justify-start">
