@@ -26,7 +26,7 @@ const discountCodeSchema = new mongoose.Schema({
   maxPrice: {
     type: Number,
   },
-  vendorID: {
+  vendor: {
     type: String,
     required: true,
   },

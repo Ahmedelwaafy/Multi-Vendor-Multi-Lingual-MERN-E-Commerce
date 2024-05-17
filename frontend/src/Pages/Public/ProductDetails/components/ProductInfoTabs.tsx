@@ -4,12 +4,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ReviewCard } from "@/components/CardsComponents";
 import { VendorAvatar } from "@/components/SubComponents";
 import { Button } from "@/components/ui/button";
+import { IVendorType } from "@/types";
+import { FormatDate } from "@/lib/utils";
+import { LangLink } from "@/components/MainComponents";
 
 function ProductInfoTabs({
   product,
+  vendor,
   t,
 }: {
   product: IProductType;
+  vendor: Partial<IVendorType>;
   t: TFunction;
 }) {
   return (
@@ -48,33 +53,37 @@ function ProductInfoTabs({
           <div className="grow ">
             <VendorAvatar
               vendor={{
-                img: "https://github.com/vercel.png",
-                name: "Jumia Egypt",
-                rating: 3.5,
+                img: vendor?.avatar?.url as string,
+                name: vendor?.name as string,
+                rating: vendor?.rating as number,
               }}
               t={t}
             />
-            <h6 className="mt-5">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-              tempora et debitis repudiandae eius fugiat modi quibusdam nisi,
-              repellendus pariatur beatae, illum neque ullam non maxime
-              assumenda voluptas magni totam!
-            </h6>
+            <h6 className="mt-5">{vendor?.description}</h6>
           </div>
           <div className="flex flex-col gap-3 shrink-0">
             <h4>
-              <span className="font-semibold">{t("joined_on")}:</span> 15
-              Mar,2005
+              <span className="font-semibold">{t("joined_on")}:</span>{" "}
+              {FormatDate(vendor?.createdAt as Date)}
             </h4>
             <h4>
-              <span className="font-semibold">{t("total_products")}:</span> 15
-              Mar,2005
+              <span className="font-semibold">{t("total_products")}:</span>{" "}
+              {vendor?.totalProducts?.toLocaleString()}
             </h4>
             <h4>
-              <span className="font-semibold">{t("total_reviews")}:</span> 15
-              Mar,2005
+              <span className="font-semibold">{t("total_reviews")}:</span>{" "}
+              {vendor?.totalReviews}
             </h4>
-            <Button className="w-fit">{t("visit_shop")}</Button>
+            <Button className="w-fit" asChild>
+              <LangLink
+                to={`/brands/${vendor?._id}/${vendor?.name?.replace(
+                  /\s+/g,
+                  "-"
+                )}`}
+              >
+                {t("visit_shop")}
+              </LangLink>
+            </Button>
           </div>
         </TabsContent>
       </Tabs>

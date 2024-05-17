@@ -32,7 +32,7 @@ export interface IProductType {
   views: number;
   images: Image[];
   reviews: IReviewType[];
-  vendorID: string;
+  vendor: string;
   isFav: boolean;
   createdAt: string;
   originalPrice: number;
@@ -54,7 +54,7 @@ export interface IDiscountCodeType {
   value: number;
   maxUsage: number;
   usageCount: number;
-  vendorID: string;
+  vendor: string;
   ProductID: string;
   minPrice?: number;
   maxPrice?: number;

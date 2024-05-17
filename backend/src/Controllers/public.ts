@@ -25,7 +25,14 @@ export const getHomePage = asyncErrorHandler(
       bestDeals,
       req.language
     );
-    const newArrivals = await Product.find().sort({ createdAt: -1 }).limit(5);
+    const newArrivals = await Product.find()
+      .sort({ createdAt: -1 })
+      .populate(
+        "vendor",
+        "name avatar totalReviews rating totalProducts createdAt",
+        Vendor
+      )
+      .limit(5);
     const localizedNewArrivals = Product.schema.methods.toJSONLocalizedOnly(
       newArrivals,
       req.language

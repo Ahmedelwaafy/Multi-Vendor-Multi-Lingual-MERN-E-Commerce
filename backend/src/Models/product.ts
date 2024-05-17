@@ -76,58 +76,11 @@ const productSchema = new mongoose.Schema({
       },
     },
   ],
-  vendorID: { type: String, required: true },
+  vendor: { type: String, required: true },
   ratings: {
     type: Number,
+    default: 0,
   },
-  /* vendor: {
-    name: {
-      type: String,
-      required: [true, "Please enter vendor your name!"],
-      i18n: true,
-    },
-    description: {
-      type: String,
-      i18n: true,
-    },
-    email: {
-      type: String,
-      required: [true, "Please enter vendor an email."],
-    },
-    phone: {
-      type: Number,
-      required: [true, "Please enter your phone"],
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    avatar: {
-      public_id: {
-        type: String,
-        //required: true,
-      },
-      url: {
-        type: String,
-        //required: true,
-      },
-    },
-    views: {
-      type: Number,
-    },
-    totalReviews: {
-      type: Number,
-    },
-    rating: {
-      type: Number,
-    },
-    totalProducts: {
-      type: Number,
-    },
-    createdAt: {
-      type: Date,
-    },
-  }, */
   sold_out: {
     type: Number,
     default: 0,

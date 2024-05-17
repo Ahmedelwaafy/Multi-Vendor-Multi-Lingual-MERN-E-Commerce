@@ -61,12 +61,23 @@ export interface IVendorType {
     public_id: string;
     url: string;
   };
+  zipCode: number;
   views: number;
   totalReviews: number;
   rating: number;
   totalProducts: number;
-  createdAt: Date;
+  withdrawMethod?: object;
+  availableBalance?: number;
+  transactions?: Transaction[];
+  createdAt?: Date;
 }
+interface Transaction {
+  amount: number;
+  status?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
 export interface IHeadingsProps {
   children: React.ReactNode | string;
   className?: string;

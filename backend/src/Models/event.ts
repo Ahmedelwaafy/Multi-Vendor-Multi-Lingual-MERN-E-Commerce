@@ -56,7 +56,7 @@ const eventSchema = new mongoose.Schema({
       },
     },
   ],
-  vendorID: { type: String, required: true },
+  vendor: { type: String, required: true },
 
   sold_out: {
     type: Number,

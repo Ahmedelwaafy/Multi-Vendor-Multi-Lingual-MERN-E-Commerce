@@ -139,7 +139,7 @@ export interface productType {
   images: Image[];
   reviews: Review[];
   ratings?: number;
-  vendorID: string;
+  vendor: string;
   vendor: object;
   isFav: boolean;
   accepted: boolean;
@@ -156,7 +156,7 @@ export interface discountCodeType {
   value: number;
   maxUsage: number;
   usageCount: number;
-  vendorID: string;
+  vendor: string;
   ProductID: string;
   minPrice?: number;
   maxPrice?: number;

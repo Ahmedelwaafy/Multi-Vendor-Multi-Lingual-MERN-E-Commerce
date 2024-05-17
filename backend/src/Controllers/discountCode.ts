@@ -20,11 +20,11 @@ export const addDiscountCode = asyncErrorHandler(
       return next(error);
     }
     const product = await Product.findById(req.body.ProductID);
-    
+
     const discountCode = await DiscountCode.create({
       ...req.body,
       ProductName: product.name,
-      vendorID: req.vendor._id.toString(),
+      vendor: req.vendor._id.toString(),
     });
     res.status(200).json({
       success: true,
@@ -36,12 +36,13 @@ export const addDiscountCode = asyncErrorHandler(
 export const getVendorDiscountCodes = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const discountCodes = await DiscountCode.find({
-      vendorID: req.vendor._id.toString(),
+      vendor: req.vendor._id.toString(),
     });
- const localizedDiscountCodes = DiscountCode.schema.methods.toJSONLocalizedOnly(
-   discountCodes,
-   req.language
- );
+    const localizedDiscountCodes =
+      DiscountCode.schema.methods.toJSONLocalizedOnly(
+        discountCodes,
+        req.language
+      );
     res.status(200).json({
       success: true,
       discountCodes: localizedDiscountCodes,
@@ -52,13 +53,13 @@ export const deleteVendorDiscountCode = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const discountCode = await DiscountCode.findById(req.body.discountCodeId);
 
-    //console.log(deletedDiscountCode.vendorID.toString(), req.vendor._id.toString());
+    //console.log(deletedDiscountCode.vendor.toString(), req.vendor._id.toString());
 
     if (!discountCode) {
       return next(
         new customError(req.t("discountCode_not_found", { ns: "error" }), 404)
       );
-    } else if (discountCode.vendorID.toString() !== req.vendor._id.toString()) {
+    } else if (discountCode.vendor.toString() !== req.vendor._id.toString()) {
       return next(
         new customError(req.t("action_not_allowed", { ns: "error" }), 401)
       );

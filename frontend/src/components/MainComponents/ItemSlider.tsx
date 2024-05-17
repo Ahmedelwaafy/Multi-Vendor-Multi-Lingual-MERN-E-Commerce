@@ -61,13 +61,13 @@ function ItemSlider({ Slides, className }: IItemSliderProps) {
       watchSlidesProgress: true,
       breakpoints: {
         300: {
-          slidesPerView: Slides.length > 1 ? 2 : Slides.length,
+          slidesPerView: Slides?.length > 1 ? 2 : Slides?.length,
         },
         400: {
-          slidesPerView: Slides.length > 2 ? 3 : Slides.length,
+          slidesPerView: Slides?.length > 2 ? 3 : Slides?.length,
         },
         600: {
-          slidesPerView: Slides.length > 3 ? 4 : Slides.length,
+          slidesPerView: Slides?.length > 3 ? 4 : Slides?.length,
         },
       },
     };
@@ -96,7 +96,7 @@ function ItemSlider({ Slides, className }: IItemSliderProps) {
           {Slides?.map((slide) => (
             <swiper-slide key={slide?.id}>
               <div
-                className={`img-slider-wrapper w-full aspect-square   overflow-hidden cursor-pointer rounded-2xl `}
+                className={`img-slider-wrapper w-full aspect-square   overflow-hidden cursor-pointer rounded-2xl border bg-gray-100`}
               >
                 <img
                   className="w-full h-full object-cover max-h-[450px] max-w-[450px]"
@@ -129,11 +129,11 @@ function ItemSlider({ Slides, className }: IItemSliderProps) {
               {Slides?.map((slide) => (
                 <swiper-slide key={slide?.url}>
                   <div className="flex-center ">
-                    <div className="  slide__img--wrapper aspect-square  w-[120px] md:w-24 cursor-pointer opacity-80  trns border-2 border-transparent p-1  overflow-hidden shrink0 rounded-lg">
+                    <div className="  slide__img--wrapper aspect-square  w-[120px] md:w-24 cursor-pointer opacity-80  trns border-2 border-transparent p-1  overflow-hidden shrink0 rounded-lg  bg-gray-100">
                       <img
                         className="w-full h-full object-cover rounded-lg"
                         src={slide?.url}
-                        alt={slide?.src}
+                        alt={slide?.public_id}
                       />
                     </div>
                   </div>

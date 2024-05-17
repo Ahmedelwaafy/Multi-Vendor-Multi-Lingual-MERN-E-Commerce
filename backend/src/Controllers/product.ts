@@ -2,6 +2,7 @@ import { NextFunction, Response } from "express";
 import { CustomRequest } from "../types";
 import { asyncErrorHandler, customError, deleteFile } from "../Utils";
 import Product from "../Models/product";
+import Vendor from "../Models/vendor";
 
 export const addProduct = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
@@ -16,7 +17,7 @@ export const addProduct = asyncErrorHandler(
     const product = await Product.create({
       ...req.body,
       images,
-      vendorID: req.vendor._id.toString(),
+      vendor: req.vendor._id.toString(),
     });
     res.status(200).json({
       success: true,
@@ -27,10 +28,10 @@ export const addProduct = asyncErrorHandler(
 );
 export const getVendorProducts = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
-    console.log("test",req.vendor);
-    
+    console.log("test", req.vendor);
+
     const products = await Product.find({
-      vendorID: req.vendor._id.toString(),
+      vendor: req.vendor._id.toString(),
     });
     const localizedProducts = Product.schema.methods.toJSONLocalizedOnly(
       products,
@@ -47,13 +48,13 @@ export const deleteVendorProduct = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const product = await Product.findById(req.body.productId);
 
-    //console.log(deletedProduct.vendorID.toString(), req.vendor._id.toString());
+    //console.log(deletedProduct.vendor.toString(), req.vendor._id.toString());
 
     if (!product) {
       return next(
         new customError(req.t("product_not_found", { ns: "error" }), 404)
       );
-    } else if (product.vendorID.toString() !== req.vendor._id.toString()) {
+    } else if (product.vendor.toString() !== req.vendor._id.toString()) {
       return next(
         new customError(req.t("action_not_allowed", { ns: "error" }), 401)
       );
@@ -94,13 +95,37 @@ export const getAllProducts = asyncErrorHandler(
 export const getProductDetails = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const product = await Product.findById(req.params.productID);
+    if (!product) {
+      return next(
+        new customError(req.t("product_not_found", { ns: "error" }), 404)
+      );
+    }
+    const RelatedProducts = await Product.find({
+      category: product?.category,
+      _id: { $ne: product?._id },
+    }).limit(7);
+    const vendor = await Vendor.findById(product?.vendor).select(
+      "name description avatar totalReviews rating totalProducts createdAt"
+    );
     const localizedProduct = Product.schema.methods.toJSONLocalizedOnly(
       product,
       req.language
     );
+    const localizedRelatedProducts = Product.schema.methods.toJSONLocalizedOnly(
+      RelatedProducts,
+      req.language
+    );
+    const localizedVendor = Vendor.schema.methods.toJSONLocalizedOnly(
+      vendor,
+      req.language
+    );
     res.status(200).json({
       success: true,
-      product: localizedProduct,
+      data: {
+        product: localizedProduct,
+        vendor: localizedVendor,
+        RelatedProducts: localizedRelatedProducts,
+      },
     });
   }
 );

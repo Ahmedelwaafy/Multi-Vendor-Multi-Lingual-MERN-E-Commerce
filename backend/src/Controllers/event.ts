@@ -16,7 +16,7 @@ export const addEvent = asyncErrorHandler(
     const event = await Event.create({
       ...req.body,
       images,
-      vendorID: req.vendor._id.toString(),
+      vendor: req.vendor._id.toString(),
     });
     res.status(200).json({
       success: true,
@@ -28,7 +28,7 @@ export const addEvent = asyncErrorHandler(
 export const getVendorEvents = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const events = await Event.find({
-      vendorID: req.vendor._id.toString(),
+      vendor: req.vendor._id.toString(),
     });
     const localizedEvents = Event.schema.methods.toJSONLocalizedOnly(
       events,
@@ -44,13 +44,13 @@ export const deleteVendorEvent = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const event = await Event.findById(req.body.eventId);
 
-    //console.log(deletedEvent.vendorID.toString(), req.vendor._id.toString());
+    //console.log(deletedEvent.vendor.toString(), req.vendor._id.toString());
 
     if (!event) {
       return next(
         new customError(req.t("event_not_found", { ns: "error" }), 404)
       );
-    } else if (event.vendorID.toString() !== req.vendor._id.toString()) {
+    } else if (event.vendor.toString() !== req.vendor._id.toString()) {
       return next(
         new customError(req.t("action_not_allowed", { ns: "error" }), 401)
       );
@@ -78,8 +78,8 @@ export const deleteExpiredEvent = asyncErrorHandler(
   async (req: CustomRequest, res: Response, next: NextFunction) => {
     const event = await Event.findById(req.body.eventId);
 
-    //console.log(deletedEvent.vendorID.toString(), req.vendor._id.toString());
-//TODO: check if event is expired
+    //console.log(deletedEvent.vendor.toString(), req.vendor._id.toString());
+    //TODO: check if event is expired
     if (!event) {
       return next(
         new customError(req.t("event_not_found", { ns: "error" }), 404)

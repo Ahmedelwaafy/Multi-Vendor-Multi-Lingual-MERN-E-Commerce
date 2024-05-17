@@ -20,6 +20,10 @@
     "product_reviews": "Product Reviews",
     "seller_information": "Seller Information"
   },
+  "by": "By:",
+  "joined": "Joined",
+  "products": "Products",
+  "reviews": "Reviews",
   "no_reviews": "There are no Reviews!",
   "ratings": "Ratings",
   "joined_on": "Joined On",

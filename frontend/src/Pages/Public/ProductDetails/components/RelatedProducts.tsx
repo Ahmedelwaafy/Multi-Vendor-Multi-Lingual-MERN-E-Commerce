@@ -1,21 +1,21 @@
 import { ProductsSlider } from "@/components/MainComponents";
-import { products } from "@/constants";
 import { IProductType } from "@/types/CardsTypes";
 import { TFunction } from "i18next";
 
 function RelatedProducts({
-  product,
+  RelatedProducts,
   t,
 }: {
-  product: IProductType;
+  RelatedProducts: IProductType[];
   t: TFunction;
 }) {
+  if (RelatedProducts?.length === 0) return null;
   return (
     <section className="w-full">
-      <h3 className=" font-semibold text-3xl text-start">
+      <h3 className=" font-semibold text-3xl text-start mb-3">
         {t("related_products")}
       </h3>{" "}
-      <ProductsSlider Slides={products} t={t} />
+      <ProductsSlider Slides={RelatedProducts} t={t} />
     </section>
   );
 }

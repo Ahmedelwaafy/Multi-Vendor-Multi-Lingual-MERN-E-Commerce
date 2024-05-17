@@ -10,28 +10,24 @@ import { useTranslation } from "react-i18next";
 import { products } from "@/constants";
 import { PRODUCT } from "@/Utilities/Constants/Queries";
 import { useEffect } from "react";
+import { MainLoader } from "@/components/LayoutComponents";
 
 export function Component() {
   const { t, i18n } = useTranslation("ProductDetails");
-  const product = products[0];
   const { productID } = useParams();
 
-  const {
-    isPending,
-    error,
-    isPaused,
-    data,
-    //data: product,
-  } = useFetchData(
+  const { isPending, error, isPaused, data } = useFetchData(
     PRODUCT.PRODUCT_DETAILS,
     `${import.meta.env.VITE_SINGLE_PRODUCT_DETAILS}${productID}`,
-    false,
+    true,
     productID,
     5000,
     0,
     true,
     true
   );
+  console.log(data);
+
   const { mutate } = usePostData();
   useEffect(() => {
     mutate({
@@ -45,24 +41,24 @@ export function Component() {
   if (error?.response?.status === 404) {
     return <Navigate to={`/${i18n.language}/not-found`} />;
   }
-  /*  if (error || isPaused) {
+  if (error || isPaused) {
     return <ErrorMessage message={t("ErrorMessage")} />;
-  } */
-  /* if (isPending) {
-    return <Loader className="  h-[calc(100vh-135px)] mb-32" />;
-  } */
+  }
+  if (isPending) {
+    return <MainLoader />;
+  }
   return (
     <Container className="bg- mt-10 flex-col-center gap-14">
       <HelmetTags
-        title={product?.name + t("tab.title")}
-        description={product?.description || ""}
+        title={data?.product?.name + t("tab.title")}
+        description={data?.description || ""}
         canonical={`${i18n.language}/products/${
-          product?.id
-        }/${product?.name?.replace(/\s/g, "-")}`}
+          data?.product?.id
+        }/${data?.product?.name?.replace(/\s/g, "-")}`}
       />
-      <ProductShowcase product={product} t={t} />
-      <ProductInfoTabs product={product} t={t} />
-      <RelatedProducts product={product} t={t} />
+      <ProductShowcase product={data?.product} vendor={data?.vendor} t={t} />
+      <ProductInfoTabs product={data?.product} vendor={data?.vendor} t={t} />
+      <RelatedProducts RelatedProducts={data?.RelatedProducts} t={t} />
     </Container>
   );
 }

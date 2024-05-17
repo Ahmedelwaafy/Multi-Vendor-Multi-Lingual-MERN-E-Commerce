@@ -8,15 +8,18 @@ import {
   SendMsgToShop,
   VendorQuickViewPopover,
 } from "@/components/SubComponents";
+import { IVendorType } from "@/types";
 import { IProductType } from "@/types/CardsTypes";
 import { TFunction } from "i18next";
 import { useState } from "react";
 
 function ProductShowcase({
   product,
+  vendor,
   t,
 }: {
   product: IProductType;
+  vendor: Partial<IVendorType>;
   t: TFunction;
 }) {
   const [quantity, setQuantity] = useState(0);
@@ -37,9 +40,9 @@ function ProductShowcase({
           <h6 className="text-sm">
             {t("views_count", { count: product?.views })}
           </h6>
-          <AddToFavorites id={product?.id} is_fav={product?.is_fav} />
+          <AddToFavorites id={product?._id} is_fav={product?.isFav} />
         </div>
-        <h1 className="text-2xl font-semibold">{product?.name}</h1>
+        <h1 className="text-2xl font-semibold mt-2">{product?.name}</h1>
         <h2 className="opacity-70">{product?.description}</h2>
         <RatingComponent
           IMutable
@@ -52,17 +55,17 @@ function ProductShowcase({
             quantity={quantity}
             disabled={quantity === 0}
             setQuantity={setQuantity}
-            id={product?.id}
+            id={product?._id}
           />{" "}
-          <AddToCartBtn id={product?.id} type="button" t={t} />
+          <AddToCartBtn id={product?._id} type="button" t={t} />
         </div>{" "}
         <div className="vendor__info--actions flex items-center justify-between mt-7 xs:flex-col xs:items-start">
           <VendorQuickViewPopover
             t={t}
-            product={product}
+            vendor={vendor}
             className="text-secondary"
           />
-          <SendMsgToShop id={product?.shop_id} t={t} />
+          <SendMsgToShop id={product?.vendorID} t={t} />
         </div>
       </div>
     </section>

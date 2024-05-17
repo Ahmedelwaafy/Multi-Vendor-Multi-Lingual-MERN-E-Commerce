@@ -48,9 +48,10 @@ function ProductQuickViewPopUp({ t }: { t: TFunction }) {
             <div className="QuickViewPopUp__left h-full w-1/2 md:w-full flex-col-center gap-5 bg-muted rounded-3xl md:py-5 min-h-[410px] md:min-h-fit">
               <ProductQuickViewPopUpSlider data={product?.images} />
               <LangLink
-                to={`/vendors/${
-                  product?.shop_id
-                }/${product?.shop?.name?.replace(/\s+/g, "-")}`}
+                to={`/brands/${product?.shop_id}/${product?.shop?.name?.replace(
+                  /\s+/g,
+                  "-"
+                )}`}
                 className="flex justify-start items-center space-x-4"
               >
                 <Avatar>

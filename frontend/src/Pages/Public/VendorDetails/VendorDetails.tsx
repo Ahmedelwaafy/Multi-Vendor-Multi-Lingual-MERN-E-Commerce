@@ -46,7 +46,7 @@ export function Component() {
       <HelmetTags
         title={data?.vendor?.name + t("tab.title")}
         description={data?.vendor?.description || ""}
-        canonical={`${i18n.language}/vendors/${
+        canonical={`${i18n.language}/brands/${
           data?.vendor?._id
         }/${data?.vendor?.name?.replace(/\s/g, "-")}`}
       />
