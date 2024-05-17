@@ -6,7 +6,7 @@ import { SwiperOptions } from "swiper/types";
 
 register();
 type SingleSlide = {
-  id: number;
+  public_id: string;
   url: string;
 };
 type ProductQuickViewPopUpSliderProps = {
@@ -59,7 +59,7 @@ const ProductQuickViewPopUpSlider = ({
       </button>
       <swiper-container init={false} ref={swiperElRef}>
         {data?.map((slide) => (
-          <swiper-slide key={slide?.id}>
+          <swiper-slide key={slide?.public_id}>
             <img
               className=" size-64 object-cover "
               src={slide?.url}

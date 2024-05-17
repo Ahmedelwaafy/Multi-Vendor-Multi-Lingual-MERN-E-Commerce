@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import mongooseI18n from "mongoose-i18n-localize";
 import { productType } from "../types";
 import { categories } from "../Utils/constants";
+import Vendor from "./vendor";
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -95,6 +96,14 @@ productSchema.pre("save", async function (next) {
     return next();
   }
   this.category = categories.find((cat) => cat.id == +this.category)?.name;
+  next();
+});
+productSchema.pre("find", async function (next) {
+  this.populate(
+    "vendor",
+    "name avatar totalReviews rating totalProducts createdAt",
+    Vendor
+  );
   next();
 });
 productSchema.plugin(mongooseI18n, {

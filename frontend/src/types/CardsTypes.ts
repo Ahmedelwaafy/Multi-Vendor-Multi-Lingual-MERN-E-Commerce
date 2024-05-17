@@ -1,3 +1,5 @@
+import { IVendorType } from ".";
+
 interface User {
   img: string;
   name: string;
@@ -32,13 +34,13 @@ export interface IProductType {
   views: number;
   images: Image[];
   reviews: IReviewType[];
-  vendor: string;
+  vendor: IVendorType | string;
   isFav: boolean;
   createdAt: string;
   originalPrice: number;
   finalPrice: number;
+  sold_out: number;
   ratings?: number;
-  sold_out?: number;
   tags?: string;
 }
 

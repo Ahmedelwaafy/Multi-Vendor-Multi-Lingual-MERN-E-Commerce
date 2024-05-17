@@ -19,6 +19,7 @@ import { TFunction } from "i18next";
 import { setShowProductQuickViewPopUp } from "@/app/Features/MiscellaneousSlice";
 import { useAppDispatch } from "@/app/reduxHooks";
 import { cn } from "@/lib/utils";
+import { IVendorType } from "@/types";
 function ProductCard({
   product,
   t,
@@ -59,7 +60,7 @@ function ProductCard({
           <div className="product__actions flex items-center justify-start gap-7 bg-gray-100 py-3 px-5">
             <Tooltip>
               <TooltipTrigger>
-                <AddToFavorites id={product?._id} is_fav={product?.isFav} />
+                <AddToFavorites id={product?._id} isFav={product?.isFav} />
               </TooltipTrigger>
               <TooltipContent>
                 <p>{t("product_card.tooltips.add_to_wishlist")}</p>
@@ -96,7 +97,10 @@ function ProductCard({
           </div>
         </TooltipProvider>
         <div className="px-5">
-          <VendorQuickViewPopover t={t} product={product} />
+          <VendorQuickViewPopover
+            t={t}
+            vendor={product?.vendor as IVendorType}
+          />
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
@@ -114,7 +118,14 @@ function ProductCard({
             </Tooltip>
           </TooltipProvider>
           <RatingComponent IMutable defaultRating={product?.ratings || 0} />
-          <ProductPrice t={t} product={product} />{" "}
+          <ProductPrice
+            t={t}
+            data={{
+              finalPrice: product?.finalPrice,
+              originalPrice: product?.originalPrice,
+              sold_out: product?.sold_out,
+            }}
+          />{" "}
         </div>
       </div>
     </div>

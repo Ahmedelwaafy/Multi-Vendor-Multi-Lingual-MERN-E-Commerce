@@ -114,7 +114,7 @@ export const products = [
     id: 50,
     stock: 50,
     views: 50,
-    is_fav: false,
+    isFav: false,
 
     images: [
       {
@@ -181,7 +181,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -222,7 +222,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -263,7 +263,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -305,7 +305,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -347,7 +347,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -388,7 +388,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -429,7 +429,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -470,7 +470,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -511,7 +511,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -552,7 +552,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",
@@ -593,7 +593,7 @@ export const products = [
     discount_Price: 10000,
     id: 30,
     stock: 30,
-    is_fav: true,
+    isFav: true,
     images: [
       {
         public_id: "image3_public_id",

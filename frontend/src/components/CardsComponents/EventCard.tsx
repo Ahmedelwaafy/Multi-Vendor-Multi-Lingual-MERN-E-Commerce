@@ -32,7 +32,14 @@ function EventCard({
         <h3 className="text-lg opacity-70 text-justify">
           {event?.description}
         </h3>
-        <ProductPrice product={event} t={t} />
+        <ProductPrice
+          data={{
+            finalPrice: event?.finalPrice,
+            originalPrice: event?.originalPrice,
+            sold_out: event?.sold_out,
+          }}
+          t={t}
+        />
         <CountDown data={{ _id: event?._id, endDate: event?.endDate }} />
       </div>
     </div>

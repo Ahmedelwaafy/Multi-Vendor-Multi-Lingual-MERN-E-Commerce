@@ -6,19 +6,19 @@ import { cn } from "@/lib/utils";
 
 type props = {
   id: number | undefined;
-  is_fav: boolean;
+  isFav: boolean;
   type?: "product" | "brand";
   className?: string;
   onSuccess?: () => void;
 };
 function AddToFavorites({
   id,
-  is_fav,
+  isFav,
   className,
   onSuccess,
   type = "product",
 }: props) {
-  const {UserSession} = UseAuth();
+  const { UserSession } = UseAuth();
   const dispatchRedux = useAppDispatch();
   const { mutate } = usePostData(true, () => {
     //like or unlike the product from all pages doesn't have onSuccuss but favorites page can only unlike the product, so it has onSuccess
@@ -37,7 +37,7 @@ function AddToFavorites({
       <div className="heart-container">
         {UserSession && (
           <input
-            defaultChecked={Boolean(is_fav)}
+            defaultChecked={Boolean(isFav)}
             type="checkbox"
             className="heart-checkbox"
             id={id?.toString()}

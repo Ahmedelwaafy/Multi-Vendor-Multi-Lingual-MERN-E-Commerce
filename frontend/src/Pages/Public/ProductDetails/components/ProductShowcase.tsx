@@ -40,7 +40,7 @@ function ProductShowcase({
           <h6 className="text-sm">
             {t("views_count", { count: product?.views })}
           </h6>
-          <AddToFavorites id={product?._id} is_fav={product?.isFav} />
+          <AddToFavorites id={product?._id} isFav={product?.isFav} />
         </div>
         <h1 className="text-2xl font-semibold mt-2">{product?.name}</h1>
         <h2 className="opacity-70">{product?.description}</h2>
@@ -49,7 +49,14 @@ function ProductShowcase({
           defaultRating={product?.ratings || 0}
           className2="my-5"
         />
-        <ProductPrice t={t} product={product} />{" "}
+        <ProductPrice
+          t={t}
+          data={{
+            finalPrice: product?.finalPrice,
+            originalPrice: product?.originalPrice,
+            sold_out: product?.sold_out,
+          }}
+        />{" "}
         <div className="product__actions flex items-center justify-between mt-5 gap-5 xs:flex-col xs:items-start">
           <IncreaseDecreaseProductQty
             quantity={quantity}

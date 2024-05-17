@@ -79,7 +79,7 @@ function CartWishListItemCard({
           ) : (
             <>
               <AddToFavorites
-                is_fav={product?.is_fav}
+                isFav={product?.isFav}
                 id={product?.id}
                 onSuccess={() => {}}
               />
