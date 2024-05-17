@@ -140,7 +140,6 @@ export interface productType {
   reviews: Review[];
   ratings?: number;
   vendor: string;
-  vendor: object;
   isFav: boolean;
   accepted: boolean;
   sold_out: number;
