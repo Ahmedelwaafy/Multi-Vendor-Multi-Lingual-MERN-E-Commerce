@@ -1,16 +1,36 @@
 import { cn } from "@/lib/utils";
 import { Skeleton } from "../ui/skeleton";
 
-function WideCouponCardSkeleton({ className }: { className?: string }) {
+function ProductCardSkeleton({ className }: { className?: string }) {
   return (
-    <Skeleton
-      className={cn("w-full h-[220px] flex flex-col  ss:gap-4 ", className)}
+    <div
+      className={cn(
+        "w-full pt-5 border shadow-md max-w-[300px] mx-auto ",
+        className
+      )}
     >
-      <Skeleton className="ml-20 block ss:ml-3 w-24 aspect-square ss:w-16  border border- rounded-sm -translate-y-[75%] ss:-translate-y-[89%] bg-white " />
+      <Skeleton className="w-full h-60 " />
+      <div className="py-5">
+        <div className="flex items-center justify-start gap-7 bg-gray-100 py-3 px-5">
+          <Skeleton className="  rounded-full size-7 " />
+          <Skeleton className="  rounded-full size-7 " />
+          <Skeleton className="  rounded-full size-7 " />
+        </div>
+        <div className="px-5 pt-4 space-y-3">
 
-      <Skeleton className=" h-10 bg-white w-2/3 mx-auto mt-12" />
-    </Skeleton>
+
+          <Skeleton className="w-2/3 h-4 " />
+          <Skeleton className="w-full h-7 " />
+          <Skeleton className="w-2/3 h-4 " />
+          <div className="flex justify-between items-center">
+          <Skeleton className="w-1/4 h-4 " />
+          <Skeleton className="w-1/4 h-4 " />
+
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default WideCouponCardSkeleton;
+export default ProductCardSkeleton;

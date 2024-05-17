@@ -27,7 +27,7 @@ function AddToFavorites({
   return (
     <div
       className={cn(
-        "product__love cursor-pointer hover:animate-wiggle hover:animate-fill-backwards shrink-0",
+        "product__love cursor-pointer hover:animate-wiggle hover:animate-fill-backwards shrink-0 min-w-7",
         className
       )}
       onClick={

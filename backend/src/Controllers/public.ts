@@ -68,6 +68,7 @@ export const getBestSelling = asyncErrorHandler(
       bestSelling,
       req.language
     );
+    
     res.status(200).json({
       success: true,
       data: {
@@ -76,6 +77,7 @@ export const getBestSelling = asyncErrorHandler(
     });
   }
 );
+
 //! ----- Category controller -----
 
 export const getCategories = asyncErrorHandler(

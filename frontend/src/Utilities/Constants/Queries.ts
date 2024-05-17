@@ -29,5 +29,5 @@ export const PUBLIC = {
   NAVBAR: "Navbar",
   FOOTER: "Footer",
   ALL_PRODUCTS: "AllProducts",
-  BEST_SELLING: "AllProducts",
+  BEST_SELLING: "Best Selling Products",
 };

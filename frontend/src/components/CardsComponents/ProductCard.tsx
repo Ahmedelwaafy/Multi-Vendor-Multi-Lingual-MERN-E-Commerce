@@ -43,11 +43,11 @@ function ProductCard({
     >
       <LangLink
         to={`/products/${product?._id}/${product.name?.replace(/\s+/g, "-")}`}
-        className="product__img--wrapper group w-full h-60  overflow-hidden block relative"
+        className="product__img--wrapper group/card w-full h-60  overflow-hidden block relative"
       >
         <img
           loading="lazy"
-          className="w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-110 object-cover"
+          className="w-full h-full transition-transform duration-700 ease-in-out group-hover/card:scale-110 object-cover"
           src={product.images[0]?.url}
           alt={product.name}
         />

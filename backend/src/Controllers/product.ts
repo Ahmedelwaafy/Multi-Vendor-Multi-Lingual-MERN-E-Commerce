@@ -19,6 +19,9 @@ export const addProduct = asyncErrorHandler(
       images,
       vendor: req.vendor._id.toString(),
     });
+    await Vendor.findByIdAndUpdate(req.vendor._id, {
+      $inc: { totalProducts: 1 },
+    });
     res.status(200).json({
       success: true,
       product,

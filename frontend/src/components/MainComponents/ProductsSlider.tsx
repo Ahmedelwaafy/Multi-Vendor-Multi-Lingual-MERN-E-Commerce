@@ -85,8 +85,8 @@ function ProductsSlider({
       <div className="  bg-red- 400">
         <swiper-container init={false} ref={swiperElRef}>
           {Slides?.map((product) => (
-            <swiper-slide key={product?.id}>
-              <ProductCard key={product?.id} product={product} t={t} slider />
+            <swiper-slide key={product?._id}>
+              <ProductCard key={product?._id} product={product} t={t} slider />
             </swiper-slide>
           ))}
         </swiper-container>

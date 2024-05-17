@@ -1,1 +1,1 @@
-export { default as WideCouponCardSkeleton } from "./ProductCardSkeleton";
+export { default as ProductCardSkeleton } from "./ProductCardSkeleton";

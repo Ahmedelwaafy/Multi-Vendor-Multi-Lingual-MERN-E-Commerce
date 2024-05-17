@@ -1,0 +1,21 @@
+{
+  "tab": {
+    "title": "Best Selling | Sacramento",
+    "description": "Best Selling | Sacramento"
+  },
+  "product_card": {
+    "tooltips": {
+      "add_to_wishlist": "Add to Wishlist",
+      "add_to_cart": "Add to Cart",
+      "view_details": "View Details",
+      "count_formatted": "{{count,number}}",
+      "count_formatted_sold": "{{count,number}} Sold"
+    },
+    "added_to_cart_toast": "Item Added to Cart ",
+    "add_to_cart_btn": "Add to Cart",
+    "send_msg_to_shop_btn": "Send Message"
+  },
+  "title": "Best Selling  Products",
+  "ErrorMessage": "Something wrong has happened, please try again later!",
+  "NoItemsMessage": "There are no Products now!"
+}

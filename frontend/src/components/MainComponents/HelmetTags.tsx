@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 type HelmetTagsProps = {
   title: string;
@@ -17,7 +18,9 @@ export default function HelmetTags({
   children,
   canonical,
 }: HelmetTagsProps) {
-  const baseURL = import.meta.env.VITE_WEBSITE_BASE_URL + "/";
+  const { i18n } = useTranslation("");
+const lng=i18n.language?.startsWith("ar")?"ar":"en"
+  const baseURL = import.meta.env.VITE_WEBSITE_BASE_URL + "/" + lng;
 
   return (
     <Helmet>
@@ -26,7 +29,7 @@ export default function HelmetTags({
      */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      {index && <link rel="canonical" href={`${baseURL}${canonical}`} />}
+      {index && <link rel="canonical" href={`${baseURL}/${canonical}`} />}
       {index && <meta name="keywords" content={keywords} />}
       {!index && <meta name="robots" content="noindex, nofollow" />}
       {/* 
